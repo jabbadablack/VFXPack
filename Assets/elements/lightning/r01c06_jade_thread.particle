@@ -1,0 +1,4743 @@
+{
+  "name": "Jade Thread",
+  "systemConfig": {
+    "loop": false,
+    "parallel": false
+  },
+  "emitters": [
+    {
+      "name": "Leader segment 1",
+      "config": {
+        "type": "CPU",
+        "maxSize": 5,
+        "startTime": 0,
+        "localSpace": true,
+        "duration": 0.4968,
+        "loop": false
+      },
+      "material": {
+        "assetId": {
+          "guid": "{921D0531-34FF-5F89-91EA-A346BDC523AB}",
+          "subId": 0
+        },
+        "assetHint": "materials/vfxpack/mesh_plasma.azmaterial"
+      },
+      "OpenParticle::EmitBurstList": {
+        "isProcessBurstList": true,
+        "burstList": [
+          {
+            "time": 0,
+            "count": 1,
+            "minCount": -1
+          },
+          {
+            "time": 0.1848,
+            "count": 1,
+            "minCount": -1
+          }
+        ]
+      },
+      "OpenParticle::SpawnLifetime": {
+        "lifeTimeObject": {
+          "dataValue": 0.3168,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnLocPoint": {
+        "positionObject": {
+          "dataValue": [
+            0.028460161171255376,
+            0.021580234166221846,
+            0.27999999999999997
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnVelDirection": {
+        "strengthObject": {
+          "dataValue": 1,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        },
+        "directionObject": {
+          "dataValue": [
+            0.0008066115435763569,
+            0.0006116221860730812,
+            0.007935697582397691
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnSize": {
+        "sizeObject": {
+          "dataValue": [
+            0.03568,
+            0.03568,
+            0.79176
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnColor": {
+        "startColorObject": {
+          "dataValue": [
+            0.0211,
+            1.0,
+            0.7474,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::UpdateColor": {
+        "currentColorObject": {
+          "dataValue": [
+            0.0211,
+            1.0,
+            0.7474,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "OpenParticle::SizeScale": {
+        "scaleFactorObject": {
+          "dataValue": [
+            1,
+            1,
+            1
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            5,
+            6,
+            7
+          ]
+        }
+      },
+      "materialOverrides": {
+        "baseColor.color": {
+          "$type": "Color",
+          "Value": [
+            0.0395,
+            0.48,
+            0.3663,
+            1.0
+          ]
+        },
+        "emissive.color": {
+          "$type": "Color",
+          "Value": [
+            0.0211,
+            1.0,
+            0.7474,
+            1.0
+          ]
+        },
+        "emissive.intensity": {
+          "$type": "float",
+          "Value": 6.8503
+        },
+        "roughness.factor": {
+          "$type": "float",
+          "Value": 0.2926
+        },
+        "specularF0.factor": {
+          "$type": "float",
+          "Value": 0.48
+        },
+        "opacity.factor": {
+          "$type": "float",
+          "Value": 0.95
+        },
+        "parallax.factor": {
+          "$type": "float",
+          "Value": 0.018
+        },
+        "effect.flow": {
+          "$type": "float",
+          "Value": 1.1033
+        },
+        "effect.frequency": {
+          "$type": "float",
+          "Value": 1.484
+        },
+        "effect.seed": {
+          "$type": "float",
+          "Value": 2.5028
+        },
+        "effect.erosion": {
+          "$type": "float",
+          "Value": 0.3513
+        },
+        "effect.edge": {
+          "$type": "float",
+          "Value": 1.4
+        },
+        "parallax.textureMap": {
+          "$type": "{403A7CFE-B218-5D57-8540-BD58E734BCFE} Asset<StreamingImageAsset>",
+          "Value": {
+            "assetId": {
+              "guid": "{F4B5C808-0B7D-5782-BAAB-54FD6729EEF1}",
+              "subId": 1000
+            },
+            "assetHint": "textures/noiselayers_cloudvoronoi.tif.streamingimage"
+          }
+        }
+      },
+      "OpenParticle::MeshConfig": {
+        "facing": "CUSTOM",
+        "sortId": 0
+      },
+      "model": {
+        "assetId": {
+          "guid": "{5A5D892F-2207-5CF2-9F47-ACE201E98EB7}",
+          "subId": 283105313
+        },
+        "assetHint": "models/vfxpack/arc_filament.fbx.azmodel"
+      },
+      "OpenParticle::SpawnRotation": {
+        "initAxis": [
+          -0.6042046178620969,
+          0.7968292036278022,
+          0.0
+        ],
+        "rotateAxis": [
+          0.10082644294704461,
+          0.07645277325913516,
+          0.9919621977997114
+        ],
+        "initAngleObject": {
+          "dataValue": 7.269384069462734,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        },
+        "rotateSpeedObject": {
+          "dataValue": 0.0,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      }
+    },
+    {
+      "name": "Leader segment 2",
+      "config": {
+        "type": "CPU",
+        "maxSize": 5,
+        "startTime": 0,
+        "localSpace": true,
+        "duration": 0.5448,
+        "loop": false
+      },
+      "material": {
+        "assetId": {
+          "guid": "{921D0531-34FF-5F89-91EA-A346BDC523AB}",
+          "subId": 0
+        },
+        "assetHint": "materials/vfxpack/mesh_plasma.azmaterial"
+      },
+      "OpenParticle::EmitBurstList": {
+        "isProcessBurstList": true,
+        "burstList": [
+          {
+            "time": 0,
+            "count": 1,
+            "minCount": -1
+          },
+          {
+            "time": 0.1848,
+            "count": 1,
+            "minCount": -1
+          }
+        ]
+      },
+      "OpenParticle::SpawnLifetime": {
+        "lifeTimeObject": {
+          "dataValue": 0.396,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnLocPoint": {
+        "positionObject": {
+          "dataValue": [
+            0.012523900025191204,
+            -0.0002091601441178599,
+            0.8399999999999999
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnVelDirection": {
+        "strengthObject": {
+          "dataValue": 1,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        },
+        "directionObject": {
+          "dataValue": [
+            -0.0012384110391838715,
+            -0.0012097692531797624,
+            0.007810428698355066
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnSize": {
+        "sizeObject": {
+          "dataValue": [
+            0.03568,
+            0.03568,
+            0.80446
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnColor": {
+        "startColorObject": {
+          "dataValue": [
+            0.0211,
+            1.0,
+            0.7474,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::UpdateColor": {
+        "currentColorObject": {
+          "dataValue": [
+            0.0211,
+            1.0,
+            0.7474,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            8,
+            9,
+            10,
+            11
+          ]
+        }
+      },
+      "OpenParticle::SizeScale": {
+        "scaleFactorObject": {
+          "dataValue": [
+            1,
+            1,
+            1
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            12,
+            13,
+            14
+          ]
+        }
+      },
+      "materialOverrides": {
+        "baseColor.color": {
+          "$type": "Color",
+          "Value": [
+            0.0395,
+            0.48,
+            0.3663,
+            1.0
+          ]
+        },
+        "emissive.color": {
+          "$type": "Color",
+          "Value": [
+            0.0211,
+            1.0,
+            0.7474,
+            1.0
+          ]
+        },
+        "emissive.intensity": {
+          "$type": "float",
+          "Value": 6.7082
+        },
+        "roughness.factor": {
+          "$type": "float",
+          "Value": 0.2571
+        },
+        "specularF0.factor": {
+          "$type": "float",
+          "Value": 0.48
+        },
+        "opacity.factor": {
+          "$type": "float",
+          "Value": 0.95
+        },
+        "parallax.factor": {
+          "$type": "float",
+          "Value": 0.018
+        },
+        "effect.flow": {
+          "$type": "float",
+          "Value": 0.9307
+        },
+        "effect.frequency": {
+          "$type": "float",
+          "Value": 1.3473
+        },
+        "effect.seed": {
+          "$type": "float",
+          "Value": 1.082
+        },
+        "effect.erosion": {
+          "$type": "float",
+          "Value": 0.3193
+        },
+        "effect.edge": {
+          "$type": "float",
+          "Value": 1.4
+        },
+        "parallax.textureMap": {
+          "$type": "{403A7CFE-B218-5D57-8540-BD58E734BCFE} Asset<StreamingImageAsset>",
+          "Value": {
+            "assetId": {
+              "guid": "{F4B5C808-0B7D-5782-BAAB-54FD6729EEF1}",
+              "subId": 1000
+            },
+            "assetHint": "textures/noiselayers_cloudvoronoi.tif.streamingimage"
+          }
+        }
+      },
+      "OpenParticle::MeshConfig": {
+        "facing": "CUSTOM",
+        "sortId": 0
+      },
+      "model": {
+        "assetId": {
+          "guid": "{5A5D892F-2207-5CF2-9F47-ACE201E98EB7}",
+          "subId": 283105313
+        },
+        "assetHint": "models/vfxpack/arc_filament.fbx.azmodel"
+      },
+      "OpenParticle::SpawnRotation": {
+        "initAxis": [
+          0.6987863670126571,
+          -0.7153304224463352,
+          0.0
+        ],
+        "rotateAxis": [
+          -0.15480137989798393,
+          -0.1512211566474703,
+          0.9763035872943833
+        ],
+        "initAngleObject": {
+          "dataValue": 12.49799322172736,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        },
+        "rotateSpeedObject": {
+          "dataValue": 0.0,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      }
+    },
+    {
+      "name": "Leader segment 3",
+      "config": {
+        "type": "CPU",
+        "maxSize": 5,
+        "startTime": 0,
+        "localSpace": true,
+        "duration": 0.4968,
+        "loop": false
+      },
+      "material": {
+        "assetId": {
+          "guid": "{921D0531-34FF-5F89-91EA-A346BDC523AB}",
+          "subId": 0
+        },
+        "assetHint": "materials/vfxpack/mesh_plasma.azmaterial"
+      },
+      "OpenParticle::EmitBurstList": {
+        "isProcessBurstList": true,
+        "burstList": [
+          {
+            "time": 0,
+            "count": 1,
+            "minCount": -1
+          },
+          {
+            "time": 0.1848,
+            "count": 1,
+            "minCount": -1
+          }
+        ]
+      },
+      "OpenParticle::SpawnLifetime": {
+        "lifeTimeObject": {
+          "dataValue": 0.3168,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnLocPoint": {
+        "positionObject": {
+          "dataValue": [
+            -0.019225153716995857,
+            -0.02136904679823094,
+            1.4
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnVelDirection": {
+        "strengthObject": {
+          "dataValue": 1,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        },
+        "directionObject": {
+          "dataValue": [
+            0.0003598573325734748,
+            0.0006319368651188476,
+            0.0079668788429784
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnSize": {
+        "sizeObject": {
+          "dataValue": [
+            0.03568,
+            0.03568,
+            0.78866
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnColor": {
+        "startColorObject": {
+          "dataValue": [
+            0.0211,
+            1.0,
+            0.7474,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::UpdateColor": {
+        "currentColorObject": {
+          "dataValue": [
+            0.0211,
+            1.0,
+            0.7474,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            15,
+            16,
+            17,
+            18
+          ]
+        }
+      },
+      "OpenParticle::SizeScale": {
+        "scaleFactorObject": {
+          "dataValue": [
+            1,
+            1,
+            1
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            19,
+            20,
+            21
+          ]
+        }
+      },
+      "materialOverrides": {
+        "baseColor.color": {
+          "$type": "Color",
+          "Value": [
+            0.0395,
+            0.48,
+            0.3663,
+            1.0
+          ]
+        },
+        "emissive.color": {
+          "$type": "Color",
+          "Value": [
+            0.0211,
+            1.0,
+            0.7474,
+            1.0
+          ]
+        },
+        "emissive.intensity": {
+          "$type": "float",
+          "Value": 6.7009
+        },
+        "roughness.factor": {
+          "$type": "float",
+          "Value": 0.2552
+        },
+        "specularF0.factor": {
+          "$type": "float",
+          "Value": 0.48
+        },
+        "opacity.factor": {
+          "$type": "float",
+          "Value": 0.95
+        },
+        "parallax.factor": {
+          "$type": "float",
+          "Value": 0.018
+        },
+        "effect.flow": {
+          "$type": "float",
+          "Value": 0.9218
+        },
+        "effect.frequency": {
+          "$type": "float",
+          "Value": 1.3403
+        },
+        "effect.seed": {
+          "$type": "float",
+          "Value": 1.0092
+        },
+        "effect.erosion": {
+          "$type": "float",
+          "Value": 0.3177
+        },
+        "effect.edge": {
+          "$type": "float",
+          "Value": 1.4
+        },
+        "parallax.textureMap": {
+          "$type": "{403A7CFE-B218-5D57-8540-BD58E734BCFE} Asset<StreamingImageAsset>",
+          "Value": {
+            "assetId": {
+              "guid": "{F4B5C808-0B7D-5782-BAAB-54FD6729EEF1}",
+              "subId": 1000
+            },
+            "assetHint": "textures/noiselayers_cloudvoronoi.tif.streamingimage"
+          }
+        }
+      },
+      "OpenParticle::MeshConfig": {
+        "facing": "CUSTOM",
+        "sortId": 0
+      },
+      "model": {
+        "assetId": {
+          "guid": "{5A5D892F-2207-5CF2-9F47-ACE201E98EB7}",
+          "subId": 283105313
+        },
+        "assetHint": "models/vfxpack/arc_filament.fbx.azmodel"
+      },
+      "OpenParticle::SpawnRotation": {
+        "initAxis": [
+          -0.8689822922800663,
+          0.4948431829415068,
+          0.0
+        ],
+        "rotateAxis": [
+          0.04498216657168434,
+          0.07899210813985595,
+          0.9958598553723
+        ],
+        "initAngleObject": {
+          "dataValue": 5.2154926443127305,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        },
+        "rotateSpeedObject": {
+          "dataValue": 0.0,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      }
+    },
+    {
+      "name": "Leader segment 4",
+      "config": {
+        "type": "CPU",
+        "maxSize": 5,
+        "startTime": 0,
+        "localSpace": true,
+        "duration": 0.5448,
+        "loop": false
+      },
+      "material": {
+        "assetId": {
+          "guid": "{921D0531-34FF-5F89-91EA-A346BDC523AB}",
+          "subId": 0
+        },
+        "assetHint": "materials/vfxpack/mesh_plasma.azmaterial"
+      },
+      "OpenParticle::EmitBurstList": {
+        "isProcessBurstList": true,
+        "burstList": [
+          {
+            "time": 0,
+            "count": 1,
+            "minCount": -1
+          },
+          {
+            "time": 0.1848,
+            "count": 1,
+            "minCount": -1
+          }
+        ]
+      },
+      "OpenParticle::SpawnLifetime": {
+        "lifeTimeObject": {
+          "dataValue": 0.396,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnLocPoint": {
+        "positionObject": {
+          "dataValue": [
+            0.018782865488361992,
+            0.02178532021431578,
+            1.9599999999999997
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnVelDirection": {
+        "strengthObject": {
+          "dataValue": 1,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        },
+        "directionObject": {
+          "dataValue": [
+            0.0007196418679971185,
+            0.0005943313291157414,
+            0.007945368830523674
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnSize": {
+        "sizeObject": {
+          "dataValue": [
+            0.03568,
+            0.03568,
+            0.7908
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnColor": {
+        "startColorObject": {
+          "dataValue": [
+            0.0211,
+            1.0,
+            0.7474,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::UpdateColor": {
+        "currentColorObject": {
+          "dataValue": [
+            0.0211,
+            1.0,
+            0.7474,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            22,
+            23,
+            24,
+            25
+          ]
+        }
+      },
+      "OpenParticle::SizeScale": {
+        "scaleFactorObject": {
+          "dataValue": [
+            1,
+            1,
+            1
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            26,
+            27,
+            28
+          ]
+        }
+      },
+      "materialOverrides": {
+        "baseColor.color": {
+          "$type": "Color",
+          "Value": [
+            0.0395,
+            0.48,
+            0.3663,
+            1.0
+          ]
+        },
+        "emissive.color": {
+          "$type": "Color",
+          "Value": [
+            0.0211,
+            1.0,
+            0.7474,
+            1.0
+          ]
+        },
+        "emissive.intensity": {
+          "$type": "float",
+          "Value": 6.7403
+        },
+        "roughness.factor": {
+          "$type": "float",
+          "Value": 0.2651
+        },
+        "specularF0.factor": {
+          "$type": "float",
+          "Value": 0.48
+        },
+        "opacity.factor": {
+          "$type": "float",
+          "Value": 0.95
+        },
+        "parallax.factor": {
+          "$type": "float",
+          "Value": 0.018
+        },
+        "effect.flow": {
+          "$type": "float",
+          "Value": 0.9697
+        },
+        "effect.frequency": {
+          "$type": "float",
+          "Value": 1.3782
+        },
+        "effect.seed": {
+          "$type": "float",
+          "Value": 1.4031
+        },
+        "effect.erosion": {
+          "$type": "float",
+          "Value": 0.3266
+        },
+        "effect.edge": {
+          "$type": "float",
+          "Value": 1.4
+        },
+        "parallax.textureMap": {
+          "$type": "{403A7CFE-B218-5D57-8540-BD58E734BCFE} Asset<StreamingImageAsset>",
+          "Value": {
+            "assetId": {
+              "guid": "{F4B5C808-0B7D-5782-BAAB-54FD6729EEF1}",
+              "subId": 1000
+            },
+            "assetHint": "textures/noiselayers_cloudvoronoi.tif.streamingimage"
+          }
+        }
+      },
+      "OpenParticle::MeshConfig": {
+        "facing": "CUSTOM",
+        "sortId": 0
+      },
+      "model": {
+        "assetId": {
+          "guid": "{5A5D892F-2207-5CF2-9F47-ACE201E98EB7}",
+          "subId": 283105313
+        },
+        "assetHint": "models/vfxpack/arc_filament.fbx.azmodel"
+      },
+      "OpenParticle::SpawnRotation": {
+        "initAxis": [
+          -0.6367824573137736,
+          0.7710435150219682,
+          0.0
+        ],
+        "rotateAxis": [
+          0.08995523349963984,
+          0.07429141613946769,
+          0.9931711038154594
+        ],
+        "initAngleObject": {
+          "dataValue": 6.6997769056293235,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        },
+        "rotateSpeedObject": {
+          "dataValue": 0.0,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      }
+    },
+    {
+      "name": "Leader segment 5",
+      "config": {
+        "type": "CPU",
+        "maxSize": 5,
+        "startTime": 0,
+        "localSpace": true,
+        "duration": 0.4968,
+        "loop": false
+      },
+      "material": {
+        "assetId": {
+          "guid": "{921D0531-34FF-5F89-91EA-A346BDC523AB}",
+          "subId": 0
+        },
+        "assetHint": "materials/vfxpack/mesh_plasma.azmaterial"
+      },
+      "OpenParticle::EmitBurstList": {
+        "isProcessBurstList": true,
+        "burstList": [
+          {
+            "time": 0,
+            "count": 1,
+            "minCount": -1
+          },
+          {
+            "time": 0.1848,
+            "count": 1,
+            "minCount": -1
+          }
+        ]
+      },
+      "OpenParticle::SpawnLifetime": {
+        "lifeTimeObject": {
+          "dataValue": 0.3168,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnLocPoint": {
+        "positionObject": {
+          "dataValue": [
+            -0.011364861365596265,
+            -0.0006274212970847383,
+            2.5199999999999996
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnVelDirection": {
+        "strengthObject": {
+          "dataValue": 1,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        },
+        "directionObject": {
+          "dataValue": [
+            -0.0015380376074100137,
+            -0.0012013548867316984,
+            0.00775829792894797
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnSize": {
+        "sizeObject": {
+          "dataValue": [
+            0.03568,
+            0.03568,
+            0.80987
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnColor": {
+        "startColorObject": {
+          "dataValue": [
+            0.0211,
+            1.0,
+            0.7474,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::UpdateColor": {
+        "currentColorObject": {
+          "dataValue": [
+            0.0211,
+            1.0,
+            0.7474,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            29,
+            30,
+            31,
+            32
+          ]
+        }
+      },
+      "OpenParticle::SizeScale": {
+        "scaleFactorObject": {
+          "dataValue": [
+            1,
+            1,
+            1
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            33,
+            34,
+            35
+          ]
+        }
+      },
+      "materialOverrides": {
+        "baseColor.color": {
+          "$type": "Color",
+          "Value": [
+            0.0395,
+            0.48,
+            0.3663,
+            1.0
+          ]
+        },
+        "emissive.color": {
+          "$type": "Color",
+          "Value": [
+            0.0211,
+            1.0,
+            0.7474,
+            1.0
+          ]
+        },
+        "emissive.intensity": {
+          "$type": "float",
+          "Value": 6.6871
+        },
+        "roughness.factor": {
+          "$type": "float",
+          "Value": 0.2518
+        },
+        "specularF0.factor": {
+          "$type": "float",
+          "Value": 0.48
+        },
+        "opacity.factor": {
+          "$type": "float",
+          "Value": 0.95
+        },
+        "parallax.factor": {
+          "$type": "float",
+          "Value": 0.018
+        },
+        "effect.flow": {
+          "$type": "float",
+          "Value": 0.905
+        },
+        "effect.frequency": {
+          "$type": "float",
+          "Value": 1.327
+        },
+        "effect.seed": {
+          "$type": "float",
+          "Value": 0.871
+        },
+        "effect.erosion": {
+          "$type": "float",
+          "Value": 0.3146
+        },
+        "effect.edge": {
+          "$type": "float",
+          "Value": 1.4
+        },
+        "parallax.textureMap": {
+          "$type": "{403A7CFE-B218-5D57-8540-BD58E734BCFE} Asset<StreamingImageAsset>",
+          "Value": {
+            "assetId": {
+              "guid": "{F4B5C808-0B7D-5782-BAAB-54FD6729EEF1}",
+              "subId": 1000
+            },
+            "assetHint": "textures/noiselayers_cloudvoronoi.tif.streamingimage"
+          }
+        }
+      },
+      "OpenParticle::MeshConfig": {
+        "facing": "CUSTOM",
+        "sortId": 0
+      },
+      "model": {
+        "assetId": {
+          "guid": "{5A5D892F-2207-5CF2-9F47-ACE201E98EB7}",
+          "subId": 283105313
+        },
+        "assetHint": "models/vfxpack/arc_filament.fbx.azmodel"
+      },
+      "OpenParticle::SpawnRotation": {
+        "initAxis": [
+          0.6155686303729602,
+          -0.7880832832263085,
+          0.0
+        ],
+        "rotateAxis": [
+          -0.19225470092625171,
+          -0.1501693608414623,
+          0.9697872411184962
+        ],
+        "initAngleObject": {
+          "dataValue": 14.119924232544609,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        },
+        "rotateSpeedObject": {
+          "dataValue": 0.0,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      }
+    },
+    {
+      "name": "Ground contact",
+      "config": {
+        "type": "CPU",
+        "maxSize": 4,
+        "startTime": 0,
+        "localSpace": true,
+        "duration": 0.36,
+        "loop": false
+      },
+      "material": {
+        "assetId": {
+          "guid": "{921D0531-34FF-5F89-91EA-A346BDC523AB}",
+          "subId": 0
+        },
+        "assetHint": "materials/vfxpack/mesh_plasma.azmaterial"
+      },
+      "OpenParticle::EmitBurstList": {
+        "isProcessBurstList": true,
+        "burstList": [
+          {
+            "time": 0,
+            "count": 1,
+            "minCount": -1
+          }
+        ]
+      },
+      "OpenParticle::SpawnLifetime": {
+        "lifeTimeObject": {
+          "dataValue": 0.24,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnLocPoint": {
+        "positionObject": {
+          "dataValue": [
+            0,
+            0,
+            0
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnSize": {
+        "sizeObject": {
+          "dataValue": [
+            0.73632,
+            0.73632,
+            0.33748
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnColor": {
+        "startColorObject": {
+          "dataValue": [
+            1.0,
+            0.94,
+            0.86,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::UpdateColor": {
+        "currentColorObject": {
+          "dataValue": [
+            1.0,
+            0.94,
+            0.86,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            36,
+            37,
+            38,
+            39
+          ]
+        }
+      },
+      "OpenParticle::SizeScale": {
+        "scaleFactorObject": {
+          "dataValue": [
+            1,
+            1,
+            1
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            40,
+            41,
+            42
+          ]
+        }
+      },
+      "materialOverrides": {
+        "baseColor.color": {
+          "$type": "Color",
+          "Value": [
+            0.48,
+            0.453,
+            0.417,
+            1.0
+          ]
+        },
+        "emissive.color": {
+          "$type": "Color",
+          "Value": [
+            1.0,
+            0.94,
+            0.86,
+            1.0
+          ]
+        },
+        "emissive.intensity": {
+          "$type": "float",
+          "Value": 6.9447
+        },
+        "roughness.factor": {
+          "$type": "float",
+          "Value": 0.3162
+        },
+        "specularF0.factor": {
+          "$type": "float",
+          "Value": 0.48
+        },
+        "opacity.factor": {
+          "$type": "float",
+          "Value": 0.95
+        },
+        "parallax.factor": {
+          "$type": "float",
+          "Value": 0.018
+        },
+        "effect.flow": {
+          "$type": "float",
+          "Value": 1.218
+        },
+        "effect.frequency": {
+          "$type": "float",
+          "Value": 1.5748
+        },
+        "effect.seed": {
+          "$type": "float",
+          "Value": 3.4472
+        },
+        "effect.erosion": {
+          "$type": "float",
+          "Value": 0.3726
+        },
+        "effect.edge": {
+          "$type": "float",
+          "Value": 1.4
+        },
+        "parallax.textureMap": {
+          "$type": "{403A7CFE-B218-5D57-8540-BD58E734BCFE} Asset<StreamingImageAsset>",
+          "Value": {
+            "assetId": {
+              "guid": "{F4B5C808-0B7D-5782-BAAB-54FD6729EEF1}",
+              "subId": 1000
+            },
+            "assetHint": "textures/noiselayers_cloudvoronoi.tif.streamingimage"
+          }
+        }
+      },
+      "OpenParticle::MeshConfig": {
+        "facing": "CUSTOM",
+        "sortId": 0
+      },
+      "model": {
+        "assetId": {
+          "guid": "{09925772-150B-5FAD-99F1-3BAE34644A55}",
+          "subId": 271719639
+        },
+        "assetHint": "models/vfxpack/shock_ring.fbx.azmodel"
+      },
+      "OpenParticle::SpawnRotation": {
+        "initAxis": [
+          0.9589242746631386,
+          0.28366218546322625,
+          0.0
+        ],
+        "rotateAxis": [
+          0.028225442399215348,
+          -0.09541653158849613,
+          0.9950371902099893
+        ],
+        "initAngleObject": {
+          "dataValue": 5.710593137499568,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        },
+        "rotateSpeedObject": {
+          "dataValue": 8.0,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      }
+    },
+    {
+      "name": "Diffuse halo",
+      "config": {
+        "type": "CPU",
+        "maxSize": 4,
+        "startTime": 0,
+        "localSpace": true,
+        "duration": 0.51,
+        "loop": false
+      },
+      "material": {
+        "assetId": {
+          "guid": "{6214288D-A49B-5EAD-9E3D-D9D64DBD15A7}",
+          "subId": 0
+        },
+        "loadBehavior": "PreLoad",
+        "assetHint": "materials/vfxpack/soft_aqua.azmaterial"
+      },
+      "OpenParticle::SpriteConfig": {
+        "facing": "CAMERA_RECTANGLE",
+        "sortId": 0,
+        "subImage": [
+          1,
+          1
+        ]
+      },
+      "OpenParticle::EmitBurstList": {
+        "isProcessBurstList": true,
+        "burstList": [
+          {
+            "time": 0,
+            "count": 1,
+            "minCount": -1
+          }
+        ]
+      },
+      "OpenParticle::SpawnLifetime": {
+        "lifeTimeObject": {
+          "dataValue": 0.39,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnLocPoint": {
+        "positionObject": {
+          "dataValue": [
+            0,
+            0,
+            0
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnSize": {
+        "sizeObject": {
+          "dataValue": [
+            0.9299999999999999,
+            0.9299999999999999,
+            0.9299999999999999
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnColor": {
+        "startColorObject": {
+          "dataValue": [
+            0.02,
+            0.95,
+            0.71,
+            0.46
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::UpdateColor": {
+        "currentColorObject": {
+          "dataValue": [
+            0.02,
+            0.95,
+            0.71,
+            0.46
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            43,
+            44,
+            45,
+            46
+          ]
+        }
+      },
+      "OpenParticle::SizeScale": {
+        "scaleFactorObject": {
+          "dataValue": [
+            1,
+            1,
+            1
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            47,
+            48,
+            49
+          ]
+        }
+      },
+      "materialOverrides": {
+        "emissive.intensity": {
+          "$type": "float",
+          "Value": 1.9
+        },
+        "emissive.color": {
+          "$type": "Color",
+          "Value": [
+            0.02,
+            0.95,
+            0.71,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "name": "Arc spine 1",
+      "config": {
+        "type": "CPU",
+        "maxSize": 4,
+        "startTime": 0,
+        "localSpace": true,
+        "duration": 0.3,
+        "loop": false
+      },
+      "material": {
+        "assetId": {
+          "guid": "{921D0531-34FF-5F89-91EA-A346BDC523AB}",
+          "subId": 0
+        },
+        "assetHint": "materials/vfxpack/mesh_plasma.azmaterial"
+      },
+      "model": {
+        "assetId": {
+          "guid": "{5A5D892F-2207-5CF2-9F47-ACE201E98EB7}",
+          "subId": 283105313
+        },
+        "assetHint": "models/vfxpack/arc_filament.fbx.azmodel"
+      },
+      "OpenParticle::EmitBurstList": {
+        "isProcessBurstList": true,
+        "burstList": [
+          {
+            "time": 0,
+            "count": 1,
+            "minCount": -1
+          }
+        ]
+      },
+      "OpenParticle::SpawnLifetime": {
+        "lifeTimeObject": {
+          "dataValue": 0.17200000000000001,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnLocPoint": {
+        "positionObject": {
+          "dataValue": [
+            0.028460161171255376,
+            0.021580234166221846,
+            0.27999999999999997
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnSize": {
+        "sizeObject": {
+          "dataValue": [
+            0.06798,
+            0.06798,
+            0.97525
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnColor": {
+        "startColorObject": {
+          "dataValue": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::UpdateColor": {
+        "currentColorObject": {
+          "dataValue": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            50,
+            51,
+            52,
+            53
+          ]
+        }
+      },
+      "OpenParticle::SizeScale": {
+        "scaleFactorObject": {
+          "dataValue": [
+            1,
+            1,
+            1
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            54,
+            55,
+            56
+          ]
+        }
+      },
+      "OpenParticle::SpawnRotation": {
+        "initAxis": [
+          -0.6042046178620969,
+          0.7968292036278022,
+          0.0
+        ],
+        "rotateAxis": [
+          0.37,
+          0.49,
+          0.78
+        ],
+        "initAngleObject": {
+          "dataValue": 7.269384069462734,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        },
+        "rotateSpeedObject": {
+          "dataValue": 0,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      },
+      "materialOverrides": {
+        "baseColor.color": {
+          "$type": "Color",
+          "Value": [
+            0.0395,
+            0.48,
+            0.3663,
+            1.0
+          ]
+        },
+        "emissive.color": {
+          "$type": "Color",
+          "Value": [
+            0.0211,
+            1.0,
+            0.7474,
+            1.0
+          ]
+        },
+        "emissive.intensity": {
+          "$type": "float",
+          "Value": 5.6776
+        },
+        "roughness.factor": {
+          "$type": "float",
+          "Value": 0.2619
+        },
+        "specularF0.factor": {
+          "$type": "float",
+          "Value": 0.48
+        },
+        "opacity.factor": {
+          "$type": "float",
+          "Value": 0.95
+        },
+        "parallax.factor": {
+          "$type": "float",
+          "Value": 0.018
+        },
+        "effect.flow": {
+          "$type": "float",
+          "Value": 0.9542
+        },
+        "effect.frequency": {
+          "$type": "float",
+          "Value": 1.366
+        },
+        "effect.seed": {
+          "$type": "float",
+          "Value": 1.276
+        },
+        "effect.erosion": {
+          "$type": "float",
+          "Value": 0.3237
+        },
+        "effect.edge": {
+          "$type": "float",
+          "Value": 1.4
+        },
+        "parallax.textureMap": {
+          "$type": "{403A7CFE-B218-5D57-8540-BD58E734BCFE} Asset<StreamingImageAsset>",
+          "Value": {
+            "assetId": {
+              "guid": "{F4B5C808-0B7D-5782-BAAB-54FD6729EEF1}",
+              "subId": 1000
+            },
+            "assetHint": "textures/noiselayers_cloudvoronoi.tif.streamingimage"
+          }
+        }
+      },
+      "OpenParticle::MeshConfig": {
+        "facing": "CUSTOM",
+        "sortId": 0
+      }
+    },
+    {
+      "name": "Arc spine 2",
+      "config": {
+        "type": "CPU",
+        "maxSize": 4,
+        "startTime": 0,
+        "localSpace": true,
+        "duration": 0.3,
+        "loop": false
+      },
+      "material": {
+        "assetId": {
+          "guid": "{921D0531-34FF-5F89-91EA-A346BDC523AB}",
+          "subId": 0
+        },
+        "assetHint": "materials/vfxpack/mesh_plasma.azmaterial"
+      },
+      "model": {
+        "assetId": {
+          "guid": "{5A5D892F-2207-5CF2-9F47-ACE201E98EB7}",
+          "subId": 283105313
+        },
+        "assetHint": "models/vfxpack/arc_filament.fbx.azmodel"
+      },
+      "OpenParticle::EmitBurstList": {
+        "isProcessBurstList": true,
+        "burstList": [
+          {
+            "time": 0,
+            "count": 1,
+            "minCount": -1
+          }
+        ]
+      },
+      "OpenParticle::SpawnLifetime": {
+        "lifeTimeObject": {
+          "dataValue": 0.17200000000000001,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnLocPoint": {
+        "positionObject": {
+          "dataValue": [
+            0.012523900025191204,
+            -0.0002091601441178599,
+            0.8399999999999999
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnSize": {
+        "sizeObject": {
+          "dataValue": [
+            0.06798,
+            0.06798,
+            0.99089
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnColor": {
+        "startColorObject": {
+          "dataValue": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::UpdateColor": {
+        "currentColorObject": {
+          "dataValue": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            57,
+            58,
+            59,
+            60
+          ]
+        }
+      },
+      "OpenParticle::SizeScale": {
+        "scaleFactorObject": {
+          "dataValue": [
+            1,
+            1,
+            1
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            61,
+            62,
+            63
+          ]
+        }
+      },
+      "OpenParticle::SpawnRotation": {
+        "initAxis": [
+          0.6987863670126571,
+          -0.7153304224463352,
+          0.0
+        ],
+        "rotateAxis": [
+          0.37,
+          0.49,
+          0.78
+        ],
+        "initAngleObject": {
+          "dataValue": 12.49799322172736,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        },
+        "rotateSpeedObject": {
+          "dataValue": 0,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      },
+      "materialOverrides": {
+        "baseColor.color": {
+          "$type": "Color",
+          "Value": [
+            0.0395,
+            0.48,
+            0.3663,
+            1.0
+          ]
+        },
+        "emissive.color": {
+          "$type": "Color",
+          "Value": [
+            0.0211,
+            1.0,
+            0.7474,
+            1.0
+          ]
+        },
+        "emissive.intensity": {
+          "$type": "float",
+          "Value": 5.7137
+        },
+        "roughness.factor": {
+          "$type": "float",
+          "Value": 0.2709
+        },
+        "specularF0.factor": {
+          "$type": "float",
+          "Value": 0.48
+        },
+        "opacity.factor": {
+          "$type": "float",
+          "Value": 0.95
+        },
+        "parallax.factor": {
+          "$type": "float",
+          "Value": 0.018
+        },
+        "effect.flow": {
+          "$type": "float",
+          "Value": 0.998
+        },
+        "effect.frequency": {
+          "$type": "float",
+          "Value": 1.4006
+        },
+        "effect.seed": {
+          "$type": "float",
+          "Value": 1.6366
+        },
+        "effect.erosion": {
+          "$type": "float",
+          "Value": 0.3318
+        },
+        "effect.edge": {
+          "$type": "float",
+          "Value": 1.4
+        },
+        "parallax.textureMap": {
+          "$type": "{403A7CFE-B218-5D57-8540-BD58E734BCFE} Asset<StreamingImageAsset>",
+          "Value": {
+            "assetId": {
+              "guid": "{F4B5C808-0B7D-5782-BAAB-54FD6729EEF1}",
+              "subId": 1000
+            },
+            "assetHint": "textures/noiselayers_cloudvoronoi.tif.streamingimage"
+          }
+        }
+      },
+      "OpenParticle::MeshConfig": {
+        "facing": "CUSTOM",
+        "sortId": 0
+      }
+    },
+    {
+      "name": "Arc spine 3",
+      "config": {
+        "type": "CPU",
+        "maxSize": 4,
+        "startTime": 0,
+        "localSpace": true,
+        "duration": 0.3,
+        "loop": false
+      },
+      "material": {
+        "assetId": {
+          "guid": "{921D0531-34FF-5F89-91EA-A346BDC523AB}",
+          "subId": 0
+        },
+        "assetHint": "materials/vfxpack/mesh_plasma.azmaterial"
+      },
+      "model": {
+        "assetId": {
+          "guid": "{5A5D892F-2207-5CF2-9F47-ACE201E98EB7}",
+          "subId": 283105313
+        },
+        "assetHint": "models/vfxpack/arc_filament.fbx.azmodel"
+      },
+      "OpenParticle::EmitBurstList": {
+        "isProcessBurstList": true,
+        "burstList": [
+          {
+            "time": 0,
+            "count": 1,
+            "minCount": -1
+          }
+        ]
+      },
+      "OpenParticle::SpawnLifetime": {
+        "lifeTimeObject": {
+          "dataValue": 0.17200000000000001,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnLocPoint": {
+        "positionObject": {
+          "dataValue": [
+            -0.019225153716995857,
+            -0.02136904679823094,
+            1.4
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnSize": {
+        "sizeObject": {
+          "dataValue": [
+            0.06798,
+            0.06798,
+            0.97143
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnColor": {
+        "startColorObject": {
+          "dataValue": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::UpdateColor": {
+        "currentColorObject": {
+          "dataValue": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            64,
+            65,
+            66,
+            67
+          ]
+        }
+      },
+      "OpenParticle::SizeScale": {
+        "scaleFactorObject": {
+          "dataValue": [
+            1,
+            1,
+            1
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            68,
+            69,
+            70
+          ]
+        }
+      },
+      "OpenParticle::SpawnRotation": {
+        "initAxis": [
+          -0.8689822922800663,
+          0.4948431829415068,
+          0.0
+        ],
+        "rotateAxis": [
+          0.37,
+          0.49,
+          0.78
+        ],
+        "initAngleObject": {
+          "dataValue": 5.2154926443127305,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        },
+        "rotateSpeedObject": {
+          "dataValue": 0,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      },
+      "materialOverrides": {
+        "baseColor.color": {
+          "$type": "Color",
+          "Value": [
+            0.0395,
+            0.48,
+            0.3663,
+            1.0
+          ]
+        },
+        "emissive.color": {
+          "$type": "Color",
+          "Value": [
+            0.0211,
+            1.0,
+            0.7474,
+            1.0
+          ]
+        },
+        "emissive.intensity": {
+          "$type": "float",
+          "Value": 5.8027
+        },
+        "roughness.factor": {
+          "$type": "float",
+          "Value": 0.2932
+        },
+        "specularF0.factor": {
+          "$type": "float",
+          "Value": 0.48
+        },
+        "opacity.factor": {
+          "$type": "float",
+          "Value": 0.95
+        },
+        "parallax.factor": {
+          "$type": "float",
+          "Value": 0.018
+        },
+        "effect.flow": {
+          "$type": "float",
+          "Value": 1.1062
+        },
+        "effect.frequency": {
+          "$type": "float",
+          "Value": 1.4863
+        },
+        "effect.seed": {
+          "$type": "float",
+          "Value": 2.527
+        },
+        "effect.erosion": {
+          "$type": "float",
+          "Value": 0.3519
+        },
+        "effect.edge": {
+          "$type": "float",
+          "Value": 1.4
+        },
+        "parallax.textureMap": {
+          "$type": "{403A7CFE-B218-5D57-8540-BD58E734BCFE} Asset<StreamingImageAsset>",
+          "Value": {
+            "assetId": {
+              "guid": "{F4B5C808-0B7D-5782-BAAB-54FD6729EEF1}",
+              "subId": 1000
+            },
+            "assetHint": "textures/noiselayers_cloudvoronoi.tif.streamingimage"
+          }
+        }
+      },
+      "OpenParticle::MeshConfig": {
+        "facing": "CUSTOM",
+        "sortId": 0
+      }
+    },
+    {
+      "name": "Arc spine 4",
+      "config": {
+        "type": "CPU",
+        "maxSize": 4,
+        "startTime": 0,
+        "localSpace": true,
+        "duration": 0.3,
+        "loop": false
+      },
+      "material": {
+        "assetId": {
+          "guid": "{921D0531-34FF-5F89-91EA-A346BDC523AB}",
+          "subId": 0
+        },
+        "assetHint": "materials/vfxpack/mesh_plasma.azmaterial"
+      },
+      "model": {
+        "assetId": {
+          "guid": "{5A5D892F-2207-5CF2-9F47-ACE201E98EB7}",
+          "subId": 283105313
+        },
+        "assetHint": "models/vfxpack/arc_filament.fbx.azmodel"
+      },
+      "OpenParticle::EmitBurstList": {
+        "isProcessBurstList": true,
+        "burstList": [
+          {
+            "time": 0,
+            "count": 1,
+            "minCount": -1
+          }
+        ]
+      },
+      "OpenParticle::SpawnLifetime": {
+        "lifeTimeObject": {
+          "dataValue": 0.17200000000000001,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnLocPoint": {
+        "positionObject": {
+          "dataValue": [
+            0.018782865488361992,
+            0.02178532021431578,
+            1.9599999999999997
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnSize": {
+        "sizeObject": {
+          "dataValue": [
+            0.06798,
+            0.06798,
+            0.97407
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnColor": {
+        "startColorObject": {
+          "dataValue": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::UpdateColor": {
+        "currentColorObject": {
+          "dataValue": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            71,
+            72,
+            73,
+            74
+          ]
+        }
+      },
+      "OpenParticle::SizeScale": {
+        "scaleFactorObject": {
+          "dataValue": [
+            1,
+            1,
+            1
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            75,
+            76,
+            77
+          ]
+        }
+      },
+      "OpenParticle::SpawnRotation": {
+        "initAxis": [
+          -0.6367824573137736,
+          0.7710435150219682,
+          0.0
+        ],
+        "rotateAxis": [
+          0.37,
+          0.49,
+          0.78
+        ],
+        "initAngleObject": {
+          "dataValue": 6.6997769056293235,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        },
+        "rotateSpeedObject": {
+          "dataValue": 0,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      },
+      "materialOverrides": {
+        "baseColor.color": {
+          "$type": "Color",
+          "Value": [
+            0.0395,
+            0.48,
+            0.3663,
+            1.0
+          ]
+        },
+        "emissive.color": {
+          "$type": "Color",
+          "Value": [
+            0.0211,
+            1.0,
+            0.7474,
+            1.0
+          ]
+        },
+        "emissive.intensity": {
+          "$type": "float",
+          "Value": 5.904
+        },
+        "roughness.factor": {
+          "$type": "float",
+          "Value": 0.3185
+        },
+        "specularF0.factor": {
+          "$type": "float",
+          "Value": 0.48
+        },
+        "opacity.factor": {
+          "$type": "float",
+          "Value": 0.95
+        },
+        "parallax.factor": {
+          "$type": "float",
+          "Value": 0.018
+        },
+        "effect.flow": {
+          "$type": "float",
+          "Value": 1.2293
+        },
+        "effect.frequency": {
+          "$type": "float",
+          "Value": 1.5837
+        },
+        "effect.seed": {
+          "$type": "float",
+          "Value": 3.5397
+        },
+        "effect.erosion": {
+          "$type": "float",
+          "Value": 0.3746
+        },
+        "effect.edge": {
+          "$type": "float",
+          "Value": 1.4
+        },
+        "parallax.textureMap": {
+          "$type": "{403A7CFE-B218-5D57-8540-BD58E734BCFE} Asset<StreamingImageAsset>",
+          "Value": {
+            "assetId": {
+              "guid": "{F4B5C808-0B7D-5782-BAAB-54FD6729EEF1}",
+              "subId": 1000
+            },
+            "assetHint": "textures/noiselayers_cloudvoronoi.tif.streamingimage"
+          }
+        }
+      },
+      "OpenParticle::MeshConfig": {
+        "facing": "CUSTOM",
+        "sortId": 0
+      }
+    },
+    {
+      "name": "Arc spine 5",
+      "config": {
+        "type": "CPU",
+        "maxSize": 4,
+        "startTime": 0,
+        "localSpace": true,
+        "duration": 0.3,
+        "loop": false
+      },
+      "material": {
+        "assetId": {
+          "guid": "{921D0531-34FF-5F89-91EA-A346BDC523AB}",
+          "subId": 0
+        },
+        "assetHint": "materials/vfxpack/mesh_plasma.azmaterial"
+      },
+      "model": {
+        "assetId": {
+          "guid": "{5A5D892F-2207-5CF2-9F47-ACE201E98EB7}",
+          "subId": 283105313
+        },
+        "assetHint": "models/vfxpack/arc_filament.fbx.azmodel"
+      },
+      "OpenParticle::EmitBurstList": {
+        "isProcessBurstList": true,
+        "burstList": [
+          {
+            "time": 0,
+            "count": 1,
+            "minCount": -1
+          }
+        ]
+      },
+      "OpenParticle::SpawnLifetime": {
+        "lifeTimeObject": {
+          "dataValue": 0.17200000000000001,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnLocPoint": {
+        "positionObject": {
+          "dataValue": [
+            -0.011364861365596265,
+            -0.0006274212970847383,
+            2.5199999999999996
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnSize": {
+        "sizeObject": {
+          "dataValue": [
+            0.06798,
+            0.06798,
+            0.99755
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::SpawnColor": {
+        "startColorObject": {
+          "dataValue": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "OpenParticle::UpdateColor": {
+        "currentColorObject": {
+          "dataValue": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            78,
+            79,
+            80,
+            81
+          ]
+        }
+      },
+      "OpenParticle::SizeScale": {
+        "scaleFactorObject": {
+          "dataValue": [
+            1,
+            1,
+            1
+          ],
+          "isUniform": false,
+          "distType": "Curve",
+          "distIndex": [
+            82,
+            83,
+            84
+          ]
+        }
+      },
+      "OpenParticle::SpawnRotation": {
+        "initAxis": [
+          0.6155686303729602,
+          -0.7880832832263085,
+          0.0
+        ],
+        "rotateAxis": [
+          0.37,
+          0.49,
+          0.78
+        ],
+        "initAngleObject": {
+          "dataValue": 14.119924232544609,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        },
+        "rotateSpeedObject": {
+          "dataValue": 0,
+          "isUniform": false,
+          "distType": "Constant",
+          "distIndex": [
+            0
+          ]
+        }
+      },
+      "materialOverrides": {
+        "baseColor.color": {
+          "$type": "Color",
+          "Value": [
+            0.0395,
+            0.48,
+            0.3663,
+            1.0
+          ]
+        },
+        "emissive.color": {
+          "$type": "Color",
+          "Value": [
+            0.0211,
+            1.0,
+            0.7474,
+            1.0
+          ]
+        },
+        "emissive.intensity": {
+          "$type": "float",
+          "Value": 5.6819
+        },
+        "roughness.factor": {
+          "$type": "float",
+          "Value": 0.263
+        },
+        "specularF0.factor": {
+          "$type": "float",
+          "Value": 0.48
+        },
+        "opacity.factor": {
+          "$type": "float",
+          "Value": 0.95
+        },
+        "parallax.factor": {
+          "$type": "float",
+          "Value": 0.018
+        },
+        "effect.flow": {
+          "$type": "float",
+          "Value": 0.9594
+        },
+        "effect.frequency": {
+          "$type": "float",
+          "Value": 1.3701
+        },
+        "effect.seed": {
+          "$type": "float",
+          "Value": 1.3187
+        },
+        "effect.erosion": {
+          "$type": "float",
+          "Value": 0.3247
+        },
+        "effect.edge": {
+          "$type": "float",
+          "Value": 1.4
+        },
+        "parallax.textureMap": {
+          "$type": "{403A7CFE-B218-5D57-8540-BD58E734BCFE} Asset<StreamingImageAsset>",
+          "Value": {
+            "assetId": {
+              "guid": "{F4B5C808-0B7D-5782-BAAB-54FD6729EEF1}",
+              "subId": 1000
+            },
+            "assetHint": "textures/noiselayers_cloudvoronoi.tif.streamingimage"
+          }
+        }
+      },
+      "OpenParticle::MeshConfig": {
+        "facing": "CUSTOM",
+        "sortId": 0
+      }
+    }
+  ],
+  "LODs": [],
+  "distribution": {
+    "randoms": [],
+    "curves": [
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.0211,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.0211,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1.0,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 1.0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.7474,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.7474,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.15,
+            "value": 0.95,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.57,
+            "value": 0.53,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 0.86,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 0.86,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 0.86,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.0211,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.0211,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1.0,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 1.0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.7474,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.7474,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.15,
+            "value": 0.95,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.57,
+            "value": 0.53,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 0.86,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 0.86,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 0.86,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.0211,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.0211,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1.0,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 1.0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.7474,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.7474,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.15,
+            "value": 0.95,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.57,
+            "value": 0.53,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 0.86,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 0.86,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 0.86,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.0211,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.0211,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1.0,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 1.0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.7474,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.7474,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.15,
+            "value": 0.95,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.57,
+            "value": 0.53,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 0.86,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 0.86,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 0.86,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.0211,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.0211,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1.0,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 1.0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.7474,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.7474,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.15,
+            "value": 0.95,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.57,
+            "value": 0.53,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 0.86,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 0.86,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 0.86,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1.0,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 1.0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.94,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.94,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.86,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.86,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.1,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.3,
+            "value": 0.42,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.6,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.1,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.6,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.1,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.6,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.1,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.02,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.02,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.95,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.95,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.71,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.71,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.46,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.15,
+            "value": 0.437,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.57,
+            "value": 0.2438,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.6,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.1,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.6,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.1,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.6,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.1,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 1,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 1,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 1,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.1,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.3,
+            "value": 0.42,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.95,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.04,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.95,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.04,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.95,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.04,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 1,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 1,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 1,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.1,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.3,
+            "value": 0.42,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.95,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.04,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.95,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.04,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.95,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.04,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 1,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 1,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 1,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.1,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.3,
+            "value": 0.42,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.95,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.04,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.95,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.04,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.95,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.04,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 1,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 1,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 1,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.1,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.3,
+            "value": 0.42,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.95,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.04,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.95,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.04,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.95,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.04,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 1,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 1,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 1,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.1,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.3,
+            "value": 0.42,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.95,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.04,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.95,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.04,
+            "interpMode": "Linear"
+          }
+        ]
+      },
+      {
+        "leftExtrapMode": "Constant",
+        "rightExtrapMode": "Constant",
+        "valueFactor": 1,
+        "timeFactor": 0,
+        "tickMode": "ParticleLifetime",
+        "keyPoint": [
+          {
+            "time": 0,
+            "value": 0.95,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 0.38,
+            "value": 1,
+            "interpMode": "Linear"
+          },
+          {
+            "time": 1,
+            "value": 0.04,
+            "interpMode": "Linear"
+          }
+        ]
+      }
+    ]
+  }
+}

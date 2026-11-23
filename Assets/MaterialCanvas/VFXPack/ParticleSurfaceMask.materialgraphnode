@@ -1,0 +1,49 @@
+{
+    "Type": "JsonSerialization",
+    "Version": 1,
+    "ClassName": "DynamicNodeConfig",
+    "ClassData": {
+        "id": "{648DEA00-49B9-47C4-A36D-734221FE146C}",
+        "category": "VFXPack",
+        "title": "Erosion and Fresnel",
+        "titlePaletteName": "MaterialInputNodeTitlePalette",
+        "description": "Lifetime-driven density threshold and view-dependent edge weight for lit particle meshes.",
+        "inputSlots": [
+            {
+                "name": "inDensity",
+                "displayName": "Surface field",
+                "supportedDataTypeRegex": "float",
+                "defaultDataType": "float",
+                "settings": {
+                    "instructions": [
+                        "SLOTTYPE SLOTNAME = SLOTVALUE;"
+                    ]
+                }
+            }
+        ],
+        "outputSlots": [
+            {
+                "name": "outCoverage",
+                "displayName": "Coverage",
+                "supportedDataTypeRegex": "float",
+                "defaultDataType": "float",
+                "settings": {
+                    "instructions": [
+                        "SLOTTYPE SLOTNAME = smoothstep(-0.09, 0.09, inDensity - params.m_effectErosion - 0.42 * smoothstep(0.42, 1.0, IN.color0.b));"
+                    ]
+                }
+            },
+            {
+                "name": "outRim",
+                "displayName": "Rim",
+                "supportedDataTypeRegex": "float",
+                "defaultDataType": "float",
+                "settings": {
+                    "instructions": [
+                        "SLOTTYPE SLOTNAME = pow(saturate(1.0 - abs(dot(normalize(ViewSrg::m_worldPosition.xyz - geoData.positionWS), surface.normal))), params.m_effectEdge);"
+                    ]
+                }
+            }
+        ]
+    }
+}

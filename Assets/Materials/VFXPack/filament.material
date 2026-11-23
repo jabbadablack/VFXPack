@@ -1,0 +1,8 @@
+{
+    "materialType": "@gemroot:OpenParticleSystem@/Assets/Materials/OpenParticle/Types/ParticleRibbon.materialtype",
+    "materialTypeVersion": 3,
+    "propertyValues": {
+        "general.DiffuseMap": "@gemroot:Atom_Feature_Common@/Assets/Textures/Default/default_basecolor.tif",
+        "blend.mode": "Blended"
+    }
+}

@@ -1,0 +1,15 @@
+/*
+ * Copyright (c) Contributors to the Open 3D Engine Project.
+ * For complete copyright and license terms please see the LICENSE at the root of this distribution.
+ *
+ * SPDX-License-Identifier: Apache-2.0 OR MIT
+ *
+ */
+
+#pragma once
+// Keep identical displaced geometry in forward, depth, shadow and motion passes.
+// OpenParticle binds one material instance per emitter.
+#define USE_SINGLE_MATERIAL_SRG 1
+#define MATERIAL_USES_VERTEX_UV 1
+#define MATERIAL_USES_VERTEX_NORMAL 1
+#include <OpenParticleSystem/Assets/Materials/OpenParticle/Types/ParticleMeshShaderSrgs.azsli>

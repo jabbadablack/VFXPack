@@ -1,0 +1,18 @@
+{
+    "Amazon": {
+        "AssetProcessor": {
+            "Settings": {
+                "ScanFolder VFXPack/Assets": {
+                    "watch": "@GEMROOT:VFXPack@/Assets",
+                    "recursive": 1,
+                    "order": 101
+                },
+                "ScanFolder VFXPack/Registry": {
+                    "watch": "@GEMROOT:VFXPack@/Registry",
+                    "recursive": 1,
+                    "order": 102
+                }
+            }
+        }
+    }
+}

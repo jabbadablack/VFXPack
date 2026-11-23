@@ -1,0 +1,39 @@
+{
+    "materialType": "Graph/vfx_particlemesh.materialtype",
+    "materialTypeVersion": 5,
+    "propertyValues": {
+        "baseColor.textureMap": "@gemroot:Atom_Feature_Common@/Assets/Textures/CloudNoise_01.jpg",
+        "baseColor.factor": 1.0,
+        "normal.textureMap": "@gemroot:CommonFeaturesAtom@/Assets/Objects/Hermanubis/Hermanubis_Normal.png",
+        "normal.factor": 0.24,
+        "parallax.textureMap": "@gemroot:Atom_Feature_Common@/Assets/Textures/NoiseLayers_CloudVoronoi.tif",
+        "parallax.factor": 0.14,
+        "roughness.textureMap": "@gemroot:CommonFeaturesAtom@/Assets/Objects/Hermanubis/Hermanubis_bronze_Roughness.png",
+        "roughness.lowerBound": 0.18,
+        "roughness.upperBound": 0.84,
+        "occlusion.diffuseTextureMap": "@gemroot:Atom_Feature_Common@/Assets/Textures/NoiseLayers_CloudVoronoi.tif",
+        "occlusion.diffuseFactor": 0.24,
+        "emissive.enable": true,
+        "emissive.textureMap": "@gemroot:Atom_Feature_Common@/Assets/Textures/CloudNoise_01.jpg",
+        "emissive.useTexture": true,
+        "emissive.intensity": 1.5,
+        "opacity.mode": "Blended",
+        "opacity.alphaSource": "Split",
+        "opacity.textureMap": "@gemroot:Atom_Feature_Common@/Assets/Textures/NoiseLayers_CloudVoronoi.tif",
+        "opacity.factor": 0.8,
+        "general.enableShadows": false,
+        "general.doubleSided": false,
+        "baseColor.color": [
+            1,
+            0.1,
+            0.22,
+            1
+        ],
+        "emissive.color": [
+            1,
+            0.1,
+            0.22,
+            1
+        ]
+    }
+}

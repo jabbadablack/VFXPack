@@ -1,0 +1,38 @@
+{
+    "Type": "JsonSerialization",
+    "Version": 1,
+    "ClassName": "DynamicNodeConfig",
+    "ClassData": {
+        "id": "{C7FDC64D-26B8-576C-A3FE-B8537E4A1E85}",
+        "category": "VFXPack",
+        "title": "Particle height field",
+        "titlePaletteName": "MaterialInputNodeTitlePalette",
+        "description": "Samples the emitter height texture using its material UV controls. Explicit mip selection makes the field available in the vertex stage.",
+        "inputSlots": [
+            {
+                "name": "inUV",
+                "displayName": "UV",
+                "supportedDataTypeRegex": "float2",
+                "defaultDataType": "float2",
+                "settings": {
+                    "instructions": [
+                        "SLOTTYPE SLOTNAME = SLOTVALUE;"
+                    ]
+                }
+            }
+        ],
+        "outputSlots": [
+            {
+                "name": "outHeight",
+                "displayName": "Height",
+                "supportedDataTypeRegex": "float",
+                "defaultDataType": "float",
+                "settings": {
+                    "instructions": [
+                        "SLOTTYPE SLOTNAME = SampleParticleHeight(params, inUV);"
+                    ]
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "materialType": "Graph/vfx_particlemesh.materialtype",
+    "materialTypeVersion": 5,
+    "propertyValues": {
+        "effect.style": 2.0,
+        "effect.flow": 0.41,
+        "effect.frequency": 1.12,
+        "effect.erosion": 0.36,
+        "effect.edge": 1.05,
+        "baseColor.color": [
+            0.85,
+            0.85,
+            0.85,
+            1.0
+        ],
+        "normal.useTexture": false,
+        "roughness.factor": 0.93,
+        "roughness.useTexture": false,
+        "specularF0.factor": 0.09,
+        "emissive.color": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+        ],
+        "emissive.enable": true,
+        "emissive.intensity": -1.8,
+        "emissive.useTexture": false,
+        "emissive.affectedByAlpha": true,
+        "opacity.alphaSource": "None",
+        "opacity.mode": "Blended",
+        "opacity.factor": 1.0,
+        "general.castShadows": false,
+        "general.enableShadows": false,
+        "general.doubleSided": false,
+        "parallax.textureMap": "@gemroot:Atom_Feature_Common@/Assets/Textures/NoiseLayers_CloudVoronoi.tif",
+        "parallax.factor": 0.1,
+        "parallax.useTexture": true
+    }
+}

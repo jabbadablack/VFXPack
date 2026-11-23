@@ -1,0 +1,2006 @@
+{
+    "ContainerEntity": {
+        "Id": "Entity_[1146574390643]",
+        "Name": "Level",
+        "Components": {
+            "Component_[10641544592923449938]": {
+                "$type": "EditorInspectorComponent",
+                "Id": 10641544592923449938
+            },
+            "Component_[12039882709170782873]": {
+                "$type": "EditorOnlyEntityComponent",
+                "Id": 12039882709170782873
+            },
+            "Component_[12265484671603697631]": {
+                "$type": "EditorPendingCompositionComponent",
+                "Id": 12265484671603697631
+            },
+            "Component_[14126657869720434043]": {
+                "$type": "EditorEntitySortComponent",
+                "Id": 14126657869720434043,
+                "Child Entity Order": [
+                    "Entity_[1176639161715]",
+                    "Entity_[309368878806645555]"
+                ]
+            },
+            "Component_[15230859088967841193]": {
+                "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                "Id": 15230859088967841193,
+                "Parent Entity": ""
+            },
+            "Component_[16239496886950819870]": {
+                "$type": "EditorDisabledCompositionComponent",
+                "Id": 16239496886950819870
+            },
+            "Component_[5688118765544765547]": {
+                "$type": "EditorEntityIconComponent",
+                "Id": 5688118765544765547
+            },
+            "Component_[7247035804068349658]": {
+                "$type": "EditorPrefabComponent",
+                "Id": 7247035804068349658
+            },
+            "Component_[9307224322037797205]": {
+                "$type": "EditorLockComponent",
+                "Id": 9307224322037797205
+            },
+            "Component_[9562516168917670048]": {
+                "$type": "EditorVisibilityComponent",
+                "Id": 9562516168917670048
+            },
+            "LocalViewBookmarkComponent": {
+                "$type": "LocalViewBookmarkComponent",
+                "Id": 4926203181226344367,
+                "LocalBookmarkFileName": "vfxpack_ice.setreg"
+            }
+        }
+    },
+    "Entities": {
+        "Entity_[1155164325235]": {
+            "Id": "Entity_[1155164325235]",
+            "Name": "Sun",
+            "Components": {
+                "Component_[13620450453324765907]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 13620450453324765907
+                },
+                "Component_[2134313378593666258]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 2134313378593666258
+                },
+                "Component_[234010807770404186]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 234010807770404186
+                },
+                "Component_[2970359110423865725]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 2970359110423865725
+                },
+                "Component_[3722854130373041803]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 3722854130373041803
+                },
+                "Component_[5992533738676323195]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 5992533738676323195
+                },
+                "Component_[7378860763541895402]": {
+                    "$type": "AZ::Render::EditorDirectionalLightComponent",
+                    "Id": 7378860763541895402,
+                    "Controller": {
+                        "Configuration": {
+                            "Intensity": 1.0,
+                            "CameraEntityId": "",
+                            "ShadowFilterMethod": 1
+                        }
+                    }
+                },
+                "Component_[7892834440890947578]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7892834440890947578,
+                    "Parent Entity": "Entity_[1176639161715]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.0,
+                            0.0,
+                            13.487043380737305
+                        ],
+                        "Rotate": [
+                            -76.13099670410156,
+                            -0.847000002861023,
+                            -15.8100004196167
+                        ]
+                    }
+                },
+                "Component_[8599729549570828259]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 8599729549570828259
+                },
+                "Component_[952797371922080273]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 952797371922080273
+                }
+            }
+        },
+        "Entity_[1159459292531]": {
+            "Id": "Entity_[1159459292531]",
+            "Name": "Ground",
+            "Components": {
+                "Component_[12260880513256986252]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 12260880513256986252
+                },
+                "Component_[13711420870643673468]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 13711420870643673468
+                },
+                "Component_[138002849734991713]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 138002849734991713
+                },
+                "Component_[16578565737331764849]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 16578565737331764849,
+                    "Parent Entity": "Entity_[1176639161715]"
+                },
+                "Component_[16919232076966545697]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 16919232076966545697
+                },
+                "Component_[4228479570410194639]": {
+                    "$type": "EditorStaticRigidBodyComponent",
+                    "Id": 4228479570410194639
+                },
+                "Component_[5182430712893438093]": {
+                    "$type": "EditorMaterialComponent",
+                    "Id": 5182430712893438093,
+                    "Controller": {
+                        "Configuration": {
+                            "materials": [
+                                {
+                                    "Key": {},
+                                    "Value": {
+                                        "MaterialAsset": {
+                                            "assetId": {
+                                                "guid": "{6C86F10E-BCAA-50F9-813F-B8E7B899206D}",
+                                                "subId": 0
+                                            },
+                                            "assetHint": "materials/vfxpack/showcase_charcoal.azmaterial"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "Component_[5245524694917323904]": {
+                    "$type": "EditorColliderComponent",
+                    "Id": 5245524694917323904,
+                    "ColliderConfiguration": {
+                        "Position": [
+                            0.0,
+                            0.0,
+                            -0.5
+                        ],
+                        "MaterialSlots": {
+                            "Slots": [
+                                {
+                                    "Name": "Entire object"
+                                }
+                            ]
+                        }
+                    },
+                    "ShapeConfiguration": {
+                        "ShapeType": 1,
+                        "Box": {
+                            "Configuration": [
+                                512.0,
+                                512.0,
+                                1.0
+                            ]
+                        }
+                    },
+                    "DebugDrawSettings": {
+                        "LocallyEnabled": false
+                    }
+                },
+                "Component_[5675108321710651991]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 5675108321710651991,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{81CF732F-5CEE-5073-8ECB-AC51655FCEBC}",
+                                    "subId": 277889906
+                                },
+                                "assetHint": "objects/groundplane/groundplane_512x512m.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[5681893399601237518]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 5681893399601237518
+                },
+                "Component_[592692962543397545]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 592692962543397545
+                },
+                "Component_[7090012899106946164]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 7090012899106946164
+                },
+                "Component_[9410832619875640998]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 9410832619875640998
+                }
+            }
+        },
+        "Entity_[1163754259827]": {
+            "Id": "Entity_[1163754259827]",
+            "Name": "Camera",
+            "Components": {
+                "Component_[11895140916889160460]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 11895140916889160460
+                },
+                "Component_[16880285896855930892]": {
+                    "$type": "{CA11DA46-29FF-4083-B5F6-E02C3A8C3A3D} EditorCameraComponent",
+                    "Id": 16880285896855930892,
+                    "Controller": {
+                        "Configuration": {
+                            "Field of View": 47.0,
+                            "MakeActiveViewOnActivation": true
+                        }
+                    }
+                },
+                "Component_[17187464423780271193]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 17187464423780271193
+                },
+                "Component_[17495696818315413311]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 17495696818315413311
+                },
+                "Component_[18086214374043522055]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 18086214374043522055,
+                    "Parent Entity": "Entity_[1176639161715]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.0,
+                            -13.895,
+                            10.356
+                        ],
+                        "Rotate": [
+                            -35.0,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[2654521436129313160]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 2654521436129313160
+                },
+                "Component_[5265045084611556958]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 5265045084611556958
+                },
+                "Component_[7169798125182238623]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 7169798125182238623
+                },
+                "Component_[7255796294953281766]": {
+                    "$type": "GenericComponentWrapper",
+                    "Id": 7255796294953281766,
+                    "m_template": {
+                        "$type": "FlyCameraInputComponent"
+                    }
+                },
+                "Component_[8866210352157164042]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 8866210352157164042
+                },
+                "Component_[9129253381063760879]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 9129253381063760879
+                }
+            }
+        },
+        "Entity_[1176639161715]": {
+            "Id": "Entity_[1176639161715]",
+            "Name": "Atom Default Environment",
+            "Components": {
+                "Component_[10757302973393310045]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 10757302973393310045,
+                    "Parent Entity": "Entity_[1146574390643]"
+                },
+                "Component_[14505817420424255464]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 14505817420424255464,
+                    "ComponentOrderEntryArray": [
+                        {
+                            "ComponentId": 10757302973393310045
+                        }
+                    ]
+                },
+                "Component_[14988041764659020032]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 14988041764659020032
+                },
+                "Component_[15900837685796817138]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 15900837685796817138
+                },
+                "Component_[3298767348226484884]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 3298767348226484884
+                },
+                "Component_[4076975109609220594]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 4076975109609220594
+                },
+                "Component_[5679760548946028854]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 5679760548946028854
+                },
+                "Component_[5855590796136709437]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 5855590796136709437,
+                    "Child Entity Order": [
+                        "Entity_[1155164325235]",
+                        "Entity_[1180934129011]",
+                        "Entity_[1163754259827]",
+                        "Entity_[1159459292531]"
+                    ]
+                },
+                "Component_[9277695270015777859]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9277695270015777859
+                }
+            }
+        },
+        "Entity_[1180934129011]": {
+            "Id": "Entity_[1180934129011]",
+            "Name": "Global Sky",
+            "Components": {
+                "Component_[11231930600558681245]": {
+                    "$type": "AZ::Render::EditorHDRiSkyboxComponent",
+                    "Id": 11231930600558681245,
+                    "Controller": {
+                        "Configuration": {
+                            "CubemapAsset": {
+                                "assetId": {
+                                    "guid": "{215E47FD-D181-5832-B1AB-91673ABF6399}",
+                                    "subId": 1000
+                                },
+                                "assetHint": "lightingpresets/highcontrast/goegap_4k_skyboxcm.exr.streamingimage"
+                            },
+                            "Exposure": -8.0
+                        }
+                    }
+                },
+                "Component_[1428633914413949476]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 1428633914413949476
+                },
+                "Component_[14936200426671614999]": {
+                    "$type": "AZ::Render::EditorImageBasedLightComponent",
+                    "Id": 14936200426671614999,
+                    "Controller": {
+                        "Configuration": {
+                            "diffuseImageAsset": {
+                                "assetId": {
+                                    "guid": "{3FD09945-D0F2-55C8-B9AF-B2FD421FE3BE}",
+                                    "subId": 3000
+                                },
+                                "assetHint": "lightingpresets/highcontrast/goegap_4k_iblglobalcm_ibldiffuse.exr.streamingimage"
+                            },
+                            "specularImageAsset": {
+                                "assetId": {
+                                    "guid": "{3FD09945-D0F2-55C8-B9AF-B2FD421FE3BE}",
+                                    "subId": 2000
+                                },
+                                "assetHint": "lightingpresets/highcontrast/goegap_4k_iblglobalcm_iblspecular.exr.streamingimage"
+                            }
+                        }
+                    }
+                },
+                "Component_[14994774102579326069]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 14994774102579326069
+                },
+                "Component_[15417479889044493340]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 15417479889044493340
+                },
+                "Component_[15826613364991382688]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 15826613364991382688
+                },
+                "Component_[1665003113283562343]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 1665003113283562343
+                },
+                "Component_[3704934735944502280]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 3704934735944502280
+                },
+                "Component_[5698542331457326479]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 5698542331457326479
+                },
+                "Component_[6644513399057217122]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 6644513399057217122,
+                    "Parent Entity": "Entity_[1176639161715]"
+                },
+                "Component_[931091830724002070]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 931091830724002070
+                }
+            }
+        },
+        "Entity_[309368878806645555]": {
+            "Id": "Entity_[309368878806645555]",
+            "Name": "Ice Showcase",
+            "Components": {
+                "Component_[8519721604823471635]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 8519721604823471635
+                },
+                "Component_[9955553448302433287]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9955553448302433287
+                },
+                "Component_[2748546739928715633]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 2748546739928715633
+                },
+                "Component_[10355816089758489055]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 10355816089758489055
+                },
+                "Component_[6769224169688111361]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 6769224169688111361
+                },
+                "Component_[2635758797700432413]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 2635758797700432413
+                },
+                "Component_[10323321028597524727]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 10323321028597524727,
+                    "Parent Entity": "Entity_[1146574390643]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[12804656313344738057]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 12804656313344738057,
+                    "Child Entity Order": [
+                        "Entity_[10614558889090132716]"
+                    ]
+                },
+                "Component_[738645135028410869]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 738645135028410869
+                }
+            }
+        },
+        "Entity_[10614558889090132716]": {
+            "Id": "Entity_[10614558889090132716]",
+            "Name": "Ice",
+            "Components": {
+                "Component_[10974975940140168467]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 10974975940140168467
+                },
+                "Component_[16070814057184765864]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 16070814057184765864
+                },
+                "Component_[12626270438388334921]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 12626270438388334921
+                },
+                "Component_[1968991975042162197]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 1968991975042162197
+                },
+                "Component_[13253991067493792279]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 13253991067493792279
+                },
+                "Component_[14714055595769939814]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 14714055595769939814
+                },
+                "Component_[10711480430195300917]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 10711480430195300917,
+                    "Parent Entity": "Entity_[309368878806645555]",
+                    "Transform Data": {
+                        "Translate": [
+                            -9.6,
+                            6.75,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[16667129881913908689]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 16667129881913908689,
+                    "Child Entity Order": [
+                        "Entity_[18345976868441314561]",
+                        "Entity_[5684828807254731776]",
+                        "Entity_[7629447659975355530]",
+                        "Entity_[18026032629744105089]",
+                        "Entity_[5494290232307226193]",
+                        "Entity_[12188136466822046210]",
+                        "Entity_[8205820031560733248]",
+                        "Entity_[16578092716630886049]",
+                        "Entity_[1420004091519338162]",
+                        "Entity_[2294148858041606686]",
+                        "Entity_[11096135120911485900]",
+                        "Entity_[2654265529954190663]",
+                        "Entity_[3435627477130842106]",
+                        "Entity_[14364504600747691500]",
+                        "Entity_[2232293727553668228]",
+                        "Entity_[9091038945845025966]",
+                        "Entity_[244751609381107876]"
+                    ]
+                },
+                "Component_[7047779761861362956]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 7047779761861362956
+                }
+            }
+        },
+        "Entity_[18345976868441314561]": {
+            "Id": "Entity_[18345976868441314561]",
+            "Name": "Repeating Bursts",
+            "Components": {
+                "Component_[17299614375175645254]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 17299614375175645254
+                },
+                "Component_[4618731047143157913]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 4618731047143157913
+                },
+                "Component_[12773460555838035946]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 12773460555838035946
+                },
+                "Component_[3540287847107790980]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 3540287847107790980
+                },
+                "Component_[5658562645799020051]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 5658562645799020051
+                },
+                "Component_[1049750521827008137]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 1049750521827008137
+                },
+                "Component_[15545203868331913729]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 15545203868331913729,
+                    "Parent Entity": "Entity_[10614558889090132716]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[15286169650670118192]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 15286169650670118192,
+                    "Child Entity Order": [
+                        "Entity_[12654115982789955196]",
+                        "Entity_[15805072586206707165]",
+                        "Entity_[17369471212204999554]",
+                        "Entity_[5711948677494199590]"
+                    ]
+                },
+                "Component_[16451238725765348757]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 16451238725765348757
+                },
+                "Component_[6790860825739623199]": {
+                    "$type": "ScriptEditorComponent",
+                    "Id": 6790860825739623199,
+                    "ScriptComponent": {
+                        "Script": {
+                            "assetId": {
+                                "guid": "{688E3E45-6269-5D3A-9008-3245B8CE048E}",
+                                "subId": 1
+                            },
+                            "assetHint": "levels/particleshowcase/replaybursts.luac"
+                        }
+                    },
+                    "ScriptAsset": {
+                        "assetId": {
+                            "guid": "{688E3E45-6269-5D3A-9008-3245B8CE048E}",
+                            "subId": 1
+                        },
+                        "assetHint": "levels/particleshowcase/replaybursts.luac"
+                    }
+                }
+            }
+        },
+        "Entity_[5684828807254731776]": {
+            "Id": "Entity_[5684828807254731776]",
+            "Name": "Thin Ice Fog",
+            "Components": {
+                "Component_[4136089554062432618]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 4136089554062432618
+                },
+                "Component_[16246229467828421440]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 16246229467828421440
+                },
+                "Component_[8583939914631943072]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 8583939914631943072
+                },
+                "Component_[17812952804545619505]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 17812952804545619505
+                },
+                "Component_[5106163949890331232]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 5106163949890331232
+                },
+                "Component_[1958589721015667118]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 1958589721015667118
+                },
+                "Component_[16535728240562887827]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 16535728240562887827,
+                    "Parent Entity": "Entity_[10614558889090132716]",
+                    "Transform Data": {
+                        "Translate": [
+                            15.168,
+                            -2.835,
+                            0.13
+                        ]
+                    }
+                },
+                "Component_[5055009575408411778]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 5055009575408411778
+                },
+                "Component_[17303132147708811809]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 17303132147708811809
+                },
+                "Component_[12178509172095239422]": {
+                    "$type": "{D0B6B04D-12B0-40B2-80CF-4F9B264B5074} EditorParticleComponent",
+                    "Id": 12178509172095239422,
+                    "Controller": {
+                        "Configuration": {
+                            "Asset": {
+                                "assetId": {
+                                    "guid": "{A4235300-BC01-52CF-A1D3-2224711F6208}",
+                                    "subId": 0
+                                },
+                                "assetHint": "elements/ice/mist01_thin_ice_fog.azparticle"
+                            },
+                            "Enable": true,
+                            "AutoPlay": true,
+                            "FollowActiveCamera": false
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[7629447659975355530]": {
+            "Id": "Entity_[7629447659975355530]",
+            "Name": "Crosswind Fog",
+            "Components": {
+                "Component_[2098691902973874080]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 2098691902973874080
+                },
+                "Component_[5656488596949749334]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 5656488596949749334
+                },
+                "Component_[4800111169936753229]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 4800111169936753229
+                },
+                "Component_[8558805175558104737]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 8558805175558104737
+                },
+                "Component_[5726085327927287318]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 5726085327927287318
+                },
+                "Component_[17767528518569592311]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 17767528518569592311
+                },
+                "Component_[15580228798204557559]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 15580228798204557559,
+                    "Parent Entity": "Entity_[10614558889090132716]",
+                    "Transform Data": {
+                        "Translate": [
+                            15.168,
+                            -5.445,
+                            0.13
+                        ]
+                    }
+                },
+                "Component_[13202040470097627475]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 13202040470097627475
+                },
+                "Component_[1560215246649451620]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 1560215246649451620
+                },
+                "Component_[12293140285017829107]": {
+                    "$type": "{D0B6B04D-12B0-40B2-80CF-4F9B264B5074} EditorParticleComponent",
+                    "Id": 12293140285017829107,
+                    "Controller": {
+                        "Configuration": {
+                            "Asset": {
+                                "assetId": {
+                                    "guid": "{035CF016-D611-54C6-ACBC-D3B57188C729}",
+                                    "subId": 0
+                                },
+                                "assetHint": "elements/ice/mist02_crosswind_fog.azparticle"
+                            },
+                            "Enable": true,
+                            "AutoPlay": true,
+                            "FollowActiveCamera": false
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[18026032629744105089]": {
+            "Id": "Entity_[18026032629744105089]",
+            "Name": "Rolling Frost",
+            "Components": {
+                "Component_[3950667245033316065]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 3950667245033316065
+                },
+                "Component_[9560129031370485299]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9560129031370485299
+                },
+                "Component_[12206501573603173692]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 12206501573603173692
+                },
+                "Component_[14589751225707951804]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 14589751225707951804
+                },
+                "Component_[17015327308428257001]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 17015327308428257001
+                },
+                "Component_[13818712339190573599]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 13818712339190573599
+                },
+                "Component_[10990714889958709386]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 10990714889958709386,
+                    "Parent Entity": "Entity_[10614558889090132716]",
+                    "Transform Data": {
+                        "Translate": [
+                            15.168,
+                            -8.055,
+                            0.13
+                        ]
+                    }
+                },
+                "Component_[10789491688419844608]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 10789491688419844608
+                },
+                "Component_[15227965665748825013]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 15227965665748825013
+                },
+                "Component_[14330669442386911242]": {
+                    "$type": "{D0B6B04D-12B0-40B2-80CF-4F9B264B5074} EditorParticleComponent",
+                    "Id": 14330669442386911242,
+                    "Controller": {
+                        "Configuration": {
+                            "Asset": {
+                                "assetId": {
+                                    "guid": "{8EB9A9CC-5A10-5AFC-8CEB-58BC19E2944B}",
+                                    "subId": 0
+                                },
+                                "assetHint": "elements/ice/mist03_rolling_frost.azparticle"
+                            },
+                            "Enable": true,
+                            "AutoPlay": true,
+                            "FollowActiveCamera": false
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[5494290232307226193]": {
+            "Id": "Entity_[5494290232307226193]",
+            "Name": "Crystalline Mist",
+            "Components": {
+                "Component_[16679789179862941354]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 16679789179862941354
+                },
+                "Component_[14317184382193024473]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 14317184382193024473
+                },
+                "Component_[17492192865190825379]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 17492192865190825379
+                },
+                "Component_[14059539265733678904]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 14059539265733678904
+                },
+                "Component_[8073378287035948559]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 8073378287035948559
+                },
+                "Component_[5528087047835387761]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 5528087047835387761
+                },
+                "Component_[189071232144871649]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 189071232144871649,
+                    "Parent Entity": "Entity_[10614558889090132716]",
+                    "Transform Data": {
+                        "Translate": [
+                            15.168,
+                            -10.665,
+                            0.13
+                        ]
+                    }
+                },
+                "Component_[18214420640061082986]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 18214420640061082986
+                },
+                "Component_[2745118168191431642]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 2745118168191431642
+                },
+                "Component_[1145407860842894807]": {
+                    "$type": "{D0B6B04D-12B0-40B2-80CF-4F9B264B5074} EditorParticleComponent",
+                    "Id": 1145407860842894807,
+                    "Controller": {
+                        "Configuration": {
+                            "Asset": {
+                                "assetId": {
+                                    "guid": "{AF724DE5-C031-53C9-A2DF-94437C649E32}",
+                                    "subId": 0
+                                },
+                                "assetHint": "elements/ice/mist04_crystalline_mist.azparticle"
+                            },
+                            "Enable": true,
+                            "AutoPlay": true,
+                            "FollowActiveCamera": false
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[12188136466822046210]": {
+            "Id": "Entity_[12188136466822046210]",
+            "Name": "Suspended Rime",
+            "Components": {
+                "Component_[8067681669060276400]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 8067681669060276400
+                },
+                "Component_[16857261765843573754]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 16857261765843573754
+                },
+                "Component_[11252907185070855949]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 11252907185070855949
+                },
+                "Component_[6284451516049552975]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 6284451516049552975
+                },
+                "Component_[13823802151949513976]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 13823802151949513976
+                },
+                "Component_[5613098703468724630]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 5613098703468724630
+                },
+                "Component_[14533836312185992369]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 14533836312185992369,
+                    "Parent Entity": "Entity_[10614558889090132716]",
+                    "Transform Data": {
+                        "Translate": [
+                            4.032,
+                            -2.835,
+                            0.13
+                        ]
+                    }
+                },
+                "Component_[4174492593726714955]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 4174492593726714955
+                },
+                "Component_[5008405659176298745]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 5008405659176298745
+                },
+                "Component_[12586816540278500318]": {
+                    "$type": "{D0B6B04D-12B0-40B2-80CF-4F9B264B5074} EditorParticleComponent",
+                    "Id": 12586816540278500318,
+                    "Controller": {
+                        "Configuration": {
+                            "Asset": {
+                                "assetId": {
+                                    "guid": "{8AA1B908-C93A-505D-8754-CE1D30534010}",
+                                    "subId": 0
+                                },
+                                "assetHint": "elements/ice/r01c01_suspended_rime.azparticle"
+                            },
+                            "Enable": true,
+                            "AutoPlay": true,
+                            "FollowActiveCamera": false
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[8205820031560733248]": {
+            "Id": "Entity_[8205820031560733248]",
+            "Name": "Icicle Curtain",
+            "Components": {
+                "Component_[1120506184481444542]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 1120506184481444542
+                },
+                "Component_[9395194529697472233]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9395194529697472233
+                },
+                "Component_[14407729907299524295]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 14407729907299524295
+                },
+                "Component_[11729777442026338738]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 11729777442026338738
+                },
+                "Component_[14393218823890241682]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 14393218823890241682
+                },
+                "Component_[5674812732779342710]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 5674812732779342710
+                },
+                "Component_[4097272268016499031]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 4097272268016499031,
+                    "Parent Entity": "Entity_[10614558889090132716]",
+                    "Transform Data": {
+                        "Translate": [
+                            6.816,
+                            -2.835,
+                            0.13
+                        ]
+                    }
+                },
+                "Component_[7008291030514371010]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 7008291030514371010
+                },
+                "Component_[7535703113990949446]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 7535703113990949446
+                },
+                "Component_[16484831815480726141]": {
+                    "$type": "{D0B6B04D-12B0-40B2-80CF-4F9B264B5074} EditorParticleComponent",
+                    "Id": 16484831815480726141,
+                    "Controller": {
+                        "Configuration": {
+                            "Asset": {
+                                "assetId": {
+                                    "guid": "{07E061C0-95CF-50D9-9888-FBCCB0BBD14B}",
+                                    "subId": 0
+                                },
+                                "assetHint": "elements/ice/r01c02_icicle_curtain.azparticle"
+                            },
+                            "Enable": true,
+                            "AutoPlay": true,
+                            "FollowActiveCamera": false
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[16578092716630886049]": {
+            "Id": "Entity_[16578092716630886049]",
+            "Name": "Fractured Cluster",
+            "Components": {
+                "Component_[3336692634479112556]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 3336692634479112556
+                },
+                "Component_[7189847734426042153]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 7189847734426042153
+                },
+                "Component_[5270474395835215885]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 5270474395835215885
+                },
+                "Component_[16439217009650655170]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 16439217009650655170
+                },
+                "Component_[15852236021711023392]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15852236021711023392
+                },
+                "Component_[14954838442901442547]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 14954838442901442547
+                },
+                "Component_[10157696034032336954]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 10157696034032336954,
+                    "Parent Entity": "Entity_[10614558889090132716]",
+                    "Transform Data": {
+                        "Translate": [
+                            9.6,
+                            -2.835,
+                            0.13
+                        ]
+                    }
+                },
+                "Component_[16664474752852873098]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 16664474752852873098
+                },
+                "Component_[4794845264380549775]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 4794845264380549775
+                },
+                "Component_[9814230520283667885]": {
+                    "$type": "{D0B6B04D-12B0-40B2-80CF-4F9B264B5074} EditorParticleComponent",
+                    "Id": 9814230520283667885,
+                    "Controller": {
+                        "Configuration": {
+                            "Asset": {
+                                "assetId": {
+                                    "guid": "{6BBC5E90-71B4-521D-852C-D26BD9824D23}",
+                                    "subId": 0
+                                },
+                                "assetHint": "elements/ice/r01c03_fractured_cluster.azparticle"
+                            },
+                            "Enable": true,
+                            "AutoPlay": true,
+                            "FollowActiveCamera": false
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[1420004091519338162]": {
+            "Id": "Entity_[1420004091519338162]",
+            "Name": "Needle Flurry",
+            "Components": {
+                "Component_[15644695610333065682]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 15644695610333065682
+                },
+                "Component_[6253492574303020572]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 6253492574303020572
+                },
+                "Component_[11339575273822236128]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 11339575273822236128
+                },
+                "Component_[11543816414901590625]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 11543816414901590625
+                },
+                "Component_[11530488701446115512]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 11530488701446115512
+                },
+                "Component_[657040322253645233]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 657040322253645233
+                },
+                "Component_[649803211641372041]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 649803211641372041,
+                    "Parent Entity": "Entity_[10614558889090132716]",
+                    "Transform Data": {
+                        "Translate": [
+                            12.384,
+                            -2.835,
+                            0.13
+                        ]
+                    }
+                },
+                "Component_[13631037042920669864]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 13631037042920669864
+                },
+                "Component_[764164138576439223]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 764164138576439223
+                },
+                "Component_[7688041828246799974]": {
+                    "$type": "{D0B6B04D-12B0-40B2-80CF-4F9B264B5074} EditorParticleComponent",
+                    "Id": 7688041828246799974,
+                    "Controller": {
+                        "Configuration": {
+                            "Asset": {
+                                "assetId": {
+                                    "guid": "{E0FC14AF-0C93-565B-A7F8-DCCC161C4189}",
+                                    "subId": 0
+                                },
+                                "assetHint": "elements/ice/r01c04_needle_flurry.azparticle"
+                            },
+                            "Enable": true,
+                            "AutoPlay": true,
+                            "FollowActiveCamera": false
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[2294148858041606686]": {
+            "Id": "Entity_[2294148858041606686]",
+            "Name": "Glacier Globe",
+            "Components": {
+                "Component_[1287527349480533483]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 1287527349480533483
+                },
+                "Component_[13537952157406617397]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 13537952157406617397
+                },
+                "Component_[14776145071343785011]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 14776145071343785011
+                },
+                "Component_[10109795562378901076]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 10109795562378901076
+                },
+                "Component_[1102269762614282503]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 1102269762614282503
+                },
+                "Component_[18179034987552226874]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 18179034987552226874
+                },
+                "Component_[3546084025527051080]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 3546084025527051080,
+                    "Parent Entity": "Entity_[10614558889090132716]",
+                    "Transform Data": {
+                        "Translate": [
+                            4.032,
+                            -5.445,
+                            0.13
+                        ]
+                    }
+                },
+                "Component_[11405870519530460882]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 11405870519530460882
+                },
+                "Component_[6769373493955871762]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 6769373493955871762
+                },
+                "Component_[3877335475826961213]": {
+                    "$type": "{D0B6B04D-12B0-40B2-80CF-4F9B264B5074} EditorParticleComponent",
+                    "Id": 3877335475826961213,
+                    "Controller": {
+                        "Configuration": {
+                            "Asset": {
+                                "assetId": {
+                                    "guid": "{EC75EDDA-EF14-58BB-98E3-2106E5F7F9EA}",
+                                    "subId": 0
+                                },
+                                "assetHint": "elements/ice/r02c01_glacier_globe.azparticle"
+                            },
+                            "Enable": true,
+                            "AutoPlay": true,
+                            "FollowActiveCamera": false
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[11096135120911485900]": {
+            "Id": "Entity_[11096135120911485900]",
+            "Name": "Rime Flare",
+            "Components": {
+                "Component_[13960730158220944100]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 13960730158220944100
+                },
+                "Component_[2540300819000895878]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 2540300819000895878
+                },
+                "Component_[10179625430279802397]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 10179625430279802397
+                },
+                "Component_[18149993994462979947]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 18149993994462979947
+                },
+                "Component_[14111360612677454179]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 14111360612677454179
+                },
+                "Component_[4597510549716144632]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 4597510549716144632
+                },
+                "Component_[15382635920381106075]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 15382635920381106075,
+                    "Parent Entity": "Entity_[10614558889090132716]",
+                    "Transform Data": {
+                        "Translate": [
+                            6.816,
+                            -5.445,
+                            0.13
+                        ]
+                    }
+                },
+                "Component_[12238735908653628868]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 12238735908653628868
+                },
+                "Component_[13794859316054918595]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 13794859316054918595
+                },
+                "Component_[10515500036427932972]": {
+                    "$type": "{D0B6B04D-12B0-40B2-80CF-4F9B264B5074} EditorParticleComponent",
+                    "Id": 10515500036427932972,
+                    "Controller": {
+                        "Configuration": {
+                            "Asset": {
+                                "assetId": {
+                                    "guid": "{38D508F9-7509-5E35-A0C8-48DFDA20827D}",
+                                    "subId": 0
+                                },
+                                "assetHint": "elements/ice/r02c02_rime_flare.azparticle"
+                            },
+                            "Enable": true,
+                            "AutoPlay": true,
+                            "FollowActiveCamera": false
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[2654265529954190663]": {
+            "Id": "Entity_[2654265529954190663]",
+            "Name": "Crystal Knot",
+            "Components": {
+                "Component_[16546329202838381645]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 16546329202838381645
+                },
+                "Component_[12009249876172085961]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 12009249876172085961
+                },
+                "Component_[14599170440106632246]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 14599170440106632246
+                },
+                "Component_[12878820748907585932]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 12878820748907585932
+                },
+                "Component_[359304373627883090]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 359304373627883090
+                },
+                "Component_[9606240555236814695]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 9606240555236814695
+                },
+                "Component_[13471132544692346080]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 13471132544692346080,
+                    "Parent Entity": "Entity_[10614558889090132716]",
+                    "Transform Data": {
+                        "Translate": [
+                            9.6,
+                            -5.445,
+                            0.13
+                        ]
+                    }
+                },
+                "Component_[1506665126844580864]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 1506665126844580864
+                },
+                "Component_[2607711573641460210]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 2607711573641460210
+                },
+                "Component_[17547371722940885992]": {
+                    "$type": "{D0B6B04D-12B0-40B2-80CF-4F9B264B5074} EditorParticleComponent",
+                    "Id": 17547371722940885992,
+                    "Controller": {
+                        "Configuration": {
+                            "Asset": {
+                                "assetId": {
+                                    "guid": "{3943495F-8CA2-5B7A-80CD-8F1B57936AEC}",
+                                    "subId": 0
+                                },
+                                "assetHint": "elements/ice/r02c03_crystal_knot.azparticle"
+                            },
+                            "Enable": true,
+                            "AutoPlay": true,
+                            "FollowActiveCamera": false
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[3435627477130842106]": {
+            "Id": "Entity_[3435627477130842106]",
+            "Name": "Snow Star",
+            "Components": {
+                "Component_[18172178651797836531]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 18172178651797836531
+                },
+                "Component_[15971356700375320202]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 15971356700375320202
+                },
+                "Component_[7042387224771422374]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 7042387224771422374
+                },
+                "Component_[2388739680054097985]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 2388739680054097985
+                },
+                "Component_[2654859248785575231]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 2654859248785575231
+                },
+                "Component_[13856680893011590704]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 13856680893011590704
+                },
+                "Component_[13879085243124620533]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 13879085243124620533,
+                    "Parent Entity": "Entity_[10614558889090132716]",
+                    "Transform Data": {
+                        "Translate": [
+                            12.384,
+                            -5.445,
+                            0.13
+                        ]
+                    }
+                },
+                "Component_[13961702147416465458]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 13961702147416465458
+                },
+                "Component_[7162670834861551785]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 7162670834861551785
+                },
+                "Component_[6089310524292651253]": {
+                    "$type": "{D0B6B04D-12B0-40B2-80CF-4F9B264B5074} EditorParticleComponent",
+                    "Id": 6089310524292651253,
+                    "Controller": {
+                        "Configuration": {
+                            "Asset": {
+                                "assetId": {
+                                    "guid": "{04CE657B-CBA4-5D14-BC87-AEB15BBE85CC}",
+                                    "subId": 0
+                                },
+                                "assetHint": "elements/ice/r02c04_snow_star.azparticle"
+                            },
+                            "Enable": true,
+                            "AutoPlay": true,
+                            "FollowActiveCamera": false
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[14364504600747691500]": {
+            "Id": "Entity_[14364504600747691500]",
+            "Name": "Snowflake Missile",
+            "Components": {
+                "Component_[7972676599730207208]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 7972676599730207208
+                },
+                "Component_[15550425973350932310]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 15550425973350932310
+                },
+                "Component_[10106706107975558129]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 10106706107975558129
+                },
+                "Component_[9585726480061183951]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9585726480061183951
+                },
+                "Component_[9869075948964123101]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 9869075948964123101
+                },
+                "Component_[2414478587009776005]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 2414478587009776005
+                },
+                "Component_[13954713740639507136]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 13954713740639507136,
+                    "Parent Entity": "Entity_[10614558889090132716]",
+                    "Transform Data": {
+                        "Translate": [
+                            4.032,
+                            -8.055,
+                            0.13
+                        ]
+                    }
+                },
+                "Component_[1257094864178513230]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 1257094864178513230
+                },
+                "Component_[14827575418233959057]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 14827575418233959057
+                },
+                "Component_[17128788030878451638]": {
+                    "$type": "{D0B6B04D-12B0-40B2-80CF-4F9B264B5074} EditorParticleComponent",
+                    "Id": 17128788030878451638,
+                    "Controller": {
+                        "Configuration": {
+                            "Asset": {
+                                "assetId": {
+                                    "guid": "{5AAEA787-C102-5265-BE46-7661BE2CED1A}",
+                                    "subId": 0
+                                },
+                                "assetHint": "elements/ice/r03c01_snowflake_missile.azparticle"
+                            },
+                            "Enable": true,
+                            "AutoPlay": true,
+                            "FollowActiveCamera": false
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[2232293727553668228]": {
+            "Id": "Entity_[2232293727553668228]",
+            "Name": "Ice Blade",
+            "Components": {
+                "Component_[7556555122594482433]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 7556555122594482433
+                },
+                "Component_[1199941253211075990]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 1199941253211075990
+                },
+                "Component_[17291734842900525099]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 17291734842900525099
+                },
+                "Component_[16636670778540640703]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 16636670778540640703
+                },
+                "Component_[12527526196607502114]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 12527526196607502114
+                },
+                "Component_[4807573159796221125]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 4807573159796221125
+                },
+                "Component_[14977823843686270643]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 14977823843686270643,
+                    "Parent Entity": "Entity_[10614558889090132716]",
+                    "Transform Data": {
+                        "Translate": [
+                            6.816,
+                            -8.055,
+                            0.13
+                        ]
+                    }
+                },
+                "Component_[2097276694178075890]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 2097276694178075890
+                },
+                "Component_[16856279025070848376]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 16856279025070848376
+                },
+                "Component_[2154894868841163371]": {
+                    "$type": "{D0B6B04D-12B0-40B2-80CF-4F9B264B5074} EditorParticleComponent",
+                    "Id": 2154894868841163371,
+                    "Controller": {
+                        "Configuration": {
+                            "Asset": {
+                                "assetId": {
+                                    "guid": "{E1031EFB-CA31-5063-A2A6-9FCF631AEFF1}",
+                                    "subId": 0
+                                },
+                                "assetHint": "elements/ice/r03c02_ice_blade.azparticle"
+                            },
+                            "Enable": true,
+                            "AutoPlay": true,
+                            "FollowActiveCamera": false
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[9091038945845025966]": {
+            "Id": "Entity_[9091038945845025966]",
+            "Name": "Shard Arrow",
+            "Components": {
+                "Component_[5799738257242005333]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 5799738257242005333
+                },
+                "Component_[6520064655456671755]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 6520064655456671755
+                },
+                "Component_[15985369160945547647]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 15985369160945547647
+                },
+                "Component_[9730034133055875681]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9730034133055875681
+                },
+                "Component_[13925240721115719990]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 13925240721115719990
+                },
+                "Component_[1601631015824740752]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 1601631015824740752
+                },
+                "Component_[14127013171319850540]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 14127013171319850540,
+                    "Parent Entity": "Entity_[10614558889090132716]",
+                    "Transform Data": {
+                        "Translate": [
+                            9.6,
+                            -8.055,
+                            0.13
+                        ]
+                    }
+                },
+                "Component_[15605744250340410765]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 15605744250340410765
+                },
+                "Component_[7675684467280788155]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 7675684467280788155
+                },
+                "Component_[3731279498973925276]": {
+                    "$type": "{D0B6B04D-12B0-40B2-80CF-4F9B264B5074} EditorParticleComponent",
+                    "Id": 3731279498973925276,
+                    "Controller": {
+                        "Configuration": {
+                            "Asset": {
+                                "assetId": {
+                                    "guid": "{FE28CC42-A8A1-57B4-B680-409457D00288}",
+                                    "subId": 0
+                                },
+                                "assetHint": "elements/ice/r03c03_shard_arrow.azparticle"
+                            },
+                            "Enable": true,
+                            "AutoPlay": true,
+                            "FollowActiveCamera": false
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[244751609381107876]": {
+            "Id": "Entity_[244751609381107876]",
+            "Name": "Frost Needle",
+            "Components": {
+                "Component_[8056654160771756843]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 8056654160771756843
+                },
+                "Component_[3504351125130870588]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 3504351125130870588
+                },
+                "Component_[4418714219714951199]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 4418714219714951199
+                },
+                "Component_[5681499475072952438]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 5681499475072952438
+                },
+                "Component_[3410925279461091819]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 3410925279461091819
+                },
+                "Component_[17729279057538538157]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 17729279057538538157
+                },
+                "Component_[3059406167390121793]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 3059406167390121793,
+                    "Parent Entity": "Entity_[10614558889090132716]",
+                    "Transform Data": {
+                        "Translate": [
+                            12.384,
+                            -8.055,
+                            0.13
+                        ]
+                    }
+                },
+                "Component_[1440556822963132868]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 1440556822963132868
+                },
+                "Component_[15581803297901282183]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 15581803297901282183
+                },
+                "Component_[8952746808293890944]": {
+                    "$type": "{D0B6B04D-12B0-40B2-80CF-4F9B264B5074} EditorParticleComponent",
+                    "Id": 8952746808293890944,
+                    "Controller": {
+                        "Configuration": {
+                            "Asset": {
+                                "assetId": {
+                                    "guid": "{3348D7CF-7B11-5DF4-832A-B6802FB4CE5F}",
+                                    "subId": 0
+                                },
+                                "assetHint": "elements/ice/r03c04_frost_needle.azparticle"
+                            },
+                            "Enable": true,
+                            "AutoPlay": true,
+                            "FollowActiveCamera": false
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[12654115982789955196]": {
+            "Id": "Entity_[12654115982789955196]",
+            "Name": "Frozen Bloom",
+            "Components": {
+                "Component_[10430422250673252446]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 10430422250673252446
+                },
+                "Component_[71633128585327261]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 71633128585327261
+                },
+                "Component_[16297491527610818498]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 16297491527610818498
+                },
+                "Component_[10618687157056827210]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 10618687157056827210
+                },
+                "Component_[3003858755235409969]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 3003858755235409969
+                },
+                "Component_[13530432514596980000]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 13530432514596980000
+                },
+                "Component_[16707530124959315258]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 16707530124959315258,
+                    "Parent Entity": "Entity_[18345976868441314561]",
+                    "Transform Data": {
+                        "Translate": [
+                            4.032,
+                            -10.665,
+                            0.13
+                        ]
+                    }
+                },
+                "Component_[12904359072841495935]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 12904359072841495935
+                },
+                "Component_[16331625323340596886]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 16331625323340596886
+                },
+                "Component_[8720401439403154822]": {
+                    "$type": "{D0B6B04D-12B0-40B2-80CF-4F9B264B5074} EditorParticleComponent",
+                    "Id": 8720401439403154822,
+                    "Controller": {
+                        "Configuration": {
+                            "Asset": {
+                                "assetId": {
+                                    "guid": "{3EA4F19A-2964-5715-87F7-B92C7187A9A3}",
+                                    "subId": 0
+                                },
+                                "assetHint": "elements/ice/r04c01_frozen_bloom.azparticle"
+                            },
+                            "Enable": true,
+                            "AutoPlay": false,
+                            "FollowActiveCamera": false
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[15805072586206707165]": {
+            "Id": "Entity_[15805072586206707165]",
+            "Name": "Shattering Crown",
+            "Components": {
+                "Component_[13671023464364998643]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 13671023464364998643
+                },
+                "Component_[6456124256861094026]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 6456124256861094026
+                },
+                "Component_[15337241873225603172]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 15337241873225603172
+                },
+                "Component_[14464392806434864756]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 14464392806434864756
+                },
+                "Component_[14304428562245155121]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 14304428562245155121
+                },
+                "Component_[11539264155629238783]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 11539264155629238783
+                },
+                "Component_[4414644370935790772]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 4414644370935790772,
+                    "Parent Entity": "Entity_[18345976868441314561]",
+                    "Transform Data": {
+                        "Translate": [
+                            6.816,
+                            -10.665,
+                            0.13
+                        ]
+                    }
+                },
+                "Component_[17644140215060232158]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 17644140215060232158
+                },
+                "Component_[1453828884644898499]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 1453828884644898499
+                },
+                "Component_[15235393410909341478]": {
+                    "$type": "{D0B6B04D-12B0-40B2-80CF-4F9B264B5074} EditorParticleComponent",
+                    "Id": 15235393410909341478,
+                    "Controller": {
+                        "Configuration": {
+                            "Asset": {
+                                "assetId": {
+                                    "guid": "{D4B99529-0D12-55EC-B1B8-B843D5B372C1}",
+                                    "subId": 0
+                                },
+                                "assetHint": "elements/ice/r04c02_shattering_crown.azparticle"
+                            },
+                            "Enable": true,
+                            "AutoPlay": false,
+                            "FollowActiveCamera": false
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[17369471212204999554]": {
+            "Id": "Entity_[17369471212204999554]",
+            "Name": "Glacier Ring",
+            "Components": {
+                "Component_[12924785452311599719]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 12924785452311599719
+                },
+                "Component_[5691342480468234463]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 5691342480468234463
+                },
+                "Component_[1017687627612309770]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 1017687627612309770
+                },
+                "Component_[4150996773451738790]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 4150996773451738790
+                },
+                "Component_[10668478231951805472]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 10668478231951805472
+                },
+                "Component_[1398798583108107734]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 1398798583108107734
+                },
+                "Component_[16083169415142654598]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 16083169415142654598,
+                    "Parent Entity": "Entity_[18345976868441314561]",
+                    "Transform Data": {
+                        "Translate": [
+                            9.6,
+                            -10.665,
+                            0.13
+                        ]
+                    }
+                },
+                "Component_[2472634396034466440]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 2472634396034466440
+                },
+                "Component_[13458598499857859478]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 13458598499857859478
+                },
+                "Component_[18177176124207502655]": {
+                    "$type": "{D0B6B04D-12B0-40B2-80CF-4F9B264B5074} EditorParticleComponent",
+                    "Id": 18177176124207502655,
+                    "Controller": {
+                        "Configuration": {
+                            "Asset": {
+                                "assetId": {
+                                    "guid": "{4CCD45D4-854F-5C9F-918D-DC5BA7AB48D5}",
+                                    "subId": 0
+                                },
+                                "assetHint": "elements/ice/r04c03_glacier_ring.azparticle"
+                            },
+                            "Enable": true,
+                            "AutoPlay": false,
+                            "FollowActiveCamera": false
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[5711948677494199590]": {
+            "Id": "Entity_[5711948677494199590]",
+            "Name": "Polar Star",
+            "Components": {
+                "Component_[4237051106580888265]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 4237051106580888265
+                },
+                "Component_[7604172476932814119]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 7604172476932814119
+                },
+                "Component_[8660708528055802222]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 8660708528055802222
+                },
+                "Component_[728753456765809229]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 728753456765809229
+                },
+                "Component_[7753901525924966655]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 7753901525924966655
+                },
+                "Component_[8621989549442393057]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 8621989549442393057
+                },
+                "Component_[11594083329268406398]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 11594083329268406398,
+                    "Parent Entity": "Entity_[18345976868441314561]",
+                    "Transform Data": {
+                        "Translate": [
+                            12.384,
+                            -10.665,
+                            0.13
+                        ]
+                    }
+                },
+                "Component_[788500744076921093]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 788500744076921093
+                },
+                "Component_[8351934327339016642]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 8351934327339016642
+                },
+                "Component_[16862110669317914033]": {
+                    "$type": "{D0B6B04D-12B0-40B2-80CF-4F9B264B5074} EditorParticleComponent",
+                    "Id": 16862110669317914033,
+                    "Controller": {
+                        "Configuration": {
+                            "Asset": {
+                                "assetId": {
+                                    "guid": "{FF5D02E5-E232-52B8-9608-9A94278D6D47}",
+                                    "subId": 0
+                                },
+                                "assetHint": "elements/ice/r04c04_polar_star.azparticle"
+                            },
+                            "Enable": true,
+                            "AutoPlay": false,
+                            "FollowActiveCamera": false
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

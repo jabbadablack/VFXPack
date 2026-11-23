@@ -1,0 +1,309 @@
+/*
+ * Copyright (c) Contributors to the Open 3D Engine Project.
+ * For complete copyright and license terms please see the LICENSE at the root of this distribution.
+ *
+ * SPDX-License-Identifier: Apache-2.0 OR MIT
+ *
+ */
+
+#pragma once
+
+#include <Atom/Feature/Common/Assets/Shaders/Materials/StandardPBR/StandardPBR_MaterialInputs.azsli>
+#include <OpenParticle/ParticleMeshCommon.azsli>
+
+// LoadInstanceData / ComputeParticleWorldPosition (DrawSrg is declared in
+// ParticleMeshShaderSrgs.azsli, included before this file via materialShaderDefines)
+#include <OpenParticle/ParticleMeshHelpers.azsli>
+
+// ---------------------------------------------------------------------------
+float SampleParticleHeight(const MaterialParameters params, float2 uv)
+{
+    float3 coord = float3(uv, 1.0);
+    float2 tiled = float2(dot(params.m_uvMatrixRow0.xyz, coord), dot(params.m_uvMatrixRow1.xyz, coord));
+    float phase = params.m_effectSeed;
+    float flow = SceneSrg::m_time * params.m_effectFlow;
+    float2 p = tiled * params.m_effectFrequency + float2(phase, -phase * 0.63);
+    float coarse = GetMaterialTexture(params.m_heightmap).SampleLevel(GetMaterialTextureSampler(), p + float2(0.13, -0.27) * flow, 1.5).r;
+    float2 folded = float2(p.y, -p.x) * 1.83 + coarse * 0.22;
+    float detail = GetMaterialTexture(params.m_heightmap).SampleLevel(GetMaterialTextureSampler(), folded + float2(-0.12, 0.16) * flow, 2.0).r;
+    return saturate(0.75 * coarse + 0.25 * detail);
+}
+
+float3 DisplaceParticleVertex(float3 position, float3 normal, float2 uv, const MaterialParameters params)
+{
+    #define O3DE_MC_UV(index) uv
+    // O3DE_GENERATED_INSTRUCTIONS_BEGIN: inRelief
+    float inRelief = 0.5;
+    // O3DE_GENERATED_INSTRUCTIONS_END
+    #undef O3DE_MC_UV
+    return position + normal * ((inRelief - 0.5 + params.m_heightmapOffset) * params.m_heightmapScale);
+}
+
+float3 RotateParticleDirection(float3 v, ParticleMeshInstanceData data)
+{
+    float3 initial = mul(AxisRadianToMatrix(data.m_initRotation), v);
+    // SimuCore's CPU mesh stream stores the spin axis in xyz and accumulated radians in w.
+    float4 spin = data.m_rotationQuat;
+    return dot(spin.xyz, spin.xyz) > 0.000001 ? mul(AxisRadianToMatrix(spin), initial) : initial;
+}
+
+float3 ParticleSurfaceWorldPosition(float3 localPosition, ParticleMeshInstanceData data, float4x4 objectToWorld)
+{
+    float3 rotated = RotateParticleDirection(localPosition * data.m_scale.xyz, data);
+    return mul(objectToWorld, float4(rotated, 1.0)).xyz + data.m_offset.xyz;
+}
+
+// Per-pipeline-stage vertex / pixel shader implementations
+// ---------------------------------------------------------------------------
+
+#if MATERIALPIPELINE_SHADER_HAS_PIXEL_STAGE || MATERIALPIPELINE_SHADER_HAS_GEOMETRIC_PIXEL_STAGE
+    #define EvaluateVertexGeometry EvaluateVertexGeometry_ParticleMesh
+
+    VsOutput EvaluateVertexGeometry_ParticleMesh(VsInput IN, VsSystemValues SV, const MaterialParameters params)
+    {
+        ParticleMeshInstanceData instanceData = LoadInstanceData(SV.m_instanceId);
+        float4x4 objectToWorld = GetObjectToWorldMatrix(SV);
+        float3 worldPosition = ParticleSurfaceWorldPosition(DisplaceParticleVertex(IN.position, IN.normal, IN.uv0, params), instanceData, objectToWorld);
+
+        VsOutput OUT;
+        OUT.position = mul(GetViewProjectionMatrix(SV), float4(worldPosition, 1.0));
+
+#if MATERIAL_USES_VERTEX_POSITIONWS
+        OUT.worldPosition = worldPosition;
+#endif
+
+#if MATERIAL_USES_VERTEX_UV
+        float3 uv0h = float3(IN.uv0, 1.0);
+        OUT.uvs[0] = float2(dot(params.m_uvMatrixRow0.xyz, uv0h), dot(params.m_uvMatrixRow1.xyz, uv0h));
+        OUT.uvs[1] = IN.uv1;
+#endif
+
+#if MATERIAL_USES_VERTEX_NORMAL
+        OUT.normal = normalize(RotateParticleDirection(IN.normal / max(abs(instanceData.m_scale.xyz), 0.0001), instanceData));
+#endif
+#if MATERIAL_USES_VERTEX_TANGENT
+        OUT.tangent = float4(normalize(RotateParticleDirection(IN.tangent.xyz * instanceData.m_scale.xyz, instanceData)), IN.tangent.w);
+#endif
+#if MATERIAL_USES_VERTEX_BITANGENT
+        OUT.bitangent = IN.bitangent;
+#endif
+
+#if MATERIAL_USES_VERTEX_COLOR
+        OUT.color0 = instanceData.m_color;
+        // Blue carries normalized age on the graph-driven pack meshes.
+        OUT.color0.b = instanceData.m_hasInstanceData.x == 0 ? 0.3 : instanceData.m_color.b;
+#endif
+
+        OUT.m_instanceId = SV.m_instanceId;
+        return OUT;
+    }
+#endif
+
+#if MATERIALPIPELINE_SHADER_HAS_PIXEL_STAGE
+
+    COMMON_OPTIONS_BASE_COLOR()
+    COMMON_OPTIONS_VERTEX_COLOR()
+    COMMON_OPTIONS_ROUGHNESS()
+    COMMON_OPTIONS_METALLIC()
+    COMMON_OPTIONS_SPECULAR_F0()
+    COMMON_OPTIONS_NORMAL()
+    COMMON_OPTIONS_CLEAR_COAT()
+    COMMON_OPTIONS_OCCLUSION()
+    COMMON_OPTIONS_EMISSIVE()
+    COMMON_OPTIONS_PARALLAX()
+
+    bool ShouldHandleParallax()   { return false; }
+    bool NeedsTangentFrame()      { return o_normal_useTexture || (o_clearCoat_enabled && o_clearCoat_normal_useTexture); }
+
+    DepthResult GetDepth(const MaterialParameters params, Texture2D heightmap, sampler mapSampler, float2 uv, float2 uv_ddx, float2 uv_ddy)
+    {
+        return SampleDepthFromHeightmap(heightmap, mapSampler, uv, uv_ddx, uv_ddy);
+    }
+
+    #include <Atom/Feature/Common/Assets/Shaders/Materials/StandardPBR/StandardPBR_PixelGeometryEval.azsli>
+    #define EvaluateSurface EvaluateParticleSurface
+    #include <Atom/Feature/Common/Assets/Shaders/Materials/StandardPBR/StandardPBR_SurfaceEval.azsli>
+    Surface EvaluateParticleSurface(VsOutput IN, VsSystemValues SV, PixelGeometryData geoData, const MaterialParameters params)
+    {
+        Surface surface = EvaluateSurface_StandardPBR(IN, SV, geoData, params);
+        // IN.uvs already contains the material UV transform. Use the original UV
+        // for the shared graph to avoid tiling the surface field twice.
+        float3 uvh = float3(IN.uvs[0], 1.0);
+        float2 uv = float2(dot(params.m_uvMatrixInverseRow0.xyz, uvh), dot(params.m_uvMatrixInverseRow1.xyz, uvh));
+        #define O3DE_MC_UV(index) uv
+        // O3DE_GENERATED_INSTRUCTIONS_BEGIN: inEmissionMask, inRoughnessMask, inCoverage, inRim
+        float inEmissionMask = 1.0;
+        float inRoughnessMask = 0.5;
+        float inCoverage = 1.0;
+        float inRim = 0.0;
+        // O3DE_GENERATED_INSTRUCTIONS_END
+        #undef O3DE_MC_UV
+        float style = params.m_effectStyle;
+        float age = saturate(IN.color0.b);
+        float field = saturate(inRoughnessMask);
+        float ridges = saturate(inEmissionMask);
+        float rim = saturate(inRim);
+        float coverage = saturate(inCoverage);
+        float fade = saturate(IN.color0.a);
+        float3 tint = max(params.m_emissiveColor.rgb, float3(0.015, 0.015, 0.015));
+        float glow = max(0.0, params.m_emissiveIntensity);
+        if (style > 0.5 && style < 1.5)
+        {
+            // Raised pockets stay incandescent as an outer skin of clinker breaks apart.
+            float seam = 1.0 - smoothstep(0.018, 0.115, abs(field - 0.48));
+            float cooling = smoothstep(0.14, 0.82, age);
+            float mantle = smoothstep(0.24 + 0.37 * cooling, 0.44 + 0.40 * cooling, field);
+            float heat = saturate((1.0 - cooling) * 0.64 + mantle * 0.55 + seam * (0.18 + 0.72 * cooling));
+            float3 coal = tint * float3(0.18, 0.055, 0.025);
+            float3 hot = lerp(tint * float3(1.15, 0.52, 0.17), float3(1.0, 0.87, 0.55), smoothstep(0.41, 0.83, heat));
+            surface.albedo = lerp(coal, tint * 0.50, field);
+            surface.emissiveLighting = hot * glow * (0.016 + 2.1 * heat * heat) * lerp(1.25, 0.48, cooling);
+            surface.alpha *= lerp(0.91, coverage, smoothstep(0.30, 0.95, age));
+        }
+        else if (style > 1.5 && style < 2.5)
+        {
+            // Dense billows have lit shoulders and a soft, progressively porous edge.
+            float depth = saturate((1.0 - rim) * 0.67 + field * 0.57);
+            float shoulder = saturate(0.5 + 0.5 * surface.normal.z);
+            surface.albedo = params.m_baseColor.rgb * lerp(0.36, 1.18, shoulder * 0.62 + field * 0.38);
+            float lightBand = smoothstep(0.22, 0.62, shoulder * 0.76 + field * 0.24);
+            surface.emissiveLighting = tint * glow * (0.11 + 0.47 * lightBand);
+            surface.albedo *= lerp(0.66, 1.14, lightBand);
+            surface.alpha *= smoothstep(0.10, 0.53, depth) * lerp(1.0, coverage, smoothstep(0.42, 1.0, age));
+        }
+        else if (style > 2.5 && style < 3.5)
+        {
+            // A narrow vein interrupts the broad planar highlights on cut faces.
+            float vein = 1.0 - smoothstep(0.012, 0.052, abs(field - 0.51));
+            surface.emissiveLighting = tint * glow * (0.045 + rim * 0.77 + vein * 0.92);
+            surface.alpha *= lerp(0.64, 1.0, saturate(rim + 0.4 * field));
+        }
+        else if (style > 3.5 && style < 4.5)
+        {
+            float meniscus = pow(rim, 1.55);
+            float film = smoothstep(0.51, 0.69, field);
+            surface.albedo *= lerp(0.45, 1.18, film);
+            surface.emissiveLighting = tint * glow * (0.06 + 0.42 * film + 1.15 * meniscus);
+            surface.alpha *= lerp(0.27, 0.98, saturate(meniscus + 0.45 * film));
+        }
+        else if (style > 4.5 && style < 5.5)
+        {
+            float crest = smoothstep(0.37, 0.78, field);
+            float core = saturate(crest * 0.76 + (1.0 - rim) * 0.38);
+            surface.emissiveLighting = lerp(tint, lerp(tint, float3(1.0, 1.0, 1.0), 0.69), core * core) * glow * (0.38 + 1.35 * core);
+            surface.alpha *= lerp(0.42, 1.0, coverage);
+        }
+        else if (style > 5.5 && style < 6.5)
+        {
+            float band = 1.0 - smoothstep(0.025, 0.12, abs(field - 0.54));
+            surface.emissiveLighting = tint * glow * (0.045 + 0.63 * band + 1.25 * rim);
+            surface.alpha *= saturate(0.09 + 0.53 * band + 0.75 * rim) * lerp(0.3, 1.0, coverage);
+        }
+        else if (style > 6.5 && style < 7.5)
+        {
+            float crack = smoothstep(0.57, 0.84, field);
+            surface.albedo *= lerp(0.40, 0.89, field);
+            surface.emissiveLighting = tint * glow * (0.012 + crack * crack * 0.82);
+        }
+        else if (style > 7.5)
+        {
+            // UV.y runs from source to impact. UV.x wraps the low-poly sleeve.
+            float along = saturate(uv.y);
+            float phase = 6.283185 * (uv.x * 2.0 + along * 1.72 - SceneSrg::m_time * params.m_effectFlow + field * 0.23);
+            float strand = smoothstep(0.34, 0.88, cos(phase));
+            float endFalloff = smoothstep(0.0, 0.085, along) * (1.0 - smoothstep(0.86, 1.0, along));
+            float core = pow(saturate(1.0 - rim), 2.6);
+            surface.alpha = params.m_opacityFactor * endFalloff * saturate(0.12 + core * 0.91 + strand * 0.58);
+            surface.emissiveLighting = lerp(tint * 0.56, lerp(tint, float3(1.0, 1.0, 1.0), 0.86), core * core) * glow * (0.40 + 1.30 * core + 0.47 * strand);
+        }
+        // Derive fine surface normals from the animated field in world units.
+        float3 n = surface.normal;
+        float3 dx = ddx(geoData.positionWS);
+        float3 dy = ddy(geoData.positionWS);
+        float3 tx = cross(dy, n);
+        float3 ty = cross(n, dx);
+        float determinant = dot(dx, tx);
+        float3 gradient = sign(determinant) * (ddx(field) * tx + ddy(field) * ty) / max(0.000001, abs(determinant));
+        float strength = style < 2.5 ? 0.020 : 0.006;
+        surface.normal = normalize(n - clamp(gradient * strength, -0.22, 0.22));
+        surface.roughnessLinear = clamp(surface.roughnessLinear + (0.5 - field) * 0.21, 0.045, 1.0);
+        surface.CalculateRoughnessA();
+        surface.alpha *= fade;
+        return surface;
+    }
+    #include <Atom/Feature/Common/Assets/Shaders/Materials/StandardPBR/StandardPBR_LightingEval.azsli>
+
+#elif MATERIALPIPELINE_SHADER_HAS_GEOMETRIC_PIXEL_STAGE
+
+    COMMON_OPTIONS_PARALLAX()
+
+    bool ShouldHandleParallax()   { return false; }
+    bool NeedsTangentFrame()      { return false; }
+
+    DepthResult GetDepth(const MaterialParameters params, Texture2D heightmap, sampler mapSampler, float2 uv, float2 uv_ddx, float2 uv_ddy)
+    {
+        return SampleDepthFromHeightmap(heightmap, mapSampler, uv, uv_ddx, uv_ddy);
+    }
+
+    #include <Atom/Feature/Common/Assets/Shaders/Materials/StandardPBR/StandardPBR_PixelGeometryEval.azsli>
+    #include "Atom/Feature/Common/Assets/Shaders/Materials/MaterialFunctions/StandardGetAlphaAndClip.azsli"
+
+    void EvaluateSurface(VsOutput IN, VsSystemValues SV, PixelGeometryData geoData, const MaterialParameters params)
+    {
+        GetAlphaAndClip(params, geoData.uvs);
+    }
+
+#else
+
+    // Depth-only and shadow passes: position transform only.
+    #define EvaluateVertexGeometry EvaluateVertexGeometry_ParticleMesh
+
+    VsOutput EvaluateVertexGeometry_ParticleMesh(VsInput IN, VsSystemValues SV, const MaterialParameters params)
+    {
+        ParticleMeshInstanceData instanceData = LoadInstanceData(SV.m_instanceId);
+        float4x4 objectToWorld = GetObjectToWorldMatrix(SV);
+        float3 worldPosition = ParticleSurfaceWorldPosition(DisplaceParticleVertex(IN.position, IN.normal, IN.uv0, params), instanceData, objectToWorld);
+
+        VsOutput OUT;
+        OUT.position = mul(GetViewProjectionMatrix(SV), float4(worldPosition, 1.0));
+        OUT.m_instanceId = SV.m_instanceId;
+        return OUT;
+    }
+
+#endif
+
+// ---------------------------------------------------------------------------
+// Motion vector pass
+// ---------------------------------------------------------------------------
+// Outputs motion vectors for temporal effects (motion blur, TAA).
+// Particles don't currently store previous-frame position data, so we output
+// zero-length motion vectors.  This satisfies the MainPipeline requirement
+// without visual artifacts.
+#if defined(MATERIALPIPELINE_USES_PREV_VERTEX_POSITION) && MATERIALPIPELINE_USES_PREV_VERTEX_POSITION
+
+    // Override the default EvaluateVertexGeometry (from the #else block above)
+    // so MeshMotionVector.azsli's VertexShader entry point resolves to our
+    // implementation that outputs worldPosition / worldPosPrev.
+    // The generic PixelShader in MeshMotionVector.azsli handles the rest.
+    #undef EvaluateVertexGeometry
+    #define EvaluateVertexGeometry EvaluateVertexGeometry_ParticleMeshMotion
+
+    VsOutput EvaluateVertexGeometry_ParticleMeshMotion(VsInput IN, VsSystemValues SV, const MaterialParameters params)
+    {
+        ParticleMeshInstanceData instanceData = LoadInstanceData(SV.m_instanceId);
+        float4x4 objectToWorld = GetObjectToWorldMatrix(SV);
+        float3 worldPosition = ParticleSurfaceWorldPosition(DisplaceParticleVertex(IN.position, IN.normal, IN.uv0, params), instanceData, objectToWorld);
+
+        VsOutput OUT;
+        OUT.position = mul(GetViewProjectionMatrix(SV), float4(worldPosition, 1.0));
+
+        // Motion vector pixel shader needs these unconditionally, even though
+        // MATERIAL_USES_VERTEX_POSITIONWS is 0 in the motion-vector pipeline.
+        OUT.worldPosition = worldPosition;
+        OUT.worldPosPrev  = worldPosition; // no previous-frame data for particles
+
+        OUT.m_instanceId = SV.m_instanceId;
+        return OUT;
+    }
+
+#endif

@@ -1,0 +1,93 @@
+{
+    "Type": "JsonSerialization",
+    "Version": 1,
+    "ClassName": "DynamicNodeConfig",
+    "ClassData": {
+        "id": "{D842D7AD-A4A1-55F5-ACC0-3ED3F9D30695}",
+        "category": "VFXPack",
+        "title": "Lit particle surface",
+        "titlePaletteName": "MaterialOutputNodeTitlePalette",
+        "description": "OpenParticleSystem mesh shading with instance transforms, emitter tint, height displacement and Standard PBR lighting.",
+        "settings": {
+            "templatePaths": [
+                "@gemroot:VFXPack@/MaterialCanvas/Templates/MaterialGraphName.materialtype",
+                "@gemroot:VFXPack@/MaterialCanvas/Templates/MaterialGraphName.material",
+                "@gemroot:VFXPack@/MaterialCanvas/Templates/MaterialGraphName_Defines.azsli",
+                "@gemroot:VFXPack@/MaterialCanvas/Templates/MaterialGraphName_Surface.azsli"
+            ]
+        },
+        "propertySlots": [
+            {
+                "name": "inDescription",
+                "displayName": "Description",
+                "description": "Provide a description or overview of what this material graph is doing",
+                "supportedDataTypeRegex": "string",
+                "defaultDataType": "string",
+                "visibleOnNode": false,
+                "editableOnNode": false
+            }
+        ],
+        "inputSlots": [
+            {
+                "name": "inRelief",
+                "displayName": "Vertex height",
+                "supportedDataTypeRegex": "float",
+                "defaultDataType": "float",
+                "allowNameSubstitution": false,
+                "settings": {
+                    "instructions": [
+                        "SLOTTYPE SLOTNAME = SLOTVALUE;"
+                    ]
+                }
+            },
+            {
+                "name": "inEmissionMask",
+                "displayName": "Emissive ridges",
+                "supportedDataTypeRegex": "float",
+                "defaultDataType": "float",
+                "allowNameSubstitution": false,
+                "settings": {
+                    "instructions": [
+                        "SLOTTYPE SLOTNAME = SLOTVALUE;"
+                    ]
+                }
+            },
+            {
+                "name": "inRoughnessMask",
+                "displayName": "Cavity roughness",
+                "supportedDataTypeRegex": "float",
+                "defaultDataType": "float",
+                "allowNameSubstitution": false,
+                "settings": {
+                    "instructions": [
+                        "SLOTTYPE SLOTNAME = SLOTVALUE;"
+                    ]
+                }
+            },
+            {
+                "name": "inCoverage",
+                "displayName": "Eroded coverage",
+                "supportedDataTypeRegex": "float",
+                "defaultDataType": "float",
+                "allowNameSubstitution": false,
+                "settings": {
+                    "instructions": [
+                        "SLOTTYPE SLOTNAME = SLOTVALUE;"
+                    ]
+                }
+            },
+            {
+                "name": "inRim",
+                "displayName": "Fresnel rim",
+                "supportedDataTypeRegex": "float",
+                "defaultDataType": "float",
+                "allowNameSubstitution": false,
+                "settings": {
+                    "instructions": [
+                        "SLOTTYPE SLOTNAME = SLOTVALUE;"
+                    ]
+                }
+            }
+        ]
+    }
+}

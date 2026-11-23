@@ -1,0 +1,7 @@
+{
+    "materialType": "./vfx_particlemesh.materialtype",
+    "materialTypeVersion": 5,
+    "propertyValues": {
+        "parallax.textureMap": "@gemroot:Atom_Feature_Common@/Assets/Textures/CloudNoise_01.jpg"
+    }
+}
