@@ -18,10 +18,10 @@
       },
       "material": {
         "assetId": {
-          "guid": "{83ABA36C-6BBE-542E-A823-499B7D299AF0}",
+          "guid": "{70D6A08B-2FB9-53C2-8629-B1F0AB112565}",
           "subId": 0
         },
-        "assetHint": "materials/vfxpack/mesh_glass.azmaterial"
+        "assetHint": "materials/vfxpack/mesh_volume.azmaterial"
       },
       "materialOverrides": {
         "baseColor.color": {
@@ -44,23 +44,23 @@
         },
         "emissive.intensity": {
           "$type": "float",
-          "Value": 5.5
+          "Value": 4.84
         },
         "roughness.factor": {
           "$type": "float",
-          "Value": 0.12
+          "Value": 0.96
         },
         "specularF0.factor": {
           "$type": "float",
-          "Value": 0.19
+          "Value": 0.0
         },
         "opacity.factor": {
           "$type": "float",
-          "Value": 0.92
+          "Value": 0.55
         },
         "parallax.factor": {
           "$type": "float",
-          "Value": 0.002
+          "Value": 0.0
         },
         "effect.flow": {
           "$type": "float",
@@ -68,7 +68,7 @@
         },
         "effect.frequency": {
           "$type": "float",
-          "Value": 1.2601
+          "Value": 1.7389379999999999
         },
         "effect.seed": {
           "$type": "float",
@@ -94,7 +94,15 @@
         },
         "effect.style": {
           "$type": "float",
-          "Value": 10.0
+          "Value": 19.0
+        },
+        "effect.extinction": {
+          "$type": "float",
+          "Value": 1.35
+        },
+        "effect.coreDensity": {
+          "$type": "float",
+          "Value": 0.18
         }
       },
       "model": {
@@ -268,7 +276,7 @@
       "materialOverrides": {
         "effect.style": {
           "$type": "float",
-          "Value": 11.0
+          "Value": 19.0
         },
         "effect.seed": {
           "$type": "float",
@@ -280,7 +288,7 @@
         },
         "effect.frequency": {
           "$type": "float",
-          "Value": 1.568
+          "Value": 2.16384
         },
         "effect.erosion": {
           "$type": "float",
@@ -301,11 +309,11 @@
         },
         "emissive.intensity": {
           "$type": "float",
-          "Value": 5.13
+          "Value": 4.5144
         },
         "opacity.factor": {
           "$type": "float",
-          "Value": 0.73
+          "Value": 0.61
         },
         "baseColor.color": {
           "$type": "Color",
@@ -326,7 +334,7 @@
         },
         "parallax.factor": {
           "$type": "float",
-          "Value": 0.025
+          "Value": 0.0
         },
         "general.doubleSided": {
           "$type": "bool",
@@ -334,11 +342,11 @@
         },
         "effect.extinction": {
           "$type": "float",
-          "Value": 5.7
+          "Value": 1.62
         },
         "effect.coreDensity": {
           "$type": "float",
-          "Value": 0.95
+          "Value": 0.18
         }
       },
       "OpenParticle::EmitSpawn": {
@@ -553,7 +561,7 @@
       "materialOverrides": {
         "effect.style": {
           "$type": "float",
-          "Value": 12.0
+          "Value": 20.0
         },
         "effect.seed": {
           "$type": "float",
@@ -565,7 +573,7 @@
         },
         "effect.frequency": {
           "$type": "float",
-          "Value": 1.728
+          "Value": 2.3846399999999996
         },
         "effect.erosion": {
           "$type": "float",
@@ -586,11 +594,11 @@
         },
         "emissive.intensity": {
           "$type": "float",
-          "Value": 4.17
+          "Value": 3.6696
         },
         "opacity.factor": {
           "$type": "float",
-          "Value": 0.76
+          "Value": 0.48
         },
         "baseColor.color": {
           "$type": "Color",
@@ -611,7 +619,7 @@
         },
         "parallax.factor": {
           "$type": "float",
-          "Value": 0.025
+          "Value": 0.0
         },
         "general.doubleSided": {
           "$type": "bool",
@@ -619,11 +627,11 @@
         },
         "effect.extinction": {
           "$type": "float",
-          "Value": 5.3
+          "Value": 1.25
         },
         "effect.coreDensity": {
           "$type": "float",
-          "Value": 0.95
+          "Value": 0.18
         }
       },
       "OpenParticle::SpawnLifetime": {
@@ -639,9 +647,9 @@
       "OpenParticle::SpawnSize": {
         "sizeObject": {
           "dataValue": [
-            0.273,
-            0.26325,
-            0.3705
+            0.17472,
+            0.19217,
+            0.43349
           ],
           "isUniform": false,
           "distType": "Random",
@@ -1141,18 +1149,18 @@
         "tickMode": "PerSpawn"
       },
       {
-        "min": 0.2156,
-        "max": 0.3304,
+        "min": 0.13798,
+        "max": 0.21146,
         "tickMode": "PerSpawn"
       },
       {
-        "min": 0.2079,
-        "max": 0.3186,
+        "min": 0.15177,
+        "max": 0.23258,
         "tickMode": "PerSpawn"
       },
       {
-        "min": 0.2926,
-        "max": 0.4484,
+        "min": 0.34234,
+        "max": 0.52463,
         "tickMode": "PerSpawn"
       },
       {

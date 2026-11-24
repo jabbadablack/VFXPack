@@ -6,603 +6,75 @@
   },
   "emitters": [
     {
-      "name": "Sweeping band 1",
-      "config": {
-        "type": "CPU",
-        "maxSize": 5,
-        "startTime": 0,
-        "localSpace": true,
-        "duration": 2.4,
-        "loop": true
-      },
+      "name": "Field activation",
       "material": {
         "assetId": {
-          "guid": "{BD9062B6-A56A-539A-B448-90165B541B14}",
+          "guid": "{011E63D7-C7ED-5C96-BCDD-75F60275F53C}",
           "subId": 0
         },
         "loadBehavior": "PreLoad",
-        "assetHint": "materials/vfxpack/filament.azmaterial"
+        "assetHint": "materials/vfxpack/soft_white.azmaterial"
       },
-      "OpenParticle::RibbonConfig": {
-        "trailParam": {
-          "ratio": 1,
-          "lifetime": 0.38700000000000007,
-          "inheritLiftime": false,
-          "dieWithParticles": true
-        },
-        "ribbonParam": {
-          "ribbonCount": 1
-        },
+      "config": {
+        "type": "CPU",
+        "localSpace": true,
+        "startTime": 0,
+        "loop": true,
+        "duration": 3.0,
+        "maxSize": 1
+      },
+      "OpenParticle::SpriteConfig": {
+        "facing": "CAMERA_RECTANGLE",
         "sortId": 0,
-        "minRibbonSegmentLength": 0.008,
-        "ribbonWidthObject": {
-          "dataValue": 0.11299999999999999,
-          "isUniform": false,
-          "distType": "Constant",
-          "distIndex": [
-            0
-          ]
-        },
-        "inheritSize": false,
-        "tesselation": 0.15,
-        "curveTension": 0.08,
-        "tilingDistance": 0,
-        "facing": "CAMERA",
-        "mode": "TRAIL"
-      },
-      "OpenParticle::EmitBurstList": {
-        "isProcessBurstList": true,
-        "burstList": [
-          {
-            "time": 0,
-            "count": 1,
-            "minCount": -1
-          }
-        ]
-      },
-      "OpenParticle::EmitSpawn": {
-        "isProcessSpawnRate": true,
-        "spawnRateObject": {
-          "dataValue": 1.1627906976744184,
-          "isUniform": false,
-          "distType": "Constant",
-          "distIndex": [
-            0
-          ]
-        }
-      },
-      "OpenParticle::SpawnLifetime": {
-        "lifeTimeObject": {
-          "dataValue": 0.8600000000000001,
-          "isUniform": false,
-          "distType": "Constant",
-          "distIndex": [
-            0
-          ]
-        }
-      },
-      "OpenParticle::SpawnLocPoint": {
-        "positionObject": {
-          "dataValue": [
-            0,
-            0,
-            0
-          ],
-          "isUniform": false,
-          "distType": "Constant",
-          "distIndex": [
-            0,
-            0,
-            0
-          ]
-        }
-      },
-      "OpenParticle::UpdateRotateAroundPoint": {
-        "rotateRate": -3.42,
-        "radius": 0.562,
-        "xAxis": [
+        "subImage": [
           1.0,
-          0.0,
-          0.0
-        ],
-        "yAxis": [
-          -0.0,
-          0.49757104789172696,
-          0.867423225594017
-        ],
-        "center": [
-          0,
-          0,
-          0.78
-        ]
-      },
-      "OpenParticle::SpawnSize": {
-        "sizeObject": {
-          "dataValue": [
-            0.11413,
-            0.11413,
-            0.11413
-          ],
-          "isUniform": false,
-          "distType": "Random",
-          "distIndex": [
-            1,
-            1,
-            1
-          ]
-        }
-      },
-      "OpenParticle::SpawnColor": {
-        "startColorObject": {
-          "dataValue": [
-            0.99,
-            0.035,
-            0.7,
-            0.86
-          ],
-          "isUniform": false,
-          "distType": "Constant",
-          "distIndex": [
-            0,
-            0,
-            0,
-            0
-          ]
-        }
-      },
-      "OpenParticle::UpdateColor": {
-        "currentColorObject": {
-          "dataValue": [
-            0.99,
-            0.035,
-            0.7,
-            1.0
-          ],
-          "isUniform": false,
-          "distType": "Curve",
-          "distIndex": [
-            1,
-            2,
-            3,
-            4
-          ]
-        }
-      },
-      "OpenParticle::SizeScale": {
-        "scaleFactorObject": {
-          "dataValue": [
-            1,
-            1,
-            1
-          ],
-          "isUniform": false,
-          "distType": "Curve",
-          "distIndex": [
-            5,
-            5,
-            5
-          ]
-        }
-      },
-      "materialOverrides": {
-        "emissive.enable": {
-          "$type": "bool",
-          "Value": true
-        },
-        "emissive.useTexture": {
-          "$type": "bool",
-          "Value": true
-        },
-        "emissive.textureMap": {
-          "$type": "{403A7CFE-B218-5D57-8540-BD58E734BCFE} Asset<StreamingImageAsset>",
-          "Value": {
-            "assetId": {
-              "guid": "{1AA24D31-66E5-52B6-8F21-ABADFECE661D}",
-              "subId": 1000
-            },
-            "assetHint": "textures/cloudnoise_01.jpg.streamingimage"
-          }
-        },
-        "emissive.color": {
-          "$type": "Color",
-          "Value": [
-            1.0,
-            0.94,
-            0.86,
-            1.0
-          ]
-        },
-        "emissive.intensity": {
-          "$type": "float",
-          "Value": 1.1400000000000001
-        }
-      }
-    },
-    {
-      "name": "Sweeping band 2",
-      "config": {
-        "type": "CPU",
-        "maxSize": 5,
-        "startTime": 0,
-        "localSpace": true,
-        "duration": 2.4,
-        "loop": true
-      },
-      "material": {
-        "assetId": {
-          "guid": "{B22A712C-EC90-50A3-ABFD-F27871963D90}",
-          "subId": 0
-        },
-        "assetHint": "materials/vfxpack/mesh_ward.azmaterial"
-      },
-      "OpenParticle::EmitBurstList": {
-        "isProcessBurstList": true,
-        "burstList": [
-          {
-            "time": 0,
-            "count": 1,
-            "minCount": -1
-          }
+          1.0
         ]
       },
       "OpenParticle::EmitSpawn": {
         "isProcessSpawnRate": true,
         "spawnRateObject": {
-          "dataValue": 1.1627906976744184,
+          "dataValue": 120.0,
           "isUniform": false,
           "distType": "Constant",
           "distIndex": [
             0
           ]
         }
-      },
-      "OpenParticle::SpawnLifetime": {
-        "lifeTimeObject": {
-          "dataValue": 0.8600000000000001,
-          "isUniform": false,
-          "distType": "Constant",
-          "distIndex": [
-            0
-          ]
-        }
-      },
-      "OpenParticle::SpawnLocPoint": {
-        "positionObject": {
-          "dataValue": [
-            0,
-            0,
-            0
-          ],
-          "isUniform": false,
-          "distType": "Constant",
-          "distIndex": [
-            0,
-            0,
-            0
-          ]
-        }
-      },
-      "OpenParticle::UpdateRotateAroundPoint": {
-        "rotateRate": 3.6,
-        "radius": 0.562,
-        "xAxis": [
-          -0.5639850575694101,
-          0.10770194142113737,
-          0.8187314252259694
-        ],
-        "yAxis": [
-          -0.8257849931056082,
-          -0.07355702288109899,
-          -0.5591676935825605
-        ],
-        "center": [
-          0,
-          0,
-          0.93
-        ]
-      },
-      "OpenParticle::SpawnSize": {
-        "sizeObject": {
-          "dataValue": [
-            0.85774,
-            0.80131,
-            0.59816
-          ],
-          "isUniform": false,
-          "distType": "Random",
-          "distIndex": [
-            2,
-            3,
-            4
-          ]
-        }
-      },
-      "OpenParticle::SpawnColor": {
-        "startColorObject": {
-          "dataValue": [
-            0.99,
-            0.035,
-            0.0,
-            0.86
-          ],
-          "isUniform": false,
-          "distType": "Constant",
-          "distIndex": [
-            0,
-            0,
-            0,
-            0
-          ]
-        }
-      },
-      "OpenParticle::UpdateColor": {
-        "currentColorObject": {
-          "dataValue": [
-            0.99,
-            0.035,
-            0.0,
-            1.0
-          ],
-          "isUniform": false,
-          "distType": "Curve",
-          "distIndex": [
-            1,
-            2,
-            6,
-            4
-          ]
-        }
-      },
-      "OpenParticle::SizeScale": {
-        "scaleFactorObject": {
-          "dataValue": [
-            1,
-            1,
-            1
-          ],
-          "isUniform": false,
-          "distType": "Curve",
-          "distIndex": [
-            5,
-            5,
-            5
-          ]
-        }
-      },
-      "materialOverrides": {
-        "baseColor.color": {
-          "$type": "Color",
-          "Value": [
-            0.48,
-            0.0459,
-            0.3482,
-            1.0
-          ]
-        },
-        "emissive.color": {
-          "$type": "Color",
-          "Value": [
-            1.0,
-            0.0354,
-            0.7071,
-            1.0
-          ]
-        },
-        "emissive.intensity": {
-          "$type": "float",
-          "Value": 3.9471
-        },
-        "roughness.factor": {
-          "$type": "float",
-          "Value": 0.2768
-        },
-        "specularF0.factor": {
-          "$type": "float",
-          "Value": 0.72
-        },
-        "opacity.factor": {
-          "$type": "float",
-          "Value": 0.75
-        },
-        "parallax.factor": {
-          "$type": "float",
-          "Value": 0.028
-        },
-        "effect.flow": {
-          "$type": "float",
-          "Value": 0.5313
-        },
-        "effect.frequency": {
-          "$type": "float",
-          "Value": 1.7263
-        },
-        "effect.seed": {
-          "$type": "float",
-          "Value": 3.4708
-        },
-        "effect.erosion": {
-          "$type": "float",
-          "Value": 0.3631
-        },
-        "effect.edge": {
-          "$type": "float",
-          "Value": 1.8
-        },
-        "parallax.textureMap": {
-          "$type": "{403A7CFE-B218-5D57-8540-BD58E734BCFE} Asset<StreamingImageAsset>",
-          "Value": {
-            "assetId": {
-              "guid": "{F4B5C808-0B7D-5782-BAAB-54FD6729EEF1}",
-              "subId": 1000
-            },
-            "assetHint": "textures/noiselayers_cloudvoronoi.tif.streamingimage"
-          }
-        }
-      },
-      "OpenParticle::MeshConfig": {
-        "facing": "CUSTOM",
-        "sortId": 0
-      },
-      "model": {
-        "assetId": {
-          "guid": "{F811A151-9E09-53E3-9520-1985E990FDC2}",
-          "subId": 277204686
-        },
-        "assetHint": "models/vfxpack/swept_arc.fbx.azmodel"
-      },
-      "OpenParticle::SpawnRotation": {
-        "initAxis": [
-          -0.8414709848078965,
-          0.5403023058681398,
-          0.0
-        ],
-        "rotateAxis": [
-          0.053762088829501196,
-          0.08372949243664819,
-          0.9950371902099893
-        ],
-        "initAngleObject": {
-          "dataValue": 5.71059,
-          "isUniform": false,
-          "distType": "Random",
-          "distIndex": [
-            5
-          ]
-        },
-        "rotateSpeedObject": {
-          "dataValue": 8.0,
-          "isUniform": false,
-          "distType": "Random",
-          "distIndex": [
-            6
-          ]
-        }
-      }
-    },
-    {
-      "name": "Sweeping band 3",
-      "config": {
-        "type": "CPU",
-        "maxSize": 5,
-        "startTime": 0,
-        "localSpace": true,
-        "duration": 2.4,
-        "loop": true
-      },
-      "material": {
-        "assetId": {
-          "guid": "{BD9062B6-A56A-539A-B448-90165B541B14}",
-          "subId": 0
-        },
-        "loadBehavior": "PreLoad",
-        "assetHint": "materials/vfxpack/filament.azmaterial"
-      },
-      "OpenParticle::RibbonConfig": {
-        "trailParam": {
-          "ratio": 1,
-          "lifetime": 0.38700000000000007,
-          "inheritLiftime": false,
-          "dieWithParticles": true
-        },
-        "ribbonParam": {
-          "ribbonCount": 1
-        },
-        "sortId": 0,
-        "minRibbonSegmentLength": 0.008,
-        "ribbonWidthObject": {
-          "dataValue": 0.067,
-          "isUniform": false,
-          "distType": "Constant",
-          "distIndex": [
-            0
-          ]
-        },
-        "inheritSize": false,
-        "tesselation": 0.15,
-        "curveTension": 0.08,
-        "tilingDistance": 0,
-        "facing": "CAMERA",
-        "mode": "TRAIL"
       },
       "OpenParticle::EmitBurstList": {
         "isProcessBurstList": true,
         "burstList": [
           {
-            "time": 0,
+            "time": 0.0,
             "count": 1,
             "minCount": -1
           }
         ]
       },
-      "OpenParticle::EmitSpawn": {
-        "isProcessSpawnRate": true,
-        "spawnRateObject": {
-          "dataValue": 1.1627906976744184,
+      "OpenParticle::SpawnSize": {
+        "sizeObject": {
+          "dataValue": [
+            0.0,
+            0.0,
+            0.0
+          ],
           "isUniform": false,
           "distType": "Constant",
           "distIndex": [
+            0,
+            0,
             0
           ]
         }
       },
       "OpenParticle::SpawnLifetime": {
         "lifeTimeObject": {
-          "dataValue": 0.8600000000000001,
+          "dataValue": 0.001,
           "isUniform": false,
           "distType": "Constant",
           "distIndex": [
             0
-          ]
-        }
-      },
-      "OpenParticle::SpawnLocPoint": {
-        "positionObject": {
-          "dataValue": [
-            0,
-            0,
-            0
-          ],
-          "isUniform": false,
-          "distType": "Constant",
-          "distIndex": [
-            0,
-            0,
-            0
-          ]
-        }
-      },
-      "OpenParticle::UpdateRotateAroundPoint": {
-        "rotateRate": -3.78,
-        "radius": 0.562,
-        "xAxis": [
-          -0.3638417096768584,
-          0.23874356202522282,
-          -0.9003447794544761
-        ],
-        "yAxis": [
-          0.9314607937532425,
-          0.09325659905833023,
-          -0.3516873560886902
-        ],
-        "center": [
-          0,
-          0,
-          1.08
-        ]
-      },
-      "OpenParticle::SpawnSize": {
-        "sizeObject": {
-          "dataValue": [
-            0.06767,
-            0.06767,
-            0.06767
-          ],
-          "isUniform": false,
-          "distType": "Random",
-          "distIndex": [
-            7,
-            7,
-            7
           ]
         }
       },
@@ -610,160 +82,7 @@
         "startColorObject": {
           "dataValue": [
             1.0,
-            0.94,
-            0.86,
-            0.86
-          ],
-          "isUniform": false,
-          "distType": "Constant",
-          "distIndex": [
-            0,
-            0,
-            0,
-            0
-          ]
-        }
-      },
-      "OpenParticle::UpdateColor": {
-        "currentColorObject": {
-          "dataValue": [
             1.0,
-            0.94,
-            0.86,
-            1.0
-          ],
-          "isUniform": false,
-          "distType": "Curve",
-          "distIndex": [
-            7,
-            8,
-            9,
-            4
-          ]
-        }
-      },
-      "OpenParticle::SizeScale": {
-        "scaleFactorObject": {
-          "dataValue": [
-            1,
-            1,
-            1
-          ],
-          "isUniform": false,
-          "distType": "Curve",
-          "distIndex": [
-            5,
-            5,
-            5
-          ]
-        }
-      },
-      "materialOverrides": {
-        "emissive.enable": {
-          "$type": "bool",
-          "Value": true
-        },
-        "emissive.useTexture": {
-          "$type": "bool",
-          "Value": true
-        },
-        "emissive.textureMap": {
-          "$type": "{403A7CFE-B218-5D57-8540-BD58E734BCFE} Asset<StreamingImageAsset>",
-          "Value": {
-            "assetId": {
-              "guid": "{1AA24D31-66E5-52B6-8F21-ABADFECE661D}",
-              "subId": 1000
-            },
-            "assetHint": "textures/cloudnoise_01.jpg.streamingimage"
-          }
-        },
-        "emissive.color": {
-          "$type": "Color",
-          "Value": [
-            1.0,
-            0.94,
-            0.86,
-            1.0
-          ]
-        },
-        "emissive.intensity": {
-          "$type": "float",
-          "Value": 0.8
-        }
-      }
-    },
-    {
-      "name": "Edge fragments",
-      "config": {
-        "type": "CPU",
-        "maxSize": 11,
-        "startTime": 0,
-        "localSpace": true,
-        "duration": 2.4,
-        "loop": true
-      },
-      "material": {
-        "assetId": {
-          "guid": "{B22A712C-EC90-50A3-ABFD-F27871963D90}",
-          "subId": 0
-        },
-        "assetHint": "materials/vfxpack/mesh_ward.azmaterial"
-      },
-      "OpenParticle::SpawnLifetime": {
-        "lifeTimeObject": {
-          "dataValue": 0.45,
-          "isUniform": false,
-          "distType": "Random",
-          "distIndex": [
-            8
-          ]
-        }
-      },
-      "OpenParticle::SpawnVelDirection": {
-        "strengthObject": {
-          "dataValue": 1,
-          "isUniform": false,
-          "distType": "Constant",
-          "distIndex": [
-            0
-          ]
-        },
-        "directionObject": {
-          "dataValue": [
-            0.0,
-            0.0,
-            0.36
-          ],
-          "isUniform": false,
-          "distType": "Random",
-          "distIndex": [
-            9,
-            10,
-            11
-          ]
-        }
-      },
-      "OpenParticle::SpawnSize": {
-        "sizeObject": {
-          "dataValue": [
-            0.11128,
-            0.0851,
-            0.34309
-          ],
-          "isUniform": false,
-          "distType": "Random",
-          "distIndex": [
-            12,
-            13,
-            14
-          ]
-        }
-      },
-      "OpenParticle::SpawnColor": {
-        "startColorObject": {
-          "dataValue": [
-            0.99,
-            0.035,
             0.0,
             0.0
           ],
@@ -777,472 +96,41 @@
           ]
         }
       },
-      "OpenParticle::UpdateColor": {
-        "currentColorObject": {
-          "dataValue": [
-            0.99,
-            0.035,
-            0.0,
-            1.0
-          ],
-          "isUniform": false,
-          "distType": "Curve",
-          "distIndex": [
-            1,
-            2,
-            6,
-            10
-          ]
-        }
-      },
-      "OpenParticle::SizeScale": {
-        "scaleFactorObject": {
-          "dataValue": [
-            1,
-            1,
-            1
-          ],
-          "isUniform": false,
-          "distType": "Curve",
-          "distIndex": [
-            11,
-            11,
-            11
-          ]
-        }
-      },
-      "OpenParticle::MeshConfig": {
-        "facing": "CUSTOM",
-        "sortId": 1
-      },
-      "model": {
-        "assetId": {
-          "guid": "{F92FEF41-CFC5-5B09-8540-C428FE009121}",
-          "subId": 272973440
-        },
-        "assetHint": "models/vfxpack/shield_petal.fbx.azmodel"
-      },
-      "OpenParticle::SpawnRotation": {
-        "initAxis": [
-          0.8695106694726455,
-          -0.49391415820285184,
-          0.0
-        ],
-        "rotateAxis": [
-          -0.38568216068291744,
-          -0.6789737612691169,
-          0.6246950475544243
-        ],
-        "initAngleObject": {
-          "dataValue": 51.34019,
-          "isUniform": false,
-          "distType": "Random",
-          "distIndex": [
-            15
-          ]
-        },
-        "rotateSpeedObject": {
-          "dataValue": 24.0,
-          "isUniform": false,
-          "distType": "Random",
-          "distIndex": [
-            16
-          ]
-        }
-      },
-      "materialOverrides": {
-        "baseColor.color": {
-          "$type": "Color",
-          "Value": [
-            0.363,
-            0.39,
-            0.48,
-            1.0
-          ]
-        },
-        "emissive.color": {
-          "$type": "Color",
-          "Value": [
-            0.74,
-            0.8,
-            1.0,
-            1.0
-          ]
-        },
-        "emissive.intensity": {
-          "$type": "float",
-          "Value": 3.9357
-        },
-        "roughness.factor": {
-          "$type": "float",
-          "Value": 0.2739
-        },
-        "specularF0.factor": {
-          "$type": "float",
-          "Value": 0.72
-        },
-        "opacity.factor": {
-          "$type": "float",
-          "Value": 0.75
-        },
-        "parallax.factor": {
-          "$type": "float",
-          "Value": 0.028
-        },
-        "effect.flow": {
-          "$type": "float",
-          "Value": 0.5253
-        },
-        "effect.frequency": {
-          "$type": "float",
-          "Value": 1.7143
-        },
-        "effect.seed": {
-          "$type": "float",
-          "Value": 3.3566
-        },
-        "effect.erosion": {
-          "$type": "float",
-          "Value": 0.3605
-        },
-        "effect.edge": {
-          "$type": "float",
-          "Value": 1.8
-        },
-        "parallax.textureMap": {
-          "$type": "{403A7CFE-B218-5D57-8540-BD58E734BCFE} Asset<StreamingImageAsset>",
-          "Value": {
-            "assetId": {
-              "guid": "{F4B5C808-0B7D-5782-BAAB-54FD6729EEF1}",
-              "subId": 1000
-            },
-            "assetHint": "textures/noiselayers_cloudvoronoi.tif.streamingimage"
-          }
-        }
-      },
-      "OpenParticle::ParticleEventHandler": {
-        "emitterIndex": 4,
-        "emitterName": "Orbiting shield scale 1",
-        "eventType": "UPDATE_DEATH",
-        "maxEventNum": 2,
-        "emitNum": 2,
-        "useEventInfo": true
-      },
-      "OpenParticle::SpawnLocBox": {
-        "center": [
-          0,
-          0,
-          0
-        ],
-        "size": [
-          0.1,
-          0.1,
-          0.07
-        ]
-      }
-    },
-    {
-      "name": "Orbiting shield scale 1",
-      "config": {
-        "type": "CPU",
-        "maxSize": 6,
-        "startTime": 0,
-        "localSpace": true,
-        "duration": 2.4,
-        "loop": true
-      },
-      "material": {
-        "assetId": {
-          "guid": "{B22A712C-EC90-50A3-ABFD-F27871963D90}",
-          "subId": 0
-        },
-        "assetHint": "materials/vfxpack/mesh_ward.azmaterial"
-      },
-      "model": {
-        "assetId": {
-          "guid": "{F92FEF41-CFC5-5B09-8540-C428FE009121}",
-          "subId": 272973440
-        },
-        "assetHint": "models/vfxpack/shield_petal.fbx.azmodel"
-      },
-      "OpenParticle::EmitBurstList": {
-        "isProcessBurstList": true,
-        "burstList": [
-          {
-            "time": 0,
-            "count": 1,
-            "minCount": -1
-          }
-        ]
-      },
-      "OpenParticle::EmitSpawn": {
-        "isProcessSpawnRate": true,
-        "spawnRateObject": {
-          "dataValue": 0.65,
-          "isUniform": false,
-          "distType": "Constant",
-          "distIndex": [
-            0
-          ]
-        }
-      },
-      "OpenParticle::SpawnLifetime": {
-        "lifeTimeObject": {
-          "dataValue": 1.55,
-          "isUniform": false,
-          "distType": "Random",
-          "distIndex": [
-            17
-          ]
-        }
-      },
-      "OpenParticle::SpawnLocPoint": {
-        "positionObject": {
-          "dataValue": [
-            0,
-            0,
-            0
-          ],
-          "isUniform": false,
-          "distType": "Constant",
-          "distIndex": [
-            0,
-            0,
-            0
-          ]
-        }
-      },
-      "OpenParticle::UpdateRotateAroundPoint": {
-        "rotateRate": 3.11,
-        "radius": 0.49,
-        "xAxis": [
-          0.9713379748520296,
-          0.23770262642713458,
-          0.31
-        ],
-        "yAxis": [
-          0.08,
-          -0.75,
-          0.65
-        ],
-        "center": [
-          0,
-          0,
-          0.92
-        ]
-      },
-      "OpenParticle::SpawnSize": {
-        "sizeObject": {
-          "dataValue": [
-            0.30698,
-            0.0895,
-            0.54895
-          ],
-          "isUniform": false,
-          "distType": "Random",
-          "distIndex": [
-            18,
-            19,
-            20
-          ]
-        }
-      },
-      "OpenParticle::SpawnColor": {
-        "startColorObject": {
-          "dataValue": [
-            1.0,
-            1.0,
-            0.0,
-            1.0
-          ],
-          "isUniform": false,
-          "distType": "Constant",
-          "distIndex": [
-            0,
-            0,
-            0,
-            0
-          ]
-        }
-      },
-      "OpenParticle::UpdateColor": {
-        "currentColorObject": {
-          "dataValue": [
-            1.0,
-            1.0,
-            0.0,
-            1.0
-          ],
-          "isUniform": false,
-          "distType": "Curve",
-          "distIndex": [
-            7,
-            7,
-            6,
-            12
-          ]
-        }
-      },
-      "OpenParticle::SizeScale": {
-        "scaleFactorObject": {
-          "dataValue": [
-            1,
-            1,
-            1
-          ],
-          "isUniform": false,
-          "distType": "Curve",
-          "distIndex": [
-            13,
-            13,
-            13
-          ]
-        }
-      },
-      "OpenParticle::SpawnRotation": {
-        "initAxis": [
-          0.6,
-          0.28,
-          0.72
-        ],
-        "rotateAxis": [
-          0.37,
-          0.49,
-          0.78
-        ],
-        "initAngleObject": {
-          "dataValue": 23.0,
-          "isUniform": false,
-          "distType": "Random",
-          "distIndex": [
-            21
-          ]
-        },
-        "rotateSpeedObject": {
-          "dataValue": 47.0,
-          "isUniform": false,
-          "distType": "Random",
-          "distIndex": [
-            22
-          ]
-        }
-      },
-      "materialOverrides": {
-        "baseColor.color": {
-          "$type": "Color",
-          "Value": [
-            0.48,
-            0.0459,
-            0.3482,
-            1.0
-          ]
-        },
-        "emissive.color": {
-          "$type": "Color",
-          "Value": [
-            1.0,
-            0.0354,
-            0.7071,
-            1.0
-          ]
-        },
-        "emissive.intensity": {
-          "$type": "float",
-          "Value": 4.3632
-        },
-        "roughness.factor": {
-          "$type": "float",
-          "Value": 0.2508
-        },
-        "specularF0.factor": {
-          "$type": "float",
-          "Value": 0.72
-        },
-        "opacity.factor": {
-          "$type": "float",
-          "Value": 0.75
-        },
-        "parallax.factor": {
-          "$type": "float",
-          "Value": 0.028
-        },
-        "effect.flow": {
-          "$type": "float",
-          "Value": 0.4764
-        },
-        "effect.frequency": {
-          "$type": "float",
-          "Value": 1.6169
-        },
-        "effect.seed": {
-          "$type": "float",
-          "Value": 2.4323
-        },
-        "effect.erosion": {
-          "$type": "float",
-          "Value": 0.3397
-        },
-        "effect.edge": {
-          "$type": "float",
-          "Value": 1.8
-        },
-        "parallax.textureMap": {
-          "$type": "{403A7CFE-B218-5D57-8540-BD58E734BCFE} Asset<StreamingImageAsset>",
-          "Value": {
-            "assetId": {
-              "guid": "{F4B5C808-0B7D-5782-BAAB-54FD6729EEF1}",
-              "subId": 1000
-            },
-            "assetHint": "textures/noiselayers_cloudvoronoi.tif.streamingimage"
-          }
-        }
-      },
-      "OpenParticle::MeshConfig": {
-        "facing": "CUSTOM",
-        "sortId": 0
-      },
-      "OpenParticle::UpdateDeathEvent": {
+      "OpenParticle::SpawnLocationEvent": {
         "whetherSendEvent": true
       }
     },
     {
-      "name": "Orbiting shield scale 2",
-      "config": {
-        "type": "CPU",
-        "maxSize": 6,
-        "startTime": 0,
-        "localSpace": true,
-        "duration": 2.4,
-        "loop": true
+      "name": "Conformal field cover",
+      "model": {
+        "assetId": {
+          "guid": "{86809175-D544-5F2E-A866-065E5240F368}",
+          "subId": 284812037
+        },
+        "assetHint": "models/vfxpack/status_shaderball.fbx.azmodel"
       },
       "material": {
         "assetId": {
-          "guid": "{B22A712C-EC90-50A3-ABFD-F27871963D90}",
+          "guid": "{921D0531-34FF-5F89-91EA-A346BDC523AB}",
           "subId": 0
         },
-        "assetHint": "materials/vfxpack/mesh_ward.azmaterial"
+        "assetHint": "materials/vfxpack/mesh_plasma.azmaterial"
       },
-      "model": {
-        "assetId": {
-          "guid": "{F92FEF41-CFC5-5B09-8540-C428FE009121}",
-          "subId": 272973440
-        },
-        "assetHint": "models/vfxpack/shield_petal.fbx.azmodel"
+      "config": {
+        "type": "CPU",
+        "localSpace": true,
+        "startTime": 0,
+        "loop": true,
+        "duration": 3.0,
+        "maxSize": 1
       },
-      "OpenParticle::EmitBurstList": {
-        "isProcessBurstList": true,
-        "burstList": [
-          {
-            "time": 0,
-            "count": 1,
-            "minCount": -1
-          }
-        ]
+      "OpenParticle::MeshConfig": {
+        "facing": "CUSTOM",
+        "sortId": 2
       },
-      "OpenParticle::EmitSpawn": {
-        "isProcessSpawnRate": true,
-        "spawnRateObject": {
-          "dataValue": 0.65,
+      "OpenParticle::SpawnLifetime": {
+        "lifeTimeObject": {
+          "dataValue": 3.0,
           "isUniform": false,
           "distType": "Constant",
           "distIndex": [
@@ -1250,12 +138,18 @@
           ]
         }
       },
-      "OpenParticle::SpawnLifetime": {
-        "lifeTimeObject": {
-          "dataValue": 1.55,
+      "OpenParticle::SpawnSize": {
+        "sizeObject": {
+          "dataValue": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "isUniform": false,
           "distType": "Constant",
           "distIndex": [
+            0,
+            0,
             0
           ]
         }
@@ -1273,41 +167,6 @@
             0,
             0,
             0
-          ]
-        }
-      },
-      "OpenParticle::UpdateRotateAroundPoint": {
-        "rotateRate": -3.11,
-        "radius": 0.49,
-        "xAxis": [
-          -0.9713379748520296,
-          -0.2377026264271347,
-          0.31
-        ],
-        "yAxis": [
-          0.08,
-          -0.75,
-          0.65
-        ],
-        "center": [
-          0,
-          0,
-          1.11
-        ]
-      },
-      "OpenParticle::SpawnSize": {
-        "sizeObject": {
-          "dataValue": [
-            0.30698,
-            0.0895,
-            0.54895
-          ],
-          "isUniform": false,
-          "distType": "Random",
-          "distIndex": [
-            18,
-            19,
-            20
           ]
         }
       },
@@ -1329,77 +188,26 @@
           ]
         }
       },
-      "OpenParticle::UpdateColor": {
-        "currentColorObject": {
-          "dataValue": [
-            1.0,
-            1.0,
-            0.0,
-            1.0
-          ],
-          "isUniform": false,
-          "distType": "Curve",
-          "distIndex": [
-            7,
-            7,
-            6,
-            12
-          ]
-        }
-      },
-      "OpenParticle::SizeScale": {
-        "scaleFactorObject": {
-          "dataValue": [
-            1,
-            1,
-            1
-          ],
-          "isUniform": false,
-          "distType": "Curve",
-          "distIndex": [
-            13,
-            13,
-            13
-          ]
-        }
-      },
-      "OpenParticle::SpawnRotation": {
-        "initAxis": [
-          0.6,
-          0.28,
-          0.72
-        ],
-        "rotateAxis": [
-          0.37,
-          0.49,
-          0.78
-        ],
-        "initAngleObject": {
-          "dataValue": 63.0,
-          "isUniform": false,
-          "distType": "Random",
-          "distIndex": [
-            23
-          ]
-        },
-        "rotateSpeedObject": {
-          "dataValue": 47.0,
-          "isUniform": false,
-          "distType": "Random",
-          "distIndex": [
-            22
-          ]
-        }
-      },
       "materialOverrides": {
-        "baseColor.color": {
-          "$type": "Color",
-          "Value": [
-            0.48,
-            0.0459,
-            0.3482,
-            1.0
-          ]
+        "effect.style": {
+          "$type": "float",
+          "Value": 31.0
+        },
+        "effect.flow": {
+          "$type": "float",
+          "Value": 0.68
+        },
+        "effect.frequency": {
+          "$type": "float",
+          "Value": 1.35
+        },
+        "effect.seed": {
+          "$type": "float",
+          "Value": 5.33
+        },
+        "parallax.factor": {
+          "$type": "float",
+          "Value": 0.035
         },
         "emissive.color": {
           "$type": "Color",
@@ -1412,478 +220,34 @@
         },
         "emissive.intensity": {
           "$type": "float",
-          "Value": 4.349
-        },
-        "roughness.factor": {
-          "$type": "float",
-          "Value": 0.2473
-        },
-        "specularF0.factor": {
-          "$type": "float",
-          "Value": 0.72
+          "Value": 1.824
         },
         "opacity.factor": {
           "$type": "float",
-          "Value": 0.75
+          "Value": 0.41
         },
-        "parallax.factor": {
+        "roughness.factor": {
           "$type": "float",
-          "Value": 0.028
+          "Value": 0.91
         },
-        "effect.flow": {
+        "specularF0.factor": {
           "$type": "float",
-          "Value": 0.4689
-        },
-        "effect.frequency": {
-          "$type": "float",
-          "Value": 1.602
-        },
-        "effect.seed": {
-          "$type": "float",
-          "Value": 2.2902
-        },
-        "effect.erosion": {
-          "$type": "float",
-          "Value": 0.3365
-        },
-        "effect.edge": {
-          "$type": "float",
-          "Value": 1.8
-        },
-        "parallax.textureMap": {
-          "$type": "{403A7CFE-B218-5D57-8540-BD58E734BCFE} Asset<StreamingImageAsset>",
-          "Value": {
-            "assetId": {
-              "guid": "{F4B5C808-0B7D-5782-BAAB-54FD6729EEF1}",
-              "subId": 1000
-            },
-            "assetHint": "textures/noiselayers_cloudvoronoi.tif.streamingimage"
-          }
+          "Value": 0.0
         }
       },
-      "OpenParticle::MeshConfig": {
-        "facing": "CUSTOM",
-        "sortId": 0
+      "OpenParticle::ParticleEventHandler": {
+        "emitterIndex": 0,
+        "emitterName": "Field activation",
+        "eventType": "SPAWN_LOCATION",
+        "maxEventNum": 1,
+        "emitNum": 1,
+        "useEventInfo": false
       }
     }
   ],
   "LODs": [],
   "distribution": {
-    "randoms": [
-      {
-        "min": 0.08927,
-        "max": 0.13899,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": 0.53717,
-        "max": 1.1783,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": 0.50183,
-        "max": 1.10078,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": 0.3746,
-        "max": 0.82171,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": -44.28941,
-        "max": 55.71059,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": -49.0,
-        "max": 65.0,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": 0.05293,
-        "max": 0.08241,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": 0.24,
-        "max": 0.66,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": -0.27,
-        "max": 0.27,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": -0.22,
-        "max": 0.22,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": 0.16,
-        "max": 0.56,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": 0.06969,
-        "max": 0.15286,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": 0.0533,
-        "max": 0.11691,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": 0.21487,
-        "max": 0.47132,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": 1.34019,
-        "max": 101.34019,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": -33.0,
-        "max": 81.0,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": 1.333,
-        "max": 1.767,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": 0.19225,
-        "max": 0.42171,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": 0.05605,
-        "max": 0.12294,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": 0.34379,
-        "max": 0.75412,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": -27,
-        "max": 73,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": -10,
-        "max": 104,
-        "tickMode": "PerSpawn"
-      },
-      {
-        "min": 13,
-        "max": 113,
-        "tickMode": "PerSpawn"
-      }
-    ],
-    "curves": [
-      {
-        "leftExtrapMode": "Constant",
-        "rightExtrapMode": "Constant",
-        "valueFactor": 1,
-        "timeFactor": 0,
-        "tickMode": "ParticleLifetime",
-        "keyPoint": [
-          {
-            "time": 0,
-            "value": 0.99,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 1,
-            "value": 0.99,
-            "interpMode": "Linear"
-          }
-        ]
-      },
-      {
-        "leftExtrapMode": "Constant",
-        "rightExtrapMode": "Constant",
-        "valueFactor": 1,
-        "timeFactor": 0,
-        "tickMode": "ParticleLifetime",
-        "keyPoint": [
-          {
-            "time": 0,
-            "value": 0.035,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 1,
-            "value": 0.035,
-            "interpMode": "Linear"
-          }
-        ]
-      },
-      {
-        "leftExtrapMode": "Constant",
-        "rightExtrapMode": "Constant",
-        "valueFactor": 1,
-        "timeFactor": 0,
-        "tickMode": "ParticleLifetime",
-        "keyPoint": [
-          {
-            "time": 0,
-            "value": 0.7,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 1,
-            "value": 0.7,
-            "interpMode": "Linear"
-          }
-        ]
-      },
-      {
-        "leftExtrapMode": "Constant",
-        "rightExtrapMode": "Constant",
-        "valueFactor": 1,
-        "timeFactor": 0,
-        "tickMode": "ParticleLifetime",
-        "keyPoint": [
-          {
-            "time": 0,
-            "value": 0.86,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 0.08,
-            "value": 1,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 0.76,
-            "value": 0.96,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 1,
-            "value": 0,
-            "interpMode": "Linear"
-          }
-        ]
-      },
-      {
-        "leftExtrapMode": "Constant",
-        "rightExtrapMode": "Constant",
-        "valueFactor": 1,
-        "timeFactor": 0,
-        "tickMode": "ParticleLifetime",
-        "keyPoint": [
-          {
-            "time": 0,
-            "value": 1,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 0.38,
-            "value": 1,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 1,
-            "value": 0.55,
-            "interpMode": "Linear"
-          }
-        ]
-      },
-      {
-        "leftExtrapMode": "Constant",
-        "rightExtrapMode": "Constant",
-        "valueFactor": 1.0,
-        "timeFactor": 0.0,
-        "tickMode": "ParticleLifetime",
-        "keyPoint": [
-          {
-            "time": 0.0,
-            "value": 0.0,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 1.0,
-            "value": 1.0,
-            "interpMode": "Linear"
-          }
-        ]
-      },
-      {
-        "leftExtrapMode": "Constant",
-        "rightExtrapMode": "Constant",
-        "valueFactor": 1,
-        "timeFactor": 0,
-        "tickMode": "ParticleLifetime",
-        "keyPoint": [
-          {
-            "time": 0,
-            "value": 1,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 1,
-            "value": 1,
-            "interpMode": "Linear"
-          }
-        ]
-      },
-      {
-        "leftExtrapMode": "Constant",
-        "rightExtrapMode": "Constant",
-        "valueFactor": 1,
-        "timeFactor": 0,
-        "tickMode": "ParticleLifetime",
-        "keyPoint": [
-          {
-            "time": 0,
-            "value": 0.94,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 1,
-            "value": 0.94,
-            "interpMode": "Linear"
-          }
-        ]
-      },
-      {
-        "leftExtrapMode": "Constant",
-        "rightExtrapMode": "Constant",
-        "valueFactor": 1,
-        "timeFactor": 0,
-        "tickMode": "ParticleLifetime",
-        "keyPoint": [
-          {
-            "time": 0,
-            "value": 0.86,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 1,
-            "value": 0.86,
-            "interpMode": "Linear"
-          }
-        ]
-      },
-      {
-        "leftExtrapMode": "Constant",
-        "rightExtrapMode": "Constant",
-        "valueFactor": 1,
-        "timeFactor": 0,
-        "tickMode": "ParticleLifetime",
-        "keyPoint": [
-          {
-            "time": 0,
-            "value": 0,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 0.19,
-            "value": 0.48,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 0.47,
-            "value": 1,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 0.78,
-            "value": 0.55,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 1,
-            "value": 0,
-            "interpMode": "Linear"
-          }
-        ]
-      },
-      {
-        "leftExtrapMode": "Constant",
-        "rightExtrapMode": "Constant",
-        "valueFactor": 1,
-        "timeFactor": 0,
-        "tickMode": "ParticleLifetime",
-        "keyPoint": [
-          {
-            "time": 0,
-            "value": 0.6,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 0.38,
-            "value": 1,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 1,
-            "value": 0.1,
-            "interpMode": "Linear"
-          }
-        ]
-      },
-      {
-        "leftExtrapMode": "Constant",
-        "rightExtrapMode": "Constant",
-        "valueFactor": 1,
-        "timeFactor": 0,
-        "tickMode": "ParticleLifetime",
-        "keyPoint": [
-          {
-            "time": 0,
-            "value": 1,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 0.15,
-            "value": 0.95,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 0.57,
-            "value": 0.53,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 1,
-            "value": 0,
-            "interpMode": "Linear"
-          }
-        ]
-      },
-      {
-        "leftExtrapMode": "Constant",
-        "rightExtrapMode": "Constant",
-        "valueFactor": 1,
-        "timeFactor": 0,
-        "tickMode": "ParticleLifetime",
-        "keyPoint": [
-          {
-            "time": 0,
-            "value": 0.56,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 0.38,
-            "value": 1,
-            "interpMode": "Linear"
-          },
-          {
-            "time": 1,
-            "value": 0.32,
-            "interpMode": "Linear"
-          }
-        ]
-      }
-    ]
+    "randoms": [],
+    "curves": []
   }
 }

@@ -58,8 +58,25 @@ float node2_particle_height_field_outHeight = SampleParticleHeight(params, node2
 float inRelief = node2_particle_height_field_outHeight;
     // O3DE_GENERATED_INSTRUCTIONS_END
     #undef O3DE_MC_UV
+    if (params.m_effectStyle > 30.5)
+    {
+        // The covering mesh keeps its source pivot and vertex positions.
+        // Offset along its own smooth normals so even narrow limbs stay separate.
+        float width = params.m_heightmapScale;
+        if (params.m_effectStyle > 37.5 && params.m_effectStyle < 44.5)
+        {
+            float drift = SceneSrg::m_time * params.m_effectFlow;
+            float vapor = ParticleVolumeNoise(position*2.7 + float3(params.m_effectSeed,0.0,-drift*0.4));
+            // Lift the outer volume above the skin. The density fades to zero at this boundary.
+            float3 outward = normalize(normal);
+            float lift = width*(.40 + 1.70*vapor);
+            return position + outward*width*(.67+.59*vapor)
+                   + float3(.18*lift*sin(drift+position.z*3.1),.16*lift*cos(drift*.8+position.z*2.6),lift);
+        }
+        return position + normalize(normal) * width;
+    }
     // The unit sphere bounds the integration. Its surface never contributes light.
-    if (params.m_effectStyle > 10.5) return position;
+    if (params.m_effectStyle > 10.5 || abs(params.m_effectStyle-8.0) < 0.5) return position;
     return position + normal * ((inRelief - 0.5 + params.m_heightmapOffset) * params.m_heightmapScale);
 }
 
@@ -87,13 +104,14 @@ float3 ParticleSurfaceWorldPosition(float3 localPosition, ParticleMeshInstanceDa
     {
         ParticleMeshInstanceData instanceData = LoadInstanceData(SV.m_instanceId);
         float4x4 objectToWorld = GetObjectToWorldMatrix(SV);
-        float3 worldPosition = ParticleSurfaceWorldPosition(DisplaceParticleVertex(IN.position, IN.normal, IN.uv0, params, instanceData), instanceData, objectToWorld);
+        float3 displaced = DisplaceParticleVertex(IN.position, IN.normal, IN.uv0, params, instanceData);
+        float3 worldPosition = ParticleSurfaceWorldPosition(displaced, instanceData, objectToWorld);
 
         VsOutput OUT;
         OUT.position = mul(GetViewProjectionMatrix(SV), float4(worldPosition, 1.0));
 
 #if MATERIAL_USES_VERTEX_LOCALPOSITION
-        OUT.localPosition = IN.position;
+        OUT.localPosition = (params.m_effectStyle > 37.5 && params.m_effectStyle < 44.5) ? displaced : IN.position;
 #endif
 
 #if MATERIAL_USES_VERTEX_POSITIONWS
@@ -103,13 +121,15 @@ float3 ParticleSurfaceWorldPosition(float3 localPosition, ParticleMeshInstanceDa
 #if MATERIAL_USES_VERTEX_UV
         float3 uv0h = float3(IN.uv0, 1.0);
         OUT.uvs[0] = float2(dot(params.m_uvMatrixRow0.xyz, uv0h), dot(params.m_uvMatrixRow1.xyz, uv0h));
-        OUT.uvs[1] = params.m_effectStyle > 10.5
+        OUT.uvs[1] = params.m_effectStyle > 10.5 && params.m_effectStyle < 30.5
             ? float2(saturate(IN.position.z + 0.5), instanceData.m_initRotation.w + dot(instanceData.m_scale.xyz, float3(0.83, 2.76, 1.78)))
             : IN.uv1;
 #endif
 
 #if MATERIAL_USES_VERTEX_NORMAL
         OUT.normal = normalize(RotateParticleDirection(IN.normal / max(abs(instanceData.m_scale.xyz), 0.0001), instanceData));
+        if (params.m_effectStyle > 37.5)
+            OUT.normal = normalize(mul((float3x3)objectToWorld,OUT.normal));
 #endif
 #if MATERIAL_USES_VERTEX_TANGENT
         OUT.tangent = float4(normalize(RotateParticleDirection(IN.tangent.xyz * instanceData.m_scale.xyz, instanceData)), IN.tangent.w);
@@ -125,7 +145,8 @@ float3 ParticleSurfaceWorldPosition(float3 localPosition, ParticleMeshInstanceDa
 #endif
 
 #if MATERIAL_USES_VERTEX_TANGENT && MATERIAL_USES_VERTEX_LOCALPOSITION
-        if (params.m_effectStyle > 10.5)
+        if ((params.m_effectStyle > 10.5 && params.m_effectStyle < 30.5) ||
+            (params.m_effectStyle > 37.5 && params.m_effectStyle < 44.5))
         {
             // Carry the ray in the ellipsoid's local coordinates, including nonuniform scale.
             float3 ray = worldPosition - ViewSrg::m_worldPosition.xyz;
@@ -133,7 +154,7 @@ float3 ParticleSurfaceWorldPosition(float3 localPosition, ParticleMeshInstanceDa
             float3 by = mul((float3x3)objectToWorld, RotateParticleDirection(float3(0, instanceData.m_scale.y, 0), instanceData));
             float3 bz = mul((float3x3)objectToWorld, RotateParticleDirection(float3(0, 0, instanceData.m_scale.z), instanceData));
 #if MATERIAL_USES_VERTEX_NORMAL
-            if ((params.m_effectStyle > 15.5 && params.m_effectStyle < 16.5) || params.m_effectStyle > 17.5)
+            if ((params.m_effectStyle > 15.5 && params.m_effectStyle < 16.5) || (params.m_effectStyle > 17.5 && params.m_effectStyle < 30.5))
             {
                 float3 key = normalize(float3(-0.35,-0.48,0.80));
                 if (SceneSrg::m_directionalLightCount > 0) key = -normalize(SceneSrg::m_directionalLights[0].m_direction);
@@ -282,9 +303,9 @@ float inOpticalDepth = node7_participating_medium_outExtinction;
             float along = saturate(uv.y);
             float phase = 6.283185 * (uv.x * 2.0 + along * 1.72 - SceneSrg::m_time * params.m_effectFlow + field * 0.23);
             float strand = smoothstep(0.34, 0.88, cos(phase));
-            float endFalloff = smoothstep(0.0, 0.085, along) * (1.0 - smoothstep(0.86, 1.0, along));
+            // Preserve the circular face and cylindrical silhouette through both ends.
             float core = pow(saturate(1.0 - rim), 2.6);
-            surface.alpha = params.m_opacityFactor * endFalloff * saturate(0.12 + core * 0.91 + strand * 0.58);
+            surface.alpha = params.m_opacityFactor * saturate(0.54 + core * 0.36 + strand * 0.24);
             surface.emissiveLighting = lerp(tint * 0.56, lerp(tint, float3(1.0, 1.0, 1.0), 0.86), core * core) * glow * (0.40 + 1.30 * core + 0.47 * strand);
         }
         else if (style > 8.5 && style < 9.5)
@@ -311,6 +332,157 @@ float inOpticalDepth = node7_participating_medium_outExtinction;
             surface.emissiveLighting = lerp(tint, float3(0.96, 0.99, 1.0), glint * 0.75) * glow * rimBand * (0.16 + 0.94 * crest);
             surface.roughnessLinear = lerp(0.16, 0.045, glint);
         }
+        else if (style > 37.5)
+        {
+#if MATERIAL_USES_VERTEX_LOCALPOSITION
+            float3 p = IN.localPosition;
+#else
+            float3 p = geoData.positionWS;
+#endif
+            float3 eyeDirection = normalize(ViewSrg::m_worldPosition.xyz - geoData.positionWS);
+#if MATERIAL_USES_VERTEX_NORMAL
+            float mu = saturate(abs(dot(normalize(IN.normal),eyeDirection)));
+#else
+            float mu = saturate(abs(dot(normalize(cross(ddy(geoData.positionWS),ddx(geoData.positionWS))),eyeDirection)));
+#endif
+            float t = SceneSrg::m_time * params.m_effectFlow;
+            surface.albedo = float3(0,0,0);
+            surface.specularF0 = float3(0,0,0);
+            if (style > 44.5)
+            {
+                // A stepped leader advances through the authored fork once. Both return
+                // strokes illuminate those exact branches before the ionized air cools.
+                float along = saturate(p.z + 0.5);
+                float travelled = saturate(age*7.8);
+                float leader = smoothstep(along-.085,along+.025,travelled)*(1.0-smoothstep(.12,.20,age));
+                float firstStroke = exp(-15.0*max(0.0,age-.18))*smoothstep(.14,.18,age);
+                float secondStroke = .80*exp(-20.0*max(0.0,age-.54))*smoothstep(.50,.54,age);
+                float pulse = .19*leader + firstStroke + secondStroke;
+                float coreLight = smoothstep(.68,.99,mu);
+                surface.alpha = params.m_opacityFactor*smoothstep(.035,.57,mu)*saturate(pulse*2.8);
+                surface.emissiveLighting = lerp(tint,float3(.86,.95,1.),coreLight) * glow * (.32+1.9*coreLight)*pulse;
+            }
+            else
+            {
+                // Integrate a short view ray through the translucent gas outside the host.
+                // A curved local skin limits the path on the chest and around narrow limbs.
+                float phase = params.m_effectSeed;
+                float width = max(.015,params.m_heightmapScale);
+#if MATERIAL_USES_VERTEX_TANGENT && MATERIAL_USES_VERTEX_LOCALPOSITION
+                float3 rayDirection = normalize(IN.tangent.xyz);
+#else
+                float3 rayDirection = -eyeDirection;
+#endif
+                float radius = width*2.8;
+#if MATERIAL_USES_VERTEX_NORMAL
+                float curvature = (length(ddx(IN.normal))+length(ddy(IN.normal))) /
+                                   max(.0001,length(ddx(p))+length(ddy(p)));
+                radius = clamp(1.0/max(.10,curvature),width*1.5,width*4.5);
+#endif
+                float ratio = width/radius;
+                float travel = radius*(mu-sqrt(max(0.0,mu*mu-ratio*(2.0-ratio))));
+                float accumulated = 0.0;
+                float vaporTone = 0.0;
+                for (int stepIndex=0; stepIndex<5; ++stepIndex)
+                {
+                    float d = travel*(float(stepIndex)+.5)/5.0;
+                    float inset = (radius-sqrt(max(.00001,radius*radius-2.0*radius*mu*d+d*d)))/width;
+                    float3 samplePos = p + d*rayDirection;
+                    float3 q = samplePos*params.m_effectFrequency*float3(3.2,3.2,1.32);
+                    q.z -= SceneSrg::m_time*(.32+saturate(params.m_effectFlow)*.67);
+                    q.xy += float2(.40*sin(1.54*q.z-.36*t+phase),.37*cos(1.78*q.z+.24*t-phase));
+                    q += float3(phase,.63*phase,.24*phase);
+                    float broad = ParticleVolumeNoise(q);
+                    float fine = ParticleVolumeNoise(q*1.91+float3(.47*broad,-.59*broad,.31*broad));
+                    float sheet = 1.0-smoothstep(.022,.175,abs(.64*broad+.36*fine-.50));
+                    float gathering = smoothstep(.20,.74,broad+.15*(fine-.5));
+                    float density = (.045 + 1.65*sheet*sheet*gathering)*smoothstep(.01,.70,inset);
+                    accumulated += density;
+                    vaporTone += density*fine;
+                }
+                float opticalDepth = accumulated*travel*(3.80/5.0);
+                surface.alpha = params.m_opacityFactor*(1.0-exp(-opticalDepth));
+                float tone = vaporTone/max(.001,accumulated);
+                float3 auraTint = lerp(tint,lerp(tint,float3(.90,.94,1.0),.29),smoothstep(.24,.76,tone));
+                if (style > 39.5 && style < 40.5)
+                    auraTint = lerp(tint,float3(1.0,.48,.07),smoothstep(.28,.72,tone)*.65);
+                else if (style > 43.5)
+                    auraTint = lerp(tint,float3(.54,.33,.91),smoothstep(.30,.75,tone)*.64);
+                surface.emissiveLighting = auraTint*glow*(.76+.47*tone);
+                if (style > 38.5 && style < 39.5)
+                {
+                    // A surface channel retains its route during its leader and both return
+                    // strokes. Piecewise-linear noise gives each discharge angular bends.
+                    float cycle = SceneSrg::m_time*3.1 + phase;
+                    float burstId = floor(cycle);
+                    float fraction = frac(cycle);
+                    float seed = ParticleLatticeHash(71.0*burstId+19.0).x;
+                    float azimuth = seed*6.283185;
+                    float u = dot(p.xy,float2(cos(azimuth),sin(azimuth)));
+                    float axisPos = p.z + .37*dot(p.xy,float2(-sin(azimuth),cos(azimuth)));
+                    float q = axisPos*10.0 + 37.0*burstId;
+                    float idx = floor(q);
+                    float4 bends = ParticleLatticeHash(float4(idx,idx+1.0,floor(q*3.0),floor(q*3.0)+1.0));
+                    float kink = lerp(bends.x,bends.y,frac(q))-.5;
+                    float jag = lerp(bends.z,bends.w,frac(q*3.0))-.5;
+                    float route = .23*(seed-.5)+.12*sin(axisPos*4.3+azimuth)+.19*kink+.045*jag;
+                    float lateral = frac((u-route)/.94+.5)*.94-.47;
+                    float z = frac((axisPos+.89*seed)/1.60);
+                    float split = saturate((z-.42)/.37);
+                    float side = abs(lateral-(.24+.05*kink)*split);
+                    float branchDist = lerp(1.0,side,smoothstep(.42,.44,z)*(1.0-smoothstep(.72,.80,z)));
+                    float channelDist = min(abs(lateral),branchDist);
+                    float aa = clamp(fwidth(lateral)*.55,.001,.012);
+                    float filament = 1.0-smoothstep(.002,.006+aa,channelDist);
+                    float halo = exp(-channelDist*56.0);
+                    float head = smoothstep(z-.045,z+.016,saturate(fraction*7.8));
+                    float power = .14*head + 1.1*exp(-28.0*max(0.0,fraction-.15))*smoothstep(.12,.15,fraction)
+                                  + .76*exp(-26.0*max(0.0,fraction-.42))*smoothstep(.39,.42,fraction);
+                    power *= smoothstep(.03,.14,z)*(1.0-smoothstep(.76,.96,z))*(1.0-smoothstep(.58,.82,fraction));
+                    surface.alpha = saturate(surface.alpha + power*(.21*halo+.63*filament));
+                    surface.emissiveLighting += power*(float3(.16,.42,1.)*halo*2.1 + float3(.78,.90,1.)*filament*6.0);
+                }
+            }
+            surface.roughnessLinear = .96;
+        }
+        else if (style > 30.5)
+        {
+#if MATERIAL_USES_VERTEX_LOCALPOSITION
+            float3 pos = IN.localPosition;
+#else
+            float3 pos = geoData.positionWS;
+#endif
+            float t = SceneSrg::m_time * params.m_effectFlow;
+            float phase = params.m_effectSeed;
+            float3 coord = pos * params.m_effectFrequency;
+            float3 view = normalize(ViewSrg::m_worldPosition.xyz - geoData.positionWS);
+            float3 geomNormal = normalize(cross(ddy(geoData.positionWS),ddx(geoData.positionWS)));
+            float edge = pow(1.0-saturate(abs(dot(geomNormal,view))),1.25);
+            float n = ParticleVolumeNoise(coord*1.75+float3(phase,0.13*t,-0.19*t));
+            float tracks;
+            if (style < 31.5) // Intersecting metallic lines.
+                tracks = min(abs(sin(8.1*coord.z + 3.4*coord.x-t)),abs(sin(7.0*coord.x-4.2*coord.z+0.47*t)));
+            else if (style < 32.5) // Longitudinal silk.
+                tracks = abs(sin(13.5*coord.x + 4.2*sin(2.6*coord.z-.7*t)+3.0*coord.y));
+            else if (style < 33.5) // Fracture veins.
+                tracks = abs(sin(8.2*n + 2.3*coord.z - .55*t));
+            else if (style < 34.5) // Folded plasma.
+                tracks = abs(sin(6.2*coord.z + 2.8*sin(3.5*coord.x+3.1*n-t)+3.1*n));
+            else if (style < 35.5) // A sweeping horizontal pulse.
+                tracks = abs(sin(8.0*coord.z-2.2*t + 1.25*n));
+            else if (style < 36.5) // Organic branching paths.
+                tracks = min(abs(sin(7.5*n+4.0*coord.x+.3*t)),abs(sin(11.0*n-3.3*coord.y-.4*t)));
+            else // Interlocking diagonals wrap across the surface.
+                tracks = min(abs(sin(7.8*coord.z+5.0*coord.x+.34*t)),abs(sin(7.8*coord.z-5.0*coord.x-.34*t)));
+            float traceBand = 1.0-smoothstep(.055,.24+min(.18,fwidth(tracks)),tracks);
+            float sweep = smoothstep(.70,.99,cos(5.1*coord.z-1.8*t+phase+1.5*n));
+            surface.alpha = params.m_opacityFactor * saturate(.16+.76*edge+.29*traceBand+.17*sweep);
+            surface.albedo = float3(0,0,0);
+            surface.specularF0 = float3(0,0,0);
+            surface.roughnessLinear = .91;
+            float3 crest = lerp(tint, float3(1.0,.98,.94),.23*edge+.13*sweep);
+            surface.emissiveLighting = crest*glow*(.67+1.6*edge+.75*traceBand+.38*sweep);
+        }
         else if (style > 10.5)
         {
             float phase = params.m_effectSeed + IN.uvs[1].y;
@@ -319,8 +491,12 @@ float inOpticalDepth = node7_participating_medium_outExtinction;
             bool wave = style > 12.5 && style < 13.5;
             bool cap = style > 13.5 && style < 14.5;
             bool plume = style > 14.5 && style < 15.5;
-            bool radialFront = style > 16.5;
-            bool cloud = (style > 15.5 && style < 16.5) || style > 17.5;
+            bool radialFront = style > 16.5 && style < 18.5;
+            bool porousFire = style > 18.5 && style < 21.5;
+            bool smokeShape = style > 21.5;
+            flame = flame || (style > 19.5 && style < 20.5);
+            plume = plume || (style > 20.5 && style < 21.5);
+            bool cloud = (style > 15.5 && style < 16.5) || (style > 17.5 && style < 18.5) || smokeShape;
 #if MATERIAL_USES_VERTEX_TANGENT && MATERIAL_USES_VERTEX_LOCALPOSITION
             float3 entry = 2.0 * IN.localPosition;
             float3 toSurface = IN.tangent.xyz * 2.0;
@@ -383,6 +559,11 @@ float inOpticalDepth = node7_participating_medium_outExtinction;
                 float3 drift = (plume || flame) ? float3(0.06,0.11,-1.02) : float3(0.08,-0.14,-0.42);
                 float3 coord = q * (1.12 + 0.72 * params.m_effectFrequency);
                 coord += float3(1.7, 0.71, 1.29) * phase + drift * clock;
+                if (porousFire)
+                {
+                    coord.xy += 0.40 * float2(sin(pos.z*4.6-clock*1.9+phase),cos(pos.z*3.8-clock*1.4-phase));
+                    coord.z *= 0.72;
+                }
                 float broad = ParticleVolumeNoise(coord);
                 float detail = broad;
                 if (detailWeight > 0.001) detail = lerp(broad,ParticleVolumeNoise(coord*1.96 + float3(0.52,-0.43,0.39)*broad),detailWeight);
@@ -434,6 +615,32 @@ float inOpticalDepth = node7_participating_medium_outExtinction;
                 }
                 float density = max(inBulkDensity*core, smoothstep(-0.12,0.20,profile)*lerp(0.49,1.18,noise));
                 density *= 1.0-smoothstep(0.79,0.985,r);
+                if (porousFire)
+                {
+                    // Two winding flame fronts leave intermittently transparent pockets between them.
+                    float fold = cos(2.0*theta + 5.1*h - 2.3*clock + phase + 5.0*(noise-0.5));
+                    float fuel = 1.20*(noise-0.47) + 0.24*fold + 0.18*(1.0-h);
+                    float sheet = smoothstep(-0.09,0.30,fuel);
+                    density *= (0.055+0.945*sheet)*(0.45+0.55*smoothstep(-0.17,0.28,profile));
+                    core *= sheet;
+                }
+                if (smokeShape)
+                {
+                    float envelope = 1.0-smoothstep(0.54,1.0,r);
+                    float billows = smoothstep(0.22,0.70,noise);
+                    float filament = 1.0-smoothstep(0.04,0.25,abs(noise-0.52));
+                    float shape;
+                    if (style < 22.5) shape = (0.25+billows)*envelope; // flaring anvil
+                    else if (style < 23.5) shape = filament*smoothstep(-0.24,0.38,noise+0.40*sin(pos.z*4.0+phase)-0.30)*envelope;
+                    else if (style < 24.5) shape = (0.15+0.95*billows)*(0.48+0.52*cos(5.2*pos.z+3.1*noise))*envelope;
+                    else if (style < 25.5) shape = smoothstep(0.36,0.64,noise+0.12*sin(pos.z*6.0+phase))*envelope;
+                    else if (style < 26.5) shape = (0.25+0.85*billows)*smoothstep(-0.3,0.4,0.4-pos.z+0.27*noise)*envelope;
+                    else if (style < 27.5) shape = smoothstep(0.39,0.68,detail)*billows*1.7*envelope;
+                    else if (style < 28.5) shape = (0.12+billows*billows*1.25)*envelope;
+                    else if (style < 29.5) shape = filament*filament*(0.52+0.48*cos(3.6*pos.y+6.3*noise))*envelope;
+                    else shape = smoothstep(0.23,0.72,noise)*envelope;
+                    density = shape * (0.70+0.55*inBulkDensity);
+                }
                 float deltaOpacity = 1.0-exp(-density*stepLength*inOpticalDepth);
                 float3 radiance;
                 if (cloud)

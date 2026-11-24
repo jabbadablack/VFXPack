@@ -59,11 +59,11 @@
                     {
                         "name": "style",
                         "displayName": "Surface family",
-                        "description": "0 neutral, 1 combustion, 2 vapor, 3 crystal, 4 liquid, 5 plasma, 6 energy shield, 7 cinder, 8 beam sheath, 9 flame tongue, 10 glass rim, 11 hot gas, 12 rising flame, 13 rolling fire front, 14 rolling cap, 15 sustained flame plume, 16 scattering cloud, 17 radial fire front, 18 radial smoke front.",
+                        "description": "0 neutral, 1 combustion, 2 vapor, 3 crystal, 4 liquid, 5 plasma, 6 energy shield, 7 cinder, 8 beam sheath, 9 flame tongue, 10 glass rim, 11 hot gas, 12 rising flame, 13 rolling fire front, 14 rolling cap, 15 sustained flame plume, 16 scattering cloud, 17 radial fire front, 18 radial smoke front, 19 porous fire body, 20 fire wisp, 21 porous plume, 22 anvil, 23 sheared smoke, 24 stacked billows, 25 chimney exhaust, 26 ground fog, 27 granular soot, 28 furnace soot, 29 crosswind vapor, 30 stationary smoke, 31-37 conformal fields, 38-44 continuous luminous haze, 45 branched electrical discharge.",
                         "type": "Float",
                         "defaultValue": 0.0,
                         "min": 0.0,
-                        "max": 18.0,
+                        "max": 45.0,
                         "connection": {
                             "type": "ShaderInput",
                             "name": "m_effectStyle"
