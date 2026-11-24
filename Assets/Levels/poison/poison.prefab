@@ -441,6 +441,22 @@
                 "Component_[931091830724002070]": {
                     "$type": "EditorInspectorComponent",
                     "Id": 931091830724002070
+                },
+                "Component_[17530949454113628117]": {
+                    "$type": "AZ::Render::EditorPostFxLayerComponent",
+                    "Id": 17530949454113628117
+                },
+                "Component_[7547520423586331256]": {
+                    "$type": "AZ::Render::EditorBloomComponent",
+                    "Id": 7547520423586331256,
+                    "Controller": {
+                        "Configuration": {
+                            "Enabled": true,
+                            "Threshold": 1.0,
+                            "Knee": 0.5,
+                            "Intensity": 0.12
+                        }
+                    }
                 }
             }
         },

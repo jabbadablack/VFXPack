@@ -1,0 +1,60 @@
+{
+    "Type": "JsonSerialization",
+    "Version": 1,
+    "ClassName": "DynamicNodeConfig",
+    "ClassData": {
+        "id": "{28147535-5CF9-5D67-B497-FB8F9CB83A8F}",
+        "category": "VFXPack",
+        "title": "Participating Medium",
+        "titlePaletteName": "MaterialInputNodeTitlePalette",
+        "description": "Scales interior density and extinction for view-ray integration.",
+        "inputSlots": [
+            {
+                "name": "inDensityScale",
+                "displayName": "Density scale",
+                "supportedDataTypeRegex": "float",
+                "defaultDataType": "float",
+                "settings": {
+                    "instructions": [
+                        "SLOTTYPE SLOTNAME = SLOTVALUE;"
+                    ]
+                }
+            },
+            {
+                "name": "inExtinctionScale",
+                "displayName": "Extinction scale",
+                "supportedDataTypeRegex": "float",
+                "defaultDataType": "float",
+                "settings": {
+                    "instructions": [
+                        "SLOTTYPE SLOTNAME = SLOTVALUE;"
+                    ]
+                }
+            }
+        ],
+        "outputSlots": [
+            {
+                "name": "outCore",
+                "displayName": "Interior density",
+                "supportedDataTypeRegex": "float",
+                "defaultDataType": "float",
+                "settings": {
+                    "instructions": [
+                        "SLOTTYPE SLOTNAME = saturate(params.m_effectCoreDensity * inDensityScale);"
+                    ]
+                }
+            },
+            {
+                "name": "outExtinction",
+                "displayName": "Extinction",
+                "supportedDataTypeRegex": "float",
+                "defaultDataType": "float",
+                "settings": {
+                    "instructions": [
+                        "SLOTTYPE SLOTNAME = max(0.01, params.m_effectExtinction * inExtinctionScale);"
+                    ]
+                }
+            }
+        ]
+    }
+}

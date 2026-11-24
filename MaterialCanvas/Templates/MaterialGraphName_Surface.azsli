@@ -29,13 +29,33 @@ float SampleParticleHeight(const MaterialParameters params, float2 uv)
     return saturate(0.75 * coarse + 0.25 * detail);
 }
 
-float3 DisplaceParticleVertex(float3 position, float3 normal, float2 uv, const MaterialParameters params)
+float4 ParticleLatticeHash(float4 index)
+{
+    float4 h = frac(index*0.1031);
+    h *= h+33.33;
+    return frac(h*(h+h));
+}
+
+float ParticleVolumeNoise(float3 p)
+{
+    float3 cell = floor(p);
+    float3 f = frac(p);
+    f = f*f*(3.0-2.0*f);
+    float base = dot(cell,float3(1.0,157.0,113.0));
+    float4 index = base + float4(0,1,157,158);
+    float4 z = lerp(ParticleLatticeHash(index),ParticleLatticeHash(index+113.0),f.z);
+    return lerp(lerp(z.x,z.y,f.x),lerp(z.z,z.w,f.x),f.y);
+}
+
+float3 DisplaceParticleVertex(float3 position, float3 normal, float2 uv, const MaterialParameters params, ParticleMeshInstanceData particle)
 {
     #define O3DE_MC_UV(index) uv
     // O3DE_GENERATED_INSTRUCTIONS_BEGIN: inRelief
     float inRelief = 0.5;
     // O3DE_GENERATED_INSTRUCTIONS_END
     #undef O3DE_MC_UV
+    // The unit sphere bounds the integration. Its surface never contributes light.
+    if (params.m_effectStyle > 10.5) return position;
     return position + normal * ((inRelief - 0.5 + params.m_heightmapOffset) * params.m_heightmapScale);
 }
 
@@ -63,10 +83,14 @@ float3 ParticleSurfaceWorldPosition(float3 localPosition, ParticleMeshInstanceDa
     {
         ParticleMeshInstanceData instanceData = LoadInstanceData(SV.m_instanceId);
         float4x4 objectToWorld = GetObjectToWorldMatrix(SV);
-        float3 worldPosition = ParticleSurfaceWorldPosition(DisplaceParticleVertex(IN.position, IN.normal, IN.uv0, params), instanceData, objectToWorld);
+        float3 worldPosition = ParticleSurfaceWorldPosition(DisplaceParticleVertex(IN.position, IN.normal, IN.uv0, params, instanceData), instanceData, objectToWorld);
 
         VsOutput OUT;
         OUT.position = mul(GetViewProjectionMatrix(SV), float4(worldPosition, 1.0));
+
+#if MATERIAL_USES_VERTEX_LOCALPOSITION
+        OUT.localPosition = IN.position;
+#endif
 
 #if MATERIAL_USES_VERTEX_POSITIONWS
         OUT.worldPosition = worldPosition;
@@ -75,7 +99,9 @@ float3 ParticleSurfaceWorldPosition(float3 localPosition, ParticleMeshInstanceDa
 #if MATERIAL_USES_VERTEX_UV
         float3 uv0h = float3(IN.uv0, 1.0);
         OUT.uvs[0] = float2(dot(params.m_uvMatrixRow0.xyz, uv0h), dot(params.m_uvMatrixRow1.xyz, uv0h));
-        OUT.uvs[1] = IN.uv1;
+        OUT.uvs[1] = params.m_effectStyle > 10.5
+            ? float2(saturate(IN.position.z + 0.5), instanceData.m_initRotation.w + dot(instanceData.m_scale.xyz, float3(0.83, 2.76, 1.78)))
+            : IN.uv1;
 #endif
 
 #if MATERIAL_USES_VERTEX_NORMAL
@@ -94,6 +120,27 @@ float3 ParticleSurfaceWorldPosition(float3 localPosition, ParticleMeshInstanceDa
         OUT.color0.b = instanceData.m_hasInstanceData.x == 0 ? 0.3 : instanceData.m_color.b;
 #endif
 
+#if MATERIAL_USES_VERTEX_TANGENT && MATERIAL_USES_VERTEX_LOCALPOSITION
+        if (params.m_effectStyle > 10.5)
+        {
+            // Carry the ray in the ellipsoid's local coordinates, including nonuniform scale.
+            float3 ray = worldPosition - ViewSrg::m_worldPosition.xyz;
+            float3 bx = mul((float3x3)objectToWorld, RotateParticleDirection(float3(instanceData.m_scale.x, 0, 0), instanceData));
+            float3 by = mul((float3x3)objectToWorld, RotateParticleDirection(float3(0, instanceData.m_scale.y, 0), instanceData));
+            float3 bz = mul((float3x3)objectToWorld, RotateParticleDirection(float3(0, 0, instanceData.m_scale.z), instanceData));
+#if MATERIAL_USES_VERTEX_NORMAL
+            if ((params.m_effectStyle > 15.5 && params.m_effectStyle < 16.5) || params.m_effectStyle > 17.5)
+            {
+                float3 key = normalize(float3(-0.35,-0.48,0.80));
+                if (SceneSrg::m_directionalLightCount > 0) key = -normalize(SceneSrg::m_directionalLights[0].m_direction);
+                OUT.normal = normalize(float3(dot(key,bx)/max(dot(bx,bx),0.000001),dot(key,by)/max(dot(by,by),0.000001),dot(key,bz)/max(dot(bz,bz),0.000001)));
+            }
+#endif
+            OUT.tangent = float4(dot(ray, bx) / max(dot(bx,bx), 0.000001),
+                                 dot(ray, by) / max(dot(by,by), 0.000001),
+                                 dot(ray, bz) / max(dot(bz,bz), 0.000001), 1.0);
+        }
+#endif
         OUT.m_instanceId = SV.m_instanceId;
         return OUT;
     }
@@ -131,11 +178,13 @@ float3 ParticleSurfaceWorldPosition(float3 localPosition, ParticleMeshInstanceDa
         float3 uvh = float3(IN.uvs[0], 1.0);
         float2 uv = float2(dot(params.m_uvMatrixInverseRow0.xyz, uvh), dot(params.m_uvMatrixInverseRow1.xyz, uvh));
         #define O3DE_MC_UV(index) uv
-        // O3DE_GENERATED_INSTRUCTIONS_BEGIN: inEmissionMask, inRoughnessMask, inCoverage, inRim
+        // O3DE_GENERATED_INSTRUCTIONS_BEGIN: inEmissionMask, inRoughnessMask, inCoverage, inRim, inBulkDensity, inOpticalDepth
         float inEmissionMask = 1.0;
         float inRoughnessMask = 0.5;
         float inCoverage = 1.0;
         float inRim = 0.0;
+        float inBulkDensity = 0.90;
+        float inOpticalDepth = 5.0;
         // O3DE_GENERATED_INSTRUCTIONS_END
         #undef O3DE_MC_UV
         float style = params.m_effectStyle;
@@ -163,13 +212,15 @@ float3 ParticleSurfaceWorldPosition(float3 localPosition, ParticleMeshInstanceDa
         else if (style > 1.5 && style < 2.5)
         {
             // Dense billows have lit shoulders and a soft, progressively porous edge.
-            float depth = saturate((1.0 - rim) * 0.67 + field * 0.57);
             float shoulder = saturate(0.5 + 0.5 * surface.normal.z);
             surface.albedo = params.m_baseColor.rgb * lerp(0.36, 1.18, shoulder * 0.62 + field * 0.38);
             float lightBand = smoothstep(0.22, 0.62, shoulder * 0.76 + field * 0.24);
             surface.emissiveLighting = tint * glow * (0.11 + 0.47 * lightBand);
             surface.albedo *= lerp(0.66, 1.14, lightBand);
-            surface.alpha *= smoothstep(0.10, 0.53, depth) * lerp(1.0, coverage, smoothstep(0.42, 1.0, age));
+            float facing = saturate(1.0 - rim);
+            float silhouette = smoothstep(0.08, 0.49, facing + (field - 0.52) * 1.34);
+            float porous = smoothstep(0.15 + 0.27 * age, 0.47 + 0.25 * age, field + facing * 0.16);
+            surface.alpha *= silhouette * porous * lerp(0.91, 0.58, age);
         }
         else if (style > 2.5 && style < 3.5)
         {
@@ -205,7 +256,7 @@ float3 ParticleSurfaceWorldPosition(float3 localPosition, ParticleMeshInstanceDa
             surface.albedo *= lerp(0.40, 0.89, field);
             surface.emissiveLighting = tint * glow * (0.012 + crack * crack * 0.82);
         }
-        else if (style > 7.5)
+        else if (style > 7.5 && style < 8.5)
         {
             // UV.y runs from source to impact. UV.x wraps the low-poly sleeve.
             float along = saturate(uv.y);
@@ -215,6 +266,206 @@ float3 ParticleSurfaceWorldPosition(float3 localPosition, ParticleMeshInstanceDa
             float core = pow(saturate(1.0 - rim), 2.6);
             surface.alpha = params.m_opacityFactor * endFalloff * saturate(0.12 + core * 0.91 + strand * 0.58);
             surface.emissiveLighting = lerp(tint * 0.56, lerp(tint, float3(1.0, 1.0, 1.0), 0.86), core * core) * glow * (0.40 + 1.30 * core + 0.47 * strand);
+        }
+        else if (style > 8.5 && style < 9.5)
+        {
+            float height = saturate(uv.y);
+            float flameField = field + 0.21 * sin(6.283185 * (uv.x * 2.0 - height * 1.4 + SceneSrg::m_time * params.m_effectFlow));
+            float body = smoothstep(0.03, 0.21, flameField + 0.41 - height * 0.81 - age * 0.18);
+            float hearth = (1.0 - smoothstep(0.10, 0.67, height)) * smoothstep(0.25, 0.64, field);
+            float3 orange = lerp(tint * float3(0.74, 0.23, 0.08), tint, saturate(field + 0.23 - height * 0.46));
+            surface.emissiveLighting = lerp(orange, float3(1.0, 0.70, 0.25), hearth) * glow * (0.21 + 0.81 * hearth + 0.22 * field);
+            surface.alpha *= body * (1.0 - smoothstep(0.74, 1.0, age) * 0.88);
+        }
+        else if (style > 9.5 && style < 10.5)
+        {
+            // A spherical shell has a clear window around its view-facing pole.
+            float3 viewDirection = normalize(ViewSrg::m_worldPosition.xyz - geoData.positionWS);
+            float grazing = 1.0 - saturate(abs(dot(viewDirection, normalize(surface.normal))));
+            float rimBand = smoothstep(0.28, 0.85, grazing);
+            clip(rimBand - 0.001);
+            float crest = pow(grazing, 3.1);
+            float glint = smoothstep(0.38, 0.67, field) * crest;
+            surface.albedo = tint * 0.20;
+            surface.alpha = params.m_opacityFactor * rimBand * lerp(0.38, 0.98, crest);
+            surface.emissiveLighting = lerp(tint, float3(0.96, 0.99, 1.0), glint * 0.75) * glow * rimBand * (0.16 + 0.94 * crest);
+            surface.roughnessLinear = lerp(0.16, 0.045, glint);
+        }
+        else if (style > 10.5)
+        {
+            float phase = params.m_effectSeed + IN.uvs[1].y;
+            float clock = SceneSrg::m_time * params.m_effectFlow;
+            bool flame = style > 11.5 && style < 12.5;
+            bool wave = style > 12.5 && style < 13.5;
+            bool cap = style > 13.5 && style < 14.5;
+            bool plume = style > 14.5 && style < 15.5;
+            bool radialFront = style > 16.5;
+            bool cloud = (style > 15.5 && style < 16.5) || style > 17.5;
+#if MATERIAL_USES_VERTEX_TANGENT && MATERIAL_USES_VERTEX_LOCALPOSITION
+            float3 entry = 2.0 * IN.localPosition;
+            float3 toSurface = IN.tangent.xyz * 2.0;
+            float3 ray = normalize(toSurface);
+            float3 eye = entry - toSurface;
+#else
+            float3 entry = normalize(surface.normal);
+            float3 ray = normalize(geoData.positionWS - ViewSrg::m_worldPosition.xyz);
+            float3 eye = entry - 10.0 * ray;
+#endif
+            float projected = dot(entry,ray);
+            float cameraProjection = dot(eye,ray);
+            float halfChord = sqrt(max(0.0,cameraProjection*cameraProjection + 1.0 - dot(eye,eye)));
+            float nearT = max(0.0,-cameraProjection - halfChord);
+            float farT = max(nearT,-cameraProjection + halfChord);
+            float cameraToHull = max(0.00001,length(entry-eye));
+            float3 cameraWS = ViewSrg::m_worldPosition.xyz;
+            float3 nearWS = cameraWS + (geoData.positionWS-cameraWS)*(nearT/cameraToHull);
+            float4 nearClip = mul(ViewSrg::m_viewProjectionMatrix,float4(nearWS,1.0));
+            // Switch to the exit face when the camera or its near plane intersects the medium.
+            // The integration limits are the same on either face.
+            bool fromExit = nearT < 0.0001 || nearClip.w <= 0 || nearClip.z >= nearClip.w || nearClip.z < 0;
+            if (fromExit ? projected <= 0.0 : projected >= 0.0) discard;
+            float chord = farT-nearT;
+            entry = eye+ray*nearT;
+            // Integrate the full path even for distant puffs. Spend the extra samples
+            // on volumes which cover enough pixels to resolve the smaller eddies.
+#if MATERIAL_USES_VERTEX_LOCALPOSITION
+            float pixelFootprint = max(length(ddx(IN.localPosition)),length(ddy(IN.localPosition)));
+            float projectedPixels = 1.0/max(0.001,pixelFootprint);
+#else
+            float projectedPixels = 120.0;
+#endif
+            float detailWeight = smoothstep(26.0,90.0,projectedPixels);
+            int steps = projectedPixels < 35.0 ? 3 : (projectedPixels < 86.0 ? 5 : ((plume || cap || cloud) ? 9 : 7));
+            float stepLength = chord / float(steps);
+            float transmittance = 1.0;
+            float3 light = float3(0, 0, 0);
+            for (int i = 0; i < steps; ++i)
+            {
+                float3 pos = entry + ray * ((float(i) + 0.5) * stepLength);
+                float h = saturate(0.5 + 0.5 * pos.z);
+                float2 bend = float2(sin(7.0*h - 2.27*clock + phase), cos(8.6*h - 2.03*clock + phase));
+                float2 offset = (plume ? 0.32 : 0.11) * h * h * bend;
+                float2 lateral = radialFront ? pos.xy : pos.xy - offset;
+                float radial = length(lateral);
+                float theta = atan2(lateral.y, lateral.x);
+                float3 q = float3(lateral, pos.z);
+                if (cap)
+                {
+                    // Roll the outer layer over the rising head of the thermal.
+                    float2 section = float2(radial - 0.48, pos.z - 0.06);
+                    float angle = 1.32 + 3.12*age + 2.32*exp(-5.4*dot(section,section));
+                    float2 axis = float2(cos(angle),sin(angle));
+                    float2 turned = float2(dot(section,float2(axis.x,-axis.y)),dot(section,axis.yx));
+                    q = float3(lateral * ((turned.x + 0.48) / max(radial,0.035)), turned.y + 0.10*sin(4.0*theta + phase));
+                }
+                // Advect after shaping the local domain. Phase and clock translate sampling
+                // coordinates only, so neither elapsed scene time nor world origin can stretch the field.
+                float3 drift = (plume || flame) ? float3(0.06,0.11,-1.02) : float3(0.08,-0.14,-0.42);
+                float3 coord = q * (1.12 + 0.72 * params.m_effectFrequency);
+                coord += float3(1.7, 0.71, 1.29) * phase + drift * clock;
+                float broad = ParticleVolumeNoise(coord);
+                float detail = broad;
+                if (detailWeight > 0.001) detail = lerp(broad,ParticleVolumeNoise(coord*1.96 + float3(0.52,-0.43,0.39)*broad),detailWeight);
+                float noise = saturate(0.73*broad + 0.27*detail);
+                float r = length(pos);
+                float reach = 0.80 + 0.57*(noise - 0.50);
+                float profile = reach - r;
+                float core = 1.0-smoothstep(0.32,0.70,r);
+                if (plume || flame)
+                {
+                    float width = plume ? lerp(0.81,0.075,pow(h,0.87)) : lerp(0.79,0.40,h);
+                    float lobes = 0.072*sin(3.0*theta + 6.5*h - 1.8*clock + phase);
+                    profile = min(width + lobes + 0.70*(noise-0.50) - radial, min(h-0.025,0.995-h)*2.7);
+                    core = (1.0-smoothstep(width*0.33,width*0.86,radial)) * smoothstep(0.025,0.12,h)*(1.0-smoothstep(0.72,0.97,h));
+                }
+                if (cloud || cap || wave)
+                {
+                    float3 wrinkled = pos + 0.12*float3(sin(4.5*pos.y+phase+age),cos(3.9*pos.z-phase+age),sin(4.1*pos.x+phase))*(0.42+noise);
+                    float coreLobe = 0.72-length(wrinkled*float3(0.97,1.03,1.11));
+                    float leftLobe = 0.49-length(wrinkled-float3(-0.32,0.18,0.26));
+                    float rightLobe = 0.48-length(wrinkled-float3(0.35,-0.16,0.11));
+                    profile = max(coreLobe,max(leftLobe,rightLobe)) + 0.72*(noise-0.50);
+                }
+                float frontFold = 0.55;
+                if (radialFront)
+                {
+                    // The crest has a filled elliptical cross-section in the radial/height plane
+                    // at every azimuth. Curvature and rotating folds perturb it without opening gaps.
+                    float angle = atan2(pos.y,pos.x);
+                    float winding = 8.0*angle + 1.19*sin(3.0*angle+phase) + phase + 1.14*age;
+                    float lobe = 0.5+0.5*cos(winding);
+                    float crestRipple = 0.72*sin(5.0*angle+phase+age) + 0.28*cos(11.0*angle-0.71*phase);
+                    float radius = lerp(0.35,0.68,smoothstep(0.0,0.69,age)) + 0.060*crestRipple;
+                    float crestZ = -0.075 + 0.25*lobe + 0.075*crestRipple + 0.10*age;
+                    float2 section = float2((radial-radius)/(0.25 + 0.082*lobe + 0.035*noise),
+                                            (pos.z-crestZ)/(0.43+0.22*lobe+0.07*noise));
+                    float sectionRadius = length(section);
+                    float roll = 0.5+0.5*sin(atan2(section.y,section.x) + 5.5*age + 3.1*noise + 0.34*crestRipple);
+                    profile = (1.0-sectionRadius)*0.56 + 0.14*(noise-0.5);
+                    core = 1.0-smoothstep(0.40,0.83,sectionRadius);
+                    // Gas behind the crest couples it to the erupting center while the front expands.
+                    float wake = (1.0-smoothstep(radius-0.10,radius+0.08,radial)) *
+                                 (1.0-smoothstep(0.11,0.57,abs(pos.z+0.14))) * (1.0-0.67*age);
+                    core = max(core,0.48*wake);
+                    float circulation = atan2(section.y,section.x) + 5.4*age;
+                    float foldPattern = cos(2.0*circulation + 1.75*sin(winding) + 5.8*(noise-0.5));
+                    frontFold = saturate(0.46+0.37*foldPattern+0.28*(lobe-0.5)+0.42*(noise-0.5));
+                    noise = 0.52*noise + 0.28*roll + 0.20*lobe;
+                }
+                float density = max(inBulkDensity*core, smoothstep(-0.12,0.20,profile)*lerp(0.49,1.18,noise));
+                density *= 1.0-smoothstep(0.79,0.985,r);
+                float deltaOpacity = 1.0-exp(-density*stepLength*inOpticalDepth);
+                float3 radiance;
+                if (cloud)
+                {
+                    // A short light path through the same cloud yields bright shoulders and a shaded interior.
+#if MATERIAL_USES_VERTEX_NORMAL
+                    float3 towardsLight = normalize(IN.normal);
+#else
+                    float3 towardsLight = normalize(float3(-0.35,-0.48,0.80));
+#endif
+                    float along = dot(pos,towardsLight);
+                    float lightDistance = max(0.0,-along+sqrt(max(0.0,along*along+0.91-dot(pos,pos))));
+                    float obstruction = broad;
+                    if (detailWeight > 0.10) obstruction = ParticleVolumeNoise(coord + towardsLight*(0.58*lightDistance));
+                    float sunlight = exp(-lightDistance*(0.40 + 1.14*obstruction)*inOpticalDepth*0.29);
+                    float forwardScatter = 0.12*pow(saturate(dot(ray,towardsLight)),3.0);
+                    radiance = tint * (0.29+sunlight*1.04+forwardScatter) * max(glow,0.35);
+                }
+                else
+                {
+                    float seam = 1.0-smoothstep(0.03,0.25,abs(noise-0.55));
+                    float heat = saturate(0.38 + 0.48*noise + 0.27*core - 0.25*h);
+                    if (cap) heat = saturate(0.33+0.42*seam+0.24*core+0.11*noise);
+                    float cool = plume ? 0.0 : smoothstep(0.46,0.96,age);
+                    float3 warm = lerp(tint,float3(1.0,0.18,0.018),0.43);
+                    float3 hot = lerp(warm,float3(1.0,0.74,0.24),smoothstep(0.46,0.94,heat));
+                    float3 fading = lerp(warm*float3(0.48,0.19,0.08),float3(0.053,0.031,0.026),cool);
+                    radiance = lerp(hot,fading,cool*(cap ? 0.82 : 0.94))*glow*(0.52+0.59*heat);
+                    if (wave || radialFront)
+                    {
+                        float ash = smoothstep(0.32,0.89,age)*(0.42+0.53*noise);
+                        radiance = lerp(radiance,float3(0.35,0.22,0.14)*(0.52+0.86*noise),ash);
+                    }
+                }
+                if (radialFront)
+                {
+                    // Dense folds scatter less light into the view. The gas in the troughs
+                    // remains present at every heading even as its temperature falls.
+                    if (cloud) radiance *= lerp(0.46,1.26,smoothstep(0.19,0.87,frontFold));
+                    else radiance *= lerp(float3(0.46,0.29,0.20),float3(1.23,1.18,1.08),smoothstep(0.17,0.84,frontFold));
+                }
+                light += transmittance*deltaOpacity*radiance;
+                transmittance *= 1.0-deltaOpacity;
+                if (transmittance < 0.012) break;
+            }
+            float integratedAlpha = 1.0-transmittance;
+            surface.emissiveLighting = light / max(integratedAlpha,0.001);
+            surface.alpha = params.m_opacityFactor * integratedAlpha;
+            surface.albedo = float3(0.022,0.013,0.008);
+            surface.specularF0 = float3(0,0,0);
+            surface.roughnessLinear = 0.97;
+            surface.opacityAffectsSpecularFactor = 1.0;
         }
         // Derive fine surface normals from the animated field in world units.
         float3 n = surface.normal;
@@ -229,6 +480,15 @@ float3 ParticleSurfaceWorldPosition(float3 localPosition, ParticleMeshInstanceDa
         surface.roughnessLinear = clamp(surface.roughnessLinear + (0.5 - field) * 0.21, 0.045, 1.0);
         surface.CalculateRoughnessA();
         surface.alpha *= fade;
+        // Atom adds emissive radiance after premultiplying diffuse reflectance.
+        if (style > 0.5)
+        {
+            surface.emissiveLighting *= surface.alpha;
+        }
+        if (style > 10.5)
+        {
+            clip(surface.alpha - 0.004);
+        }
         return surface;
     }
     #include <Atom/Feature/Common/Assets/Shaders/Materials/StandardPBR/StandardPBR_LightingEval.azsli>
@@ -262,7 +522,7 @@ float3 ParticleSurfaceWorldPosition(float3 localPosition, ParticleMeshInstanceDa
     {
         ParticleMeshInstanceData instanceData = LoadInstanceData(SV.m_instanceId);
         float4x4 objectToWorld = GetObjectToWorldMatrix(SV);
-        float3 worldPosition = ParticleSurfaceWorldPosition(DisplaceParticleVertex(IN.position, IN.normal, IN.uv0, params), instanceData, objectToWorld);
+        float3 worldPosition = ParticleSurfaceWorldPosition(DisplaceParticleVertex(IN.position, IN.normal, IN.uv0, params, instanceData), instanceData, objectToWorld);
 
         VsOutput OUT;
         OUT.position = mul(GetViewProjectionMatrix(SV), float4(worldPosition, 1.0));
@@ -292,7 +552,7 @@ float3 ParticleSurfaceWorldPosition(float3 localPosition, ParticleMeshInstanceDa
     {
         ParticleMeshInstanceData instanceData = LoadInstanceData(SV.m_instanceId);
         float4x4 objectToWorld = GetObjectToWorldMatrix(SV);
-        float3 worldPosition = ParticleSurfaceWorldPosition(DisplaceParticleVertex(IN.position, IN.normal, IN.uv0, params), instanceData, objectToWorld);
+        float3 worldPosition = ParticleSurfaceWorldPosition(DisplaceParticleVertex(IN.position, IN.normal, IN.uv0, params, instanceData), instanceData, objectToWorld);
 
         VsOutput OUT;
         OUT.position = mul(GetViewProjectionMatrix(SV), float4(worldPosition, 1.0));

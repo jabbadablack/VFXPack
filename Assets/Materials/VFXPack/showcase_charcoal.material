@@ -3,13 +3,17 @@
     "materialTypeVersion": 5,
     "propertyValues": {
         "baseColor.color": [
-            0.086,
-            0.103,
-            0.122,
-            1
+            0.045,
+            0.053,
+            0.066,
+            1.0
         ],
         "roughness.factor": 0.94,
         "specularF0.factor": 0.11,
-        "metallic.factor": 0.0
+        "metallic.factor": 0.0,
+        "baseColor.textureMap": "@gemroot:Atom_Feature_Common@/Assets/Textures/Default/checker_basecolor.tif",
+        "baseColor.useTexture": true,
+        "uv.tileU": 1.0,
+        "uv.tileV": 1.0
     }
 }

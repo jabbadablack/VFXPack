@@ -1,6 +1,6 @@
 -- Attach to a showcase group whose direct children are one-shot particle systems.
 local ReplayBursts = {}
-local cycleSeconds = 1.25
+local cycleSeconds = 2.35
 
 function ReplayBursts:OnActivate()
     self.children = nil
@@ -25,7 +25,7 @@ function ReplayBursts:OnTick(deltaTime)
     end
 
     -- Play resumes the current clock. Stop first to start a fresh burst.
-    local spacing = cycleSeconds / count
+    local spacing = math.max(cycleSeconds / count, 0.165)
     local child = self.children[self.index]
     ParticleRequestBus.Event.Stop(child)
     ParticleRequestBus.Event.Play(child)

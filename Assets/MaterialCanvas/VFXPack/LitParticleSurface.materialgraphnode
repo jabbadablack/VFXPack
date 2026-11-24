@@ -87,6 +87,30 @@
                         "SLOTTYPE SLOTNAME = SLOTVALUE;"
                     ]
                 }
+            },
+            {
+                "name": "inBulkDensity",
+                "displayName": "Interior density",
+                "supportedDataTypeRegex": "float",
+                "defaultDataType": "float",
+                "allowNameSubstitution": false,
+                "settings": {
+                    "instructions": [
+                        "SLOTTYPE SLOTNAME = SLOTVALUE;"
+                    ]
+                }
+            },
+            {
+                "name": "inOpticalDepth",
+                "displayName": "Extinction",
+                "supportedDataTypeRegex": "float",
+                "defaultDataType": "float",
+                "allowNameSubstitution": false,
+                "settings": {
+                    "instructions": [
+                        "SLOTTYPE SLOTNAME = SLOTVALUE;"
+                    ]
+                }
             }
         ]
     }

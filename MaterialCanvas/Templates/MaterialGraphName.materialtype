@@ -59,11 +59,11 @@
                     {
                         "name": "style",
                         "displayName": "Surface family",
-                        "description": "0 neutral, 1 combustion, 2 vapor, 3 crystal, 4 liquid, 5 plasma, 6 energy shield, 7 cinder, 8 beam sheath.",
+                        "description": "0 neutral, 1 combustion, 2 vapor, 3 crystal, 4 liquid, 5 plasma, 6 energy shield, 7 cinder, 8 beam sheath, 9 flame tongue, 10 glass rim, 11 hot gas, 12 rising flame, 13 rolling fire front, 14 rolling cap, 15 sustained flame plume, 16 scattering cloud, 17 radial fire front, 18 radial smoke front.",
                         "type": "Float",
                         "defaultValue": 0.0,
                         "min": 0.0,
-                        "max": 8.0,
+                        "max": 18.0,
                         "connection": {
                             "type": "ShaderInput",
                             "name": "m_effectStyle"
@@ -132,6 +132,32 @@
                         "connection": {
                             "type": "ShaderInput",
                             "name": "m_effectSeed"
+                        }
+                    },
+                    {
+                        "name": "extinction",
+                        "displayName": "Volume extinction",
+                        "description": "Optical depth per unit distance inside the particle.",
+                        "type": "Float",
+                        "defaultValue": 5.0,
+                        "min": 0.1,
+                        "max": 16.0,
+                        "connection": {
+                            "type": "ShaderInput",
+                            "name": "m_effectExtinction"
+                        }
+                    },
+                    {
+                        "name": "coreDensity",
+                        "displayName": "Interior density",
+                        "description": "Minimum density in the nested core of a volume.",
+                        "type": "Float",
+                        "defaultValue": 0.9,
+                        "min": 0.0,
+                        "max": 1.0,
+                        "connection": {
+                            "type": "ShaderInput",
+                            "name": "m_effectCoreDensity"
                         }
                     }
                 ]
